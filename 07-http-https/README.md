@@ -828,6 +828,140 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- TCP/IP model basics → [See TCP/IP Guide](../02-tcp-ip/)
+- Client-server architecture
+- Basic understanding of ports (80, 443)
+- DNS resolution → [See DNS Guide](../08-dns/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Not Using HTTPS
+```
+❌ Wrong: HTTP for production sites (data sent in plain text)
+✅ Correct: Always use HTTPS; free certs available via Let's Encrypt
+```
+
+### Mistake 2: Ignoring Status Codes
+```
+❌ Wrong: Returning 200 OK for all responses, including errors
+✅ Correct: Use appropriate codes: 201 Created, 404 Not Found, 500 Server Error
+```
+
+### Mistake 3: Wrong HTTP Method
+```
+❌ Wrong: Using GET to modify data
+✅ Correct: GET=read, POST=create, PUT=update, DELETE=remove
+```
+
+### Mistake 4: Not Setting Proper Headers
+```
+❌ Wrong: Missing Content-Type, CORS headers
+✅ Correct: Set Content-Type, Cache-Control, security headers (HSTS, CSP)
+```
+
+---
+
+## 🛠️ Command Reference
+
+### curl Commands
+```bash
+# GET request
+curl https://api.example.com/users
+curl -v https://api.example.com/users  # verbose
+
+# POST request with JSON
+curl -X POST https://api.example.com/users \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John"}'
+
+# PUT/PATCH/DELETE
+curl -X PUT https://api.example.com/users/1 -d '{"name": "Jane"}'
+curl -X DELETE https://api.example.com/users/1
+
+# View headers only
+curl -I https://example.com
+
+# Follow redirects
+curl -L https://example.com
+
+# With authentication
+curl -u user:pass https://api.example.com
+curl -H "Authorization: Bearer token123" https://api.example.com
+
+# Check SSL certificate
+curl -vI https://example.com 2>&1 | grep -A6 "Server certificate"
+openssl s_client -connect example.com:443 -servername example.com
+```
+
+### httpie (Alternative to curl)
+```bash
+# GET request
+http GET https://api.example.com/users
+
+# POST with JSON
+http POST https://api.example.com/users name=John
+
+# With headers
+http https://api.example.com Authorization:"Bearer token"
+```
+
+### Browser DevTools
+```
+F12 → Network tab → View all HTTP requests
+- Headers: Request/Response headers
+- Timing: Connection, TTFB, Content download
+- Preview: Response body
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│               HTTP/HTTPS QUICK REFERENCE                    │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  HTTP Methods:                                              │
+│    GET    - Retrieve data (safe, idempotent)               │
+│    POST   - Create new resource                            │
+│    PUT    - Update/replace resource (idempotent)           │
+│    PATCH  - Partial update                                 │
+│    DELETE - Remove resource (idempotent)                   │
+│                                                              │
+│  Status Code Categories:                                    │
+│    1xx - Informational                                     │
+│    2xx - Success (200 OK, 201 Created, 204 No Content)    │
+│    3xx - Redirect (301 Moved, 302 Found, 304 Not Modified)│
+│    4xx - Client Error (400 Bad, 401 Unauth, 404 Not Found)│
+│    5xx - Server Error (500 Internal, 502 Gateway, 503 Down)│
+│                                                              │
+│  Important Headers:                                         │
+│    Content-Type:   application/json, text/html             │
+│    Authorization:  Bearer <token>                          │
+│    Cache-Control:  max-age=3600, no-cache                  │
+│    Cookie:         session=abc123                          │
+│                                                              │
+│  HTTPS = HTTP + TLS:                                        │
+│    • Port 443 (vs 80 for HTTP)                            │
+│    • Encrypts data in transit                             │
+│    • Verifies server identity                              │
+│                                                              │
+│  HTTP Versions:                                             │
+│    HTTP/1.1 - One request per connection (keep-alive)     │
+│    HTTP/2   - Multiplexing, binary, header compression    │
+│    HTTP/3   - QUIC (UDP-based), faster connections        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **HTTP = Request/Response Protocol** - Simple client-server communication
@@ -850,4 +984,4 @@
 
 ---
 
-**Previous: [TCP/IP & OSI Model](../02-tcp-ip/)/) | **Next: [DNS](../04-dns/)/)
+**Previous:** [IPv6](../06-ipv6/) | **Next:** [DNS](../08-dns/)

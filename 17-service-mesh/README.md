@@ -293,6 +293,190 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- Kubernetes networking → [See Kubernetes Networking Guide](../15-kubernetes-networking/)
+- Container concepts → [See Docker Networking](../14-docker-networking/)
+- TLS/SSL basics → [See HTTP/HTTPS Guide](../07-http-https/)
+- Microservices architecture concepts
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Adding Service Mesh Too Early
+```
+❌ Wrong: Implementing service mesh for simple applications
+✅ Correct: Start with service mesh when you have 10+ microservices
+```
+
+### Mistake 2: Underestimating Resource Overhead
+```
+❌ Wrong: Not accounting for sidecar memory/CPU usage
+✅ Correct: Plan for ~50-100MB memory per sidecar; monitor resource usage
+```
+
+### Mistake 3: Complex Policies Before Understanding
+```
+❌ Wrong: Implementing complex traffic rules immediately
+✅ Correct: Start with observability, then add traffic management gradually
+```
+
+### Mistake 4: Not Testing mTLS Impact
+```
+❌ Wrong: Enabling strict mTLS without testing
+✅ Correct: Use permissive mode first, test thoroughly, then strict mode
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Istio Commands
+```bash
+# Install Istio
+istioctl install --set profile=demo
+
+# Verify installation
+istioctl verify-install
+
+# Enable sidecar injection for namespace
+kubectl label namespace default istio-injection=enabled
+
+# Check proxy status
+istioctl proxy-status
+
+# Analyze configuration
+istioctl analyze
+
+# Dashboard
+istioctl dashboard kiali
+istioctl dashboard grafana
+istioctl dashboard jaeger
+```
+
+### Istio Traffic Management
+```yaml
+# VirtualService (routing rules)
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: reviews
+spec:
+  hosts:
+  - reviews
+  http:
+  - match:
+    - headers:
+        end-user:
+          exact: test
+    route:
+    - destination:
+        host: reviews
+        subset: v2
+  - route:
+    - destination:
+        host: reviews
+        subset: v1
+```
+
+### Linkerd Commands
+```bash
+# Install Linkerd
+linkerd install | kubectl apply -f -
+
+# Check installation
+linkerd check
+
+# Inject sidecar
+kubectl get deploy -o yaml | linkerd inject - | kubectl apply -f -
+
+# Dashboard
+linkerd dashboard
+
+# View stats
+linkerd stat deploy
+linkerd top deploy
+linkerd tap deploy/webapp
+```
+
+### mTLS Configuration (Istio)
+```yaml
+# PeerAuthentication (mTLS mode)
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system
+spec:
+  mtls:
+    mode: STRICT  # or PERMISSIVE
+```
+
+### Debugging
+```bash
+# Istio - check proxy config
+istioctl proxy-config clusters <pod-name>
+istioctl proxy-config routes <pod-name>
+
+# Linkerd - debug
+linkerd check --proxy
+linkerd diagnostics proxy-metrics <pod-name>
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              SERVICE MESH QUICK REFERENCE                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Service Mesh Components:                                   │
+│    Data Plane  - Sidecar proxies (Envoy, Linkerd-proxy)   │
+│    Control Plane - Configuration, policies, telemetry      │
+│                                                              │
+│  Core Features:                                             │
+│    Traffic Management:                                      │
+│      • Load balancing                                      │
+│      • Canary deployments                                  │
+│      • A/B testing                                         │
+│      • Circuit breakers                                    │
+│      • Retries, timeouts                                   │
+│                                                              │
+│    Security:                                                │
+│      • mTLS (mutual TLS)                                   │
+│      • Authorization policies                              │
+│      • Certificate rotation                                │
+│                                                              │
+│    Observability:                                           │
+│      • Distributed tracing                                 │
+│      • Metrics (Prometheus)                                │
+│      • Service topology                                    │
+│                                                              │
+│  Istio vs Linkerd:                                          │
+│    Istio:   Feature-rich, complex, enterprise-grade        │
+│    Linkerd: Simple, lightweight, easy to operate           │
+│                                                              │
+│  When to Use Service Mesh:                                  │
+│    ✓ 10+ microservices                                     │
+│    ✓ Need for mTLS between services                        │
+│    ✓ Complex traffic routing requirements                  │
+│    ✓ Observability across services                         │
+│                                                              │
+│  Key Commands:                                              │
+│    istioctl proxy-status    - Check proxies                │
+│    istioctl analyze         - Config validation            │
+│    linkerd check            - Verify installation          │
+│    linkerd stat deploy      - View deployment stats        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Service Mesh = Infrastructure Layer** - Handles service communication

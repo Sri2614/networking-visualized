@@ -471,6 +471,156 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- HTTP/HTTPS basics → [See HTTP/HTTPS Guide](../07-http-https/)
+- DNS resolution → [See DNS Guide](../08-dns/)
+- Caching concepts
+- Proxy basics → [See Proxies Guide](../11-proxies/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Caching Dynamic Content
+```
+❌ Wrong: Caching user-specific or frequently changing content
+✅ Correct: Only cache static content; use Cache-Control headers properly
+```
+
+### Mistake 2: Not Invalidating Cache
+```
+❌ Wrong: Updating origin without invalidating CDN cache
+✅ Correct: Invalidate cache on updates or use versioned URLs (file.v2.js)
+```
+
+### Mistake 3: Ignoring Cache Headers
+```
+❌ Wrong: Not setting Cache-Control, Expires headers
+✅ Correct: Set proper headers: Cache-Control: max-age=31536000
+```
+
+### Mistake 4: CORS Issues with CDN
+```
+❌ Wrong: CDN returning content without CORS headers
+✅ Correct: Configure CDN to forward or add CORS headers
+```
+
+---
+
+## 🛠️ Command Reference
+
+### AWS CloudFront (CLI)
+```bash
+# Create distribution
+aws cloudfront create-distribution \
+  --origin-domain-name mybucket.s3.amazonaws.com
+
+# Invalidate cache
+aws cloudfront create-invalidation \
+  --distribution-id E1234567890 \
+  --paths "/*"
+
+# Invalidate specific paths
+aws cloudfront create-invalidation \
+  --distribution-id E1234567890 \
+  --paths "/images/*" "/css/*"
+
+# List distributions
+aws cloudfront list-distributions
+```
+
+### Cloudflare (CLI)
+```bash
+# Purge all cache
+curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cache" \
+  -H "Authorization: Bearer {token}" \
+  -H "Content-Type: application/json" \
+  --data '{"purge_everything":true}'
+
+# Purge specific URLs
+curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone_id}/purge_cache" \
+  -H "Authorization: Bearer {token}" \
+  -H "Content-Type: application/json" \
+  --data '{"files":["https://example.com/file.js"]}'
+```
+
+### Cache Headers
+```bash
+# Check cache headers
+curl -I https://cdn.example.com/image.png
+
+# Expected headers
+# Cache-Control: max-age=31536000
+# ETag: "abc123"
+# X-Cache: Hit from cloudfront
+```
+
+### Origin Server (NGINX)
+```nginx
+# Set cache headers for static assets
+location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
+    expires 1y;
+    add_header Cache-Control "public, immutable";
+}
+
+# No cache for HTML
+location ~* \.html$ {
+    expires -1;
+    add_header Cache-Control "no-store, no-cache";
+}
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   CDN QUICK REFERENCE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  CDN Flow:                                                  │
+│    User → Nearest Edge → Cache Hit? → Return content       │
+│                                    → Cache Miss? → Origin  │
+│                                                              │
+│  Cache Control Headers:                                     │
+│    max-age=3600      - Cache for 1 hour                   │
+│    s-maxage=86400    - CDN cache for 1 day                │
+│    no-cache          - Validate with origin               │
+│    no-store          - Never cache                        │
+│    public/private    - CDN can/cannot cache               │
+│    immutable         - Never changes (with versioned URL) │
+│                                                              │
+│  Cache Status (X-Cache header):                             │
+│    Hit     - Served from CDN cache                        │
+│    Miss    - Fetched from origin                          │
+│    Refresh - Revalidated with origin                      │
+│                                                              │
+│  CDN Providers:                                             │
+│    AWS CloudFront  - Integrated with AWS services          │
+│    Cloudflare      - DDoS protection, easy setup          │
+│    Akamai          - Enterprise, largest network          │
+│    Fastly          - Instant purge, edge compute          │
+│    Azure CDN       - Microsoft integration                 │
+│                                                              │
+│  Best Practices:                                            │
+│    • Use versioned URLs for cache busting                  │
+│    • Set long TTLs for static assets                       │
+│    • Configure proper CORS headers                         │
+│    • Monitor cache hit ratio (target >90%)                 │
+│                                                              │
+│  TTL Guidelines:                                            │
+│    Static assets (CSS/JS/images): 1 year                   │
+│    API responses: 0-60 seconds                             │
+│    HTML pages: 0-5 minutes                                 │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **CDN = Distributed Caching** - Content cached at edge locations
@@ -493,4 +643,4 @@
 
 ---
 
-**Previous:** [Proxies](../08-proxies/) | **Next: [VPN & Tunneling](../09-vpn-tunneling/)/)
+**Previous:** [Proxies & Reverse Proxies](../11-proxies/) | **Next:** [VPN & Tunneling](../13-vpn-tunneling/)

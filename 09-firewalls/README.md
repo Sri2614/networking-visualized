@@ -593,6 +593,170 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- TCP/IP model (especially ports) → [See TCP/IP Guide](../02-tcp-ip/)
+- IP addressing and subnets → [See IP Addressing Guide](../01-ip-addressing/)
+- Basic understanding of network protocols (TCP, UDP, ICMP)
+- Routing concepts → [See Routing Guide](../04-routing/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Default Allow Policy
+```
+❌ Wrong: Allowing all traffic by default, blocking specific
+✅ Correct: Default deny, explicitly allow only needed traffic
+```
+
+### Mistake 2: Too Broad Rules
+```
+❌ Wrong: Allow 0.0.0.0/0 to port 22 (SSH from anywhere)
+✅ Correct: Restrict source IPs: Allow 10.0.0.0/8 to port 22
+```
+
+### Mistake 3: Confusing Security Groups and NACLs
+```
+❌ Wrong: Treating them as interchangeable
+✅ Correct: SG=stateful (instance level), NACL=stateless (subnet level)
+```
+
+### Mistake 4: Forgetting Outbound Rules
+```
+❌ Wrong: Only configuring inbound rules
+✅ Correct: Configure both inbound AND outbound rules for complete security
+```
+
+---
+
+## 🛠️ Command Reference
+
+### iptables (Linux)
+```bash
+# View rules
+iptables -L -n -v
+iptables -L INPUT -n --line-numbers
+
+# Default policies
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT ACCEPT
+
+# Allow established connections
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow SSH from specific IP
+iptables -A INPUT -p tcp -s 10.0.0.0/8 --dport 22 -j ACCEPT
+
+# Allow HTTP/HTTPS
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+# Block specific IP
+iptables -A INPUT -s 192.168.1.100 -j DROP
+
+# Delete rule
+iptables -D INPUT 3
+
+# Save rules
+iptables-save > /etc/iptables/rules.v4
+```
+
+### firewalld (RHEL/CentOS)
+```bash
+# View status
+firewall-cmd --state
+firewall-cmd --list-all
+
+# Add service
+firewall-cmd --permanent --add-service=http
+firewall-cmd --permanent --add-service=https
+
+# Add port
+firewall-cmd --permanent --add-port=8080/tcp
+
+# Reload
+firewall-cmd --reload
+```
+
+### AWS Security Groups (CLI)
+```bash
+# Create security group
+aws ec2 create-security-group \
+  --group-name my-sg \
+  --description "My security group"
+
+# Add inbound rule
+aws ec2 authorize-security-group-ingress \
+  --group-id sg-xxx \
+  --protocol tcp \
+  --port 443 \
+  --cidr 0.0.0.0/0
+
+# View rules
+aws ec2 describe-security-groups --group-ids sg-xxx
+```
+
+### Windows Firewall
+```powershell
+# View rules
+Get-NetFirewallRule | Where-Object {$_.Enabled -eq 'True'}
+
+# Allow port
+New-NetFirewallRule -DisplayName "Allow HTTP" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow
+
+# Block IP
+New-NetFirewallRule -DisplayName "Block IP" -Direction Inbound -RemoteAddress 192.168.1.100 -Action Block
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              FIREWALL QUICK REFERENCE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Firewall Types:                                            │
+│    • Packet Filter - Basic, checks headers only            │
+│    • Stateful      - Tracks connections, more secure       │
+│    • Application   - Layer 7, inspects content (WAF)       │
+│                                                              │
+│  Cloud Security:                                            │
+│    ┌──────────────┬─────────────┬─────────────────┐        │
+│    │   Feature    │ Security Grp│  Network ACL    │        │
+│    ├──────────────┼─────────────┼─────────────────┤        │
+│    │ Level        │ Instance    │ Subnet          │        │
+│    │ Stateful     │ Yes         │ No              │        │
+│    │ Rules        │ Allow only  │ Allow & Deny    │        │
+│    │ Evaluation   │ All rules   │ Order matters   │        │
+│    └──────────────┴─────────────┴─────────────────┘        │
+│                                                              │
+│  Rule Components:                                           │
+│    • Direction: Inbound / Outbound                         │
+│    • Protocol:  TCP, UDP, ICMP, All                        │
+│    • Port:      Single, range, or all                      │
+│    • Source/Dest: IP, CIDR, Security Group                 │
+│    • Action:    Allow / Deny                               │
+│                                                              │
+│  Best Practices:                                            │
+│    1. Default deny (whitelist approach)                    │
+│    2. Principle of least privilege                         │
+│    3. Document all rules                                   │
+│    4. Regular audits                                       │
+│    5. Defense in depth (multiple layers)                   │
+│                                                              │
+│  Common Ports to Secure:                                    │
+│    22=SSH, 3389=RDP, 3306=MySQL, 5432=PostgreSQL          │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Firewall = Traffic Filter** - Controls what traffic is allowed
@@ -615,4 +779,4 @@
 
 ---
 
-**Previous: [DNS](../04-dns/)/) | **Next: [Load Balancing](../06-load-balancing/)/)
+**Previous:** [DNS](../08-dns/) | **Next:** [Load Balancing](../10-load-balancing/)

@@ -1,0 +1,30 @@
+# Shell scripts
+*.sh
+
+# Enhancement documentation files
+ENHANCEMENTS.md
+enhancements.md
+COMPLETE_ENHANCEMENTS.md
+complete_enhancements.md
+REORGANIZATION_SUMMARY.md
+reorganization_summary.md
+check_order.md
+
+# macOS
+.DS_Store
+.localized
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

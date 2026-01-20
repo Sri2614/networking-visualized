@@ -542,6 +542,158 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- IP addressing basics → [See IP Addressing Guide](../01-ip-addressing/)
+- TCP/IP model (Application layer) → [See TCP/IP Guide](../02-tcp-ip/)
+- Client-server concepts
+- HTTP basics → [See HTTP/HTTPS Guide](../07-http-https/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Low TTL Causing High Query Load
+```
+❌ Wrong: TTL of 60 seconds for static content
+✅ Correct: Use appropriate TTL: 60s for dynamic, 3600s+ for static content
+```
+
+### Mistake 2: Using CNAME at Zone Apex
+```
+❌ Wrong: CNAME for example.com (root domain)
+✅ Correct: Use A/AAAA or ALIAS/ANAME records for root domain
+```
+
+### Mistake 3: Not Waiting for DNS Propagation
+```
+❌ Wrong: Expecting instant DNS changes globally
+✅ Correct: Wait for TTL to expire; use dig to check specific nameservers
+```
+
+### Mistake 4: Incorrect MX Record Priority
+```
+❌ Wrong: Higher number = higher priority
+✅ Correct: Lower number = higher priority (10 is preferred over 20)
+```
+
+---
+
+## 🛠️ Command Reference
+
+### dig (Recommended)
+```bash
+# Basic query
+dig example.com
+
+# Specific record type
+dig example.com A
+dig example.com AAAA
+dig example.com MX
+dig example.com NS
+dig example.com TXT
+dig example.com CNAME
+
+# Query specific DNS server
+dig @8.8.8.8 example.com
+
+# Short output
+dig +short example.com
+
+# Trace DNS resolution
+dig +trace example.com
+
+# Reverse DNS lookup
+dig -x 8.8.8.8
+
+# All records
+dig example.com ANY
+```
+
+### nslookup
+```bash
+# Basic lookup
+nslookup example.com
+
+# Specific DNS server
+nslookup example.com 8.8.8.8
+
+# Specific record type
+nslookup -type=MX example.com
+nslookup -type=TXT example.com
+```
+
+### host
+```bash
+# Basic lookup
+host example.com
+
+# Specific record type
+host -t MX example.com
+host -t NS example.com
+
+# Reverse lookup
+host 8.8.8.8
+```
+
+### Cloud DNS (AWS Route53)
+```bash
+# List hosted zones
+aws route53 list-hosted-zones
+
+# List records
+aws route53 list-resource-record-sets --hosted-zone-id Z123456789
+
+# Create record (via JSON file)
+aws route53 change-resource-record-sets \
+  --hosted-zone-id Z123456789 \
+  --change-batch file://dns-change.json
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   DNS QUICK REFERENCE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  DNS Record Types:                                          │
+│    A      - IPv4 address                                   │
+│    AAAA   - IPv6 address                                   │
+│    CNAME  - Alias to another domain                        │
+│    MX     - Mail server (with priority)                    │
+│    NS     - Nameserver for zone                            │
+│    TXT    - Text data (SPF, DKIM, verification)           │
+│    SOA    - Start of Authority (zone info)                 │
+│    PTR    - Reverse DNS (IP → domain)                      │
+│    SRV    - Service location (port, priority)              │
+│                                                              │
+│  DNS Hierarchy:                                             │
+│    . (root) → .com (TLD) → example.com → www.example.com  │
+│                                                              │
+│  TTL Guidelines:                                            │
+│    60-300s   - Dynamic content, frequent changes           │
+│    3600s     - Standard (1 hour)                           │
+│    86400s    - Stable content (1 day)                      │
+│                                                              │
+│  Common DNS Servers:                                        │
+│    Google:     8.8.8.8, 8.8.4.4                           │
+│    Cloudflare: 1.1.1.1, 1.0.0.1                           │
+│    Quad9:      9.9.9.9                                     │
+│                                                              │
+│  Troubleshooting Commands:                                  │
+│    dig +trace example.com     - Full resolution path       │
+│    dig @8.8.8.8 example.com   - Query specific server     │
+│    dig +short example.com     - Quick answer              │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **DNS = Translation Service** - Converts domain names to IP addresses
@@ -562,4 +714,4 @@
 
 ---
 
-**Previous:** [IP Addressing](../01-ip-addressing/) | **Next: [Firewalls & Security Groups](../05-firewalls/)/)
+**Previous:** [HTTP/HTTPS](../07-http-https/) | **Next:** [Firewalls & Security Groups](../09-firewalls/)

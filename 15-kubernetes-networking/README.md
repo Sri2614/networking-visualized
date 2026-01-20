@@ -662,6 +662,171 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- Docker networking basics → [See Docker Networking Guide](../14-docker-networking/)
+- TCP/IP and DNS → [See TCP/IP](../02-tcp-ip/) and [DNS](../08-dns/)
+- IP addressing and routing → [See IP Addressing](../01-ip-addressing/)
+- Basic Kubernetes concepts (pods, services, deployments)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Not Using Network Policies
+```
+❌ Wrong: All pods can communicate with all pods (default)
+✅ Correct: Implement network policies for pod-to-pod security
+```
+
+### Mistake 2: Exposing Services Incorrectly
+```
+❌ Wrong: Using NodePort/LoadBalancer for internal services
+✅ Correct: ClusterIP for internal, LoadBalancer for external only
+```
+
+### Mistake 3: Hardcoding Pod IPs
+```
+❌ Wrong: Connecting to pods by IP address
+✅ Correct: Use service names (DNS) for service discovery
+```
+
+### Mistake 4: Ignoring DNS Caching
+```
+❌ Wrong: High DNS query load to CoreDNS
+✅ Correct: Configure proper DNS caching (ndots, search domains)
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Pod Networking
+```bash
+# Get pod IPs
+kubectl get pods -o wide
+
+# Exec into pod for network testing
+kubectl exec -it <pod-name> -- /bin/sh
+
+# Test pod-to-pod connectivity
+kubectl exec <pod1> -- ping <pod2-ip>
+kubectl exec <pod1> -- wget -qO- http://<pod2-ip>:80
+```
+
+### Service Commands
+```bash
+# List services
+kubectl get services
+kubectl get svc
+
+# Describe service
+kubectl describe service <service-name>
+
+# Get service endpoints
+kubectl get endpoints <service-name>
+
+# Create service
+kubectl expose deployment <name> --port=80 --target-port=8080
+
+# Port forward for debugging
+kubectl port-forward svc/<service-name> 8080:80
+```
+
+### DNS Debugging
+```bash
+# Test DNS resolution
+kubectl run -it --rm debug --image=busybox --restart=Never -- nslookup <service-name>
+
+# Check CoreDNS
+kubectl get pods -n kube-system -l k8s-app=kube-dns
+kubectl logs -n kube-system -l k8s-app=kube-dns
+
+# DNS debugging pod
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+kubectl exec -it dnsutils -- nslookup kubernetes
+```
+
+### Network Policies
+```bash
+# List network policies
+kubectl get networkpolicies
+kubectl get netpol
+
+# Apply network policy
+kubectl apply -f network-policy.yaml
+
+# Example: Deny all ingress
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: deny-all
+# spec:
+#   podSelector: {}
+#   policyTypes:
+#   - Ingress
+```
+
+### Ingress Commands
+```bash
+# List ingress resources
+kubectl get ingress
+
+# Describe ingress
+kubectl describe ingress <ingress-name>
+
+# Check ingress controller logs
+kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│           KUBERNETES NETWORKING QUICK REFERENCE             │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Service Types:                                             │
+│    ClusterIP   - Internal only (default)                   │
+│    NodePort    - Exposes on all nodes (30000-32767)        │
+│    LoadBalancer- Cloud load balancer (external)            │
+│    ExternalName- DNS CNAME record                          │
+│                                                              │
+│  DNS Format:                                                │
+│    <service>.<namespace>.svc.cluster.local                 │
+│    my-svc.default.svc.cluster.local                        │
+│    Short: my-svc (same namespace)                          │
+│                                                              │
+│  Network Model Requirements:                                │
+│    • Every pod gets unique IP                              │
+│    • Pods can communicate without NAT                      │
+│    • Nodes can communicate with pods without NAT           │
+│                                                              │
+│  Common CNI Plugins:                                        │
+│    Calico   - Network policies, BGP routing               │
+│    Flannel  - Simple overlay network                      │
+│    Cilium   - eBPF-based, high performance                │
+│    Weave    - Easy setup, encryption                      │
+│                                                              │
+│  Network Policy (example):                                  │
+│    podSelector: Select which pods policy applies to        │
+│    ingress:     Rules for incoming traffic                 │
+│    egress:      Rules for outgoing traffic                 │
+│                                                              │
+│  Useful Commands:                                           │
+│    kubectl get pods -o wide         - Show pod IPs         │
+│    kubectl get svc                  - List services        │
+│    kubectl get netpol               - List policies        │
+│    kubectl exec pod -- nslookup svc - Test DNS            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Pod Networking** - Each pod gets unique IP, direct pod-to-pod communication
@@ -676,11 +841,11 @@
 
 ## 📚 Further Reading
 
-- Service Mesh (Istio, Linkerd)
+- Service Mesh (Istio, Linkerd) → [See Service Mesh Guide](../17-service-mesh/)
 - CNI plugin deep dives
 - Network policy best practices
 - Multi-cluster networking
 
 ---
 
-**Previous: [Docker Networking](../10-docker-networking/)/) | **Back to:** [Main README](../README.md)
+**Previous:** [Docker Networking](../14-docker-networking/) | **Next:** [Network Monitoring](../16-network-monitoring/)

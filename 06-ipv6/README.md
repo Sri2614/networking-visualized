@@ -265,6 +265,153 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- IPv4 addressing → [See IP Addressing Guide](../01-ip-addressing/)
+- Binary and hexadecimal number systems
+- Basic subnetting concepts
+- TCP/IP model → [See TCP/IP Guide](../02-tcp-ip/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Wrong Address Compression
+```
+❌ Wrong: 2001::1::1 (can't use :: twice)
+✅ Correct: 2001:0:0:0:0:0:1:1 = 2001::1:1
+```
+
+### Mistake 2: Forgetting Link-Local Addresses
+```
+❌ Wrong: Only configuring global addresses
+✅ Correct: Link-local (fe80::) is auto-assigned and used for local communication
+```
+
+### Mistake 3: Using IPv4 Subnetting Logic
+```
+❌ Wrong: /28 subnet for "14 hosts" like IPv4
+✅ Correct: IPv6 standard is /64 for all subnets (huge address space)
+```
+
+### Mistake 4: Ignoring Dual Stack
+```
+❌ Wrong: IPv6-only in mixed environment
+✅ Correct: Use dual stack during transition; most systems need both
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Linux Commands
+```bash
+# View IPv6 addresses
+ip -6 addr show
+ip addr show | grep inet6
+
+# Add IPv6 address
+ip -6 addr add 2001:db8::1/64 dev eth0
+
+# View IPv6 routes
+ip -6 route show
+ip route show -6
+
+# Add IPv6 default route
+ip -6 route add default via 2001:db8::1
+
+# Ping IPv6
+ping6 2001:db8::1
+ping -6 google.com
+
+# Trace IPv6 route
+traceroute6 google.com
+tracepath -6 google.com
+
+# Check IPv6 connectivity
+curl -6 http://ipv6.google.com
+```
+
+### Windows Commands
+```powershell
+# View IPv6 addresses
+ipconfig /all | findstr IPv6
+Get-NetIPAddress -AddressFamily IPv6
+
+# Ping IPv6
+ping -6 ipv6.google.com
+Test-NetConnection -ComputerName ipv6.google.com
+
+# View IPv6 routes
+route print -6
+Get-NetRoute -AddressFamily IPv6
+
+# Trace IPv6 route
+tracert -6 ipv6.google.com
+```
+
+### Cisco Commands
+```
+! Enable IPv6 routing
+ipv6 unicast-routing
+
+! Configure IPv6 address
+interface GigabitEthernet0/0
+ ipv6 address 2001:db8::1/64
+ ipv6 enable
+
+! View IPv6 configuration
+show ipv6 interface brief
+show ipv6 route
+show ipv6 neighbors
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   IPv6 QUICK REFERENCE                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Address Format:                                            │
+│    • 128 bits, 8 groups of 4 hex digits                    │
+│    • Example: 2001:0db8:0000:0000:0000:0000:0000:0001       │
+│    • Compressed: 2001:db8::1                                │
+│                                                              │
+│  Compression Rules:                                         │
+│    • Leading zeros can be omitted: 0db8 → db8              │
+│    • :: replaces consecutive zero groups (once only)       │
+│                                                              │
+│  Address Types:                                             │
+│    • Unicast:    One-to-one communication                  │
+│    • Multicast:  One-to-many (ff00::/8)                    │
+│    • Anycast:    One-to-nearest                            │
+│    • Link-local: fe80::/10 (auto-configured)               │
+│    • Global:     2000::/3 (routable)                       │
+│    • Loopback:   ::1                                       │
+│                                                              │
+│  Common Prefixes:                                           │
+│    • /64  - Standard subnet (recommended)                  │
+│    • /48  - Site allocation                                │
+│    • /128 - Single host                                    │
+│                                                              │
+│  IPv4 vs IPv6:                                              │
+│    IPv4: 32-bit, 4.3B addresses, NAT required             │
+│    IPv6: 128-bit, 340 undecillion addresses, no NAT       │
+│                                                              │
+│  Transition Mechanisms:                                     │
+│    • Dual Stack - Run both IPv4 and IPv6                   │
+│    • Tunneling  - IPv6 over IPv4 (6to4, Teredo)           │
+│    • NAT64      - Translate between protocols              │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **IPv6 = 128-bit addresses** - Vast address space
@@ -287,4 +434,4 @@
 
 ---
 
-**Previous:** [VLANs](../14-vlans/) | **Next:** [Network Monitoring](../16-network-monitoring/)
+**Previous:** [VLANs](../05-vlans/) | **Next:** [HTTP/HTTPS](../07-http-https/)

@@ -450,6 +450,194 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- TCP/IP model and layers → [See TCP/IP Guide](../02-tcp-ip/)
+- IP addressing → [See IP Addressing Guide](../01-ip-addressing/)
+- DNS concepts → [See DNS Guide](../08-dns/)
+- Basic command line usage
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Not Having Baseline Metrics
+```
+❌ Wrong: Only monitoring when problems occur
+✅ Correct: Establish baseline metrics during normal operation
+```
+
+### Mistake 2: Troubleshooting at Wrong Layer
+```
+❌ Wrong: Checking application when problem is network connectivity
+✅ Correct: Start at Layer 1 (physical) and work up systematically
+```
+
+### Mistake 3: Ignoring DNS Issues
+```
+❌ Wrong: Assuming DNS is working correctly
+✅ Correct: Always verify DNS resolution; many issues are DNS-related
+```
+
+### Mistake 4: Missing Packet Capture Permissions
+```
+❌ Wrong: Running tcpdump without proper permissions
+✅ Correct: Use sudo or configure capabilities for packet capture
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Connectivity Testing
+```bash
+# Basic ping
+ping -c 4 google.com
+ping -c 4 8.8.8.8
+
+# Trace route
+traceroute google.com
+tracepath google.com
+mtr google.com
+
+# Test specific port
+nc -zv hostname 80
+telnet hostname 80
+```
+
+### DNS Tools
+```bash
+# DNS lookup
+dig google.com
+dig @8.8.8.8 google.com
+dig +short google.com
+
+# nslookup
+nslookup google.com
+nslookup google.com 8.8.8.8
+
+# host command
+host google.com
+```
+
+### Network Configuration
+```bash
+# View interfaces (modern)
+ip addr show
+ip link show
+ip route show
+
+# View interfaces (legacy)
+ifconfig
+netstat -rn
+
+# View listening ports
+ss -tulpn
+netstat -tulpn
+
+# View active connections
+ss -tan
+netstat -an | grep ESTABLISHED
+```
+
+### Packet Capture
+```bash
+# tcpdump basics
+sudo tcpdump -i eth0
+sudo tcpdump -i eth0 port 80
+sudo tcpdump -i eth0 host 192.168.1.1
+sudo tcpdump -i eth0 -w capture.pcap
+
+# tcpdump filters
+sudo tcpdump -i any 'tcp port 443'
+sudo tcpdump -i any 'host 10.0.0.1 and port 22'
+sudo tcpdump -n -i eth0 icmp
+
+# Read capture file
+tcpdump -r capture.pcap
+wireshark capture.pcap
+```
+
+### Wireshark Filters
+```
+# Display filters
+ip.addr == 192.168.1.1
+tcp.port == 80
+http
+dns
+tcp.flags.syn == 1
+http.request.method == "GET"
+
+# Capture filters
+host 192.168.1.1
+port 80
+tcp port 443
+```
+
+### Performance Tools
+```bash
+# Bandwidth testing
+iperf3 -s  # server
+iperf3 -c server_ip  # client
+
+# Network statistics
+iftop
+nload
+vnstat
+
+# Interface statistics
+ip -s link show eth0
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│          NETWORK MONITORING QUICK REFERENCE                 │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Troubleshooting Order (OSI Layers):                        │
+│    1. Physical  - Cables, lights, hardware                 │
+│    2. Data Link - MAC, switch, ARP                         │
+│    3. Network   - IP, routing, ping, traceroute            │
+│    4. Transport - TCP/UDP, ports, connections              │
+│    5-7. App     - DNS, HTTP, application logs              │
+│                                                              │
+│  Essential Tools:                                           │
+│    ┌──────────────┬────────────────────────────────┐       │
+│    │ Tool         │ Purpose                         │       │
+│    ├──────────────┼────────────────────────────────┤       │
+│    │ ping         │ Connectivity, latency          │       │
+│    │ traceroute   │ Path discovery                 │       │
+│    │ dig/nslookup │ DNS resolution                 │       │
+│    │ ss/netstat   │ Ports, connections             │       │
+│    │ tcpdump      │ Packet capture (CLI)           │       │
+│    │ Wireshark    │ Packet analysis (GUI)          │       │
+│    │ mtr          │ Combined ping+traceroute       │       │
+│    │ iperf3       │ Bandwidth testing              │       │
+│    └──────────────┴────────────────────────────────┘       │
+│                                                              │
+│  Key Metrics to Monitor:                                    │
+│    • Latency (ms)        - Response time                   │
+│    • Packet Loss (%)     - Missing packets                 │
+│    • Bandwidth (Mbps)    - Throughput                      │
+│    • Jitter (ms)         - Latency variation               │
+│    • Error Rate          - Interface errors                │
+│                                                              │
+│  Quick Checks:                                              │
+│    ping 8.8.8.8       - Internet connectivity              │
+│    dig google.com     - DNS working                        │
+│    ss -tulpn          - What's listening                   │
+│    ip route           - Default gateway set                │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Monitoring = Visibility** - Know what's happening on your network
@@ -472,4 +660,4 @@
 
 ---
 
-**Previous:** [IPv6 Deep Dive](../15-ipv6/) | **Next:** [Service Mesh](../17-service-mesh/)
+**Previous:** [Kubernetes Networking](../15-kubernetes-networking/) | **Next:** [Service Mesh](../17-service-mesh/)

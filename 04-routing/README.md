@@ -373,6 +373,146 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- IP addressing and subnetting → [See IP Addressing Guide](../01-ip-addressing/)
+- Network topology concepts (LANs, WANs)
+- Basic understanding of network devices (routers, switches)
+- TCP/IP model basics → [See TCP/IP Guide](../02-tcp-ip/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Missing Default Route
+```
+❌ Wrong: No default route configured
+✅ Correct: Always have a default route (0.0.0.0/0) for unknown destinations
+```
+
+### Mistake 2: Routing Loops
+```
+❌ Wrong: Router A points to B, B points to A for same destination
+✅ Correct: Verify routes don't create loops; use traceroute to test
+```
+
+### Mistake 3: Overlapping Routes
+```
+❌ Wrong: Multiple conflicting routes for same network
+✅ Correct: Ensure routes are specific and don't overlap unexpectedly
+```
+
+### Mistake 4: Ignoring Administrative Distance
+```
+❌ Wrong: Assuming all routes have equal priority
+✅ Correct: Know AD values: Connected=0, Static=1, OSPF=110, BGP=20/200
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Linux Commands
+```bash
+# View routing table
+ip route show
+route -n
+netstat -rn
+
+# Add static route
+ip route add 10.0.0.0/8 via 192.168.1.1
+ip route add 10.0.0.0/8 via 192.168.1.1 dev eth0
+
+# Add default route
+ip route add default via 192.168.1.1
+
+# Delete route
+ip route del 10.0.0.0/8
+
+# Trace route to destination
+traceroute 8.8.8.8
+tracepath 8.8.8.8
+mtr 8.8.8.8
+
+# View routing cache
+ip route show cache
+```
+
+### Cisco Router Commands
+```
+! View routing table
+show ip route
+show ip route summary
+
+! Static route
+ip route 10.0.0.0 255.0.0.0 192.168.1.1
+
+! OSPF configuration
+router ospf 1
+ network 192.168.1.0 0.0.0.255 area 0
+
+! BGP configuration
+router bgp 65001
+ neighbor 203.0.113.1 remote-as 65002
+
+! Debug routing
+debug ip routing
+show ip protocols
+```
+
+### AWS/Cloud Commands
+```bash
+# AWS - Create route in route table
+aws ec2 create-route \
+  --route-table-id rtb-xxx \
+  --destination-cidr-block 10.0.0.0/8 \
+  --gateway-id igw-xxx
+
+# View routes
+aws ec2 describe-route-tables --route-table-ids rtb-xxx
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 ROUTING QUICK REFERENCE                     │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Routing Types:                                             │
+│    • Static  - Manual, simple, no overhead                 │
+│    • Dynamic - Automatic, adapts to changes                │
+│                                                              │
+│  Dynamic Routing Protocols:                                 │
+│    • RIP   - Distance vector, max 15 hops, simple          │
+│    • OSPF  - Link-state, fast convergence, scalable        │
+│    • BGP   - Path vector, internet routing, complex        │
+│                                                              │
+│  Administrative Distance (lower = preferred):               │
+│    Connected = 0    Static = 1    OSPF = 110               │
+│    eBGP = 20        iBGP = 200    RIP = 120                │
+│                                                              │
+│  Route Selection (in order):                                │
+│    1. Longest prefix match (most specific)                 │
+│    2. Lowest administrative distance                       │
+│    3. Lowest metric                                        │
+│                                                              │
+│  Routing Table Entry:                                       │
+│    Destination | Netmask | Gateway | Interface | Metric    │
+│                                                              │
+│  Key Commands:                                              │
+│    ip route show     - View routes (Linux)                 │
+│    traceroute x.x.x.x - Trace path                         │
+│    show ip route     - View routes (Cisco)                 │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Routing = Path Selection** - Finding best path for packets
@@ -395,4 +535,4 @@
 
 ---
 
-**Previous:** [NAT](../12-nat/) | **Next:** [VLANs](../14-vlans/)
+**Previous:** [NAT](../03-nat/) | **Next:** [VLANs](../05-vlans/)

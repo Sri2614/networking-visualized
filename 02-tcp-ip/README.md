@@ -601,6 +601,125 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- Basic networking concepts (what is a network)
+- IP addressing fundamentals → [See IP Addressing Guide](../01-ip-addressing/)
+- Binary number system basics
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Confusing OSI and TCP/IP Layers
+```
+❌ Wrong: "The Application Layer in OSI is the same as TCP/IP"
+✅ Correct: OSI has 3 application layers (5,6,7) → TCP/IP combines them into 1
+```
+
+### Mistake 2: Using UDP When TCP is Required
+```
+❌ Wrong: Using UDP for file transfers (data loss is unacceptable)
+✅ Correct: Use TCP for reliable data transfer, UDP for real-time streaming
+```
+
+### Mistake 3: Ignoring Port Conflicts
+```
+❌ Wrong: Starting two services on the same port
+✅ Correct: Check port availability first: netstat -tlnp | grep :80
+```
+
+### Mistake 4: Not Understanding Connection States
+```
+❌ Wrong: Assuming closed connections immediately free resources
+✅ Correct: TIME_WAIT state keeps connection info for 2*MSL (2-4 minutes)
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Linux/macOS Commands
+```bash
+# View TCP connections and states
+netstat -an | grep tcp
+ss -tuln
+
+# Check listening ports
+netstat -tlnp
+ss -tlnp
+
+# View routing table
+ip route show
+netstat -rn
+
+# Packet capture (requires root)
+tcpdump -i eth0 port 80
+tcpdump -i any -n tcp
+
+# Test TCP connection
+nc -zv hostname 80
+telnet hostname 80
+
+# View network statistics
+netstat -s
+ss -s
+```
+
+### Windows Commands
+```powershell
+# View TCP connections
+netstat -an | findstr TCP
+
+# Check listening ports
+netstat -an | findstr LISTENING
+
+# View routing table
+route print
+
+# Test TCP connection
+Test-NetConnection -ComputerName hostname -Port 80
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              TCP/IP & OSI QUICK REFERENCE                   │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  OSI Model (7 Layers):                                      │
+│    7. Application  - HTTP, DNS, FTP                        │
+│    6. Presentation - SSL/TLS, encryption                   │
+│    5. Session      - Sessions, authentication              │
+│    4. Transport    - TCP, UDP, ports                       │
+│    3. Network      - IP, routing                           │
+│    2. Data Link    - Ethernet, MAC addresses               │
+│    1. Physical     - Cables, wireless                      │
+│                                                              │
+│  TCP/IP Model (4 Layers):                                   │
+│    4. Application  = OSI 5,6,7                             │
+│    3. Transport    = OSI 4                                 │
+│    2. Internet     = OSI 3                                 │
+│    1. Network      = OSI 1,2                               │
+│                                                              │
+│  TCP vs UDP:                                                │
+│    TCP: Reliable, ordered, connection-oriented             │
+│    UDP: Fast, no guarantee, connectionless                 │
+│                                                              │
+│  Common Ports:                                              │
+│    22=SSH, 80=HTTP, 443=HTTPS, 3306=MySQL, 5432=PostgreSQL │
+│                                                              │
+│  TCP Handshake: SYN → SYN-ACK → ACK                        │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Layered Architecture** - Breaks complex networking into manageable layers
@@ -617,9 +736,9 @@
 
 - TCP congestion control algorithms
 - IPv6 addressing and protocols
-- Network Address Translation (NAT)
-- Virtual Private Networks (VPN)
+- Network Address Translation (NAT) → [See NAT Guide](../03-nat/)
+- Virtual Private Networks (VPN) → [See VPN Guide](../13-vpn-tunneling/)
 
 ---
 
-**Previous: [IP Addressing](../01-ip-addressing/)/) | **Next: [HTTP/HTTPS](../03-http-https/)/)
+**Previous:** [IP Addressing](../01-ip-addressing/) | **Next:** [NAT](../03-nat/)

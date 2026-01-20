@@ -56,25 +56,71 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 3. [DNS (Domain Name System)](./03-dns/)
-**The Phonebook of the Internet**
+### 3. [NAT (Network Address Translation)](./03-nat/)
+**IP Address Translation**
 
-- DNS hierarchy and architecture
-- DNS resolution flow (step-by-step)
-- DNS record types (A, AAAA, CNAME, MX, NS, TXT)
-- DNS caching layers
-- Real-world DNS scenarios
-- AWS Route53 and Kubernetes DNS
+- Static NAT vs Dynamic NAT
+- PAT (Port Address Translation)
+- SNAT vs DNAT
+- NAT traversal
+- Cloud NAT (AWS, Azure, GCP)
 
 **Key Visuals:**
-- DNS query flow diagrams
-- Record type examples
-- Caching mechanism visualization
-- Troubleshooting command reference
+- NAT flow diagrams
+- Before/after IP mapping
+- Cloud NAT architectures
 
 ---
 
-### 4. [HTTP/HTTPS & Web Protocols](./04-http-https/)
+### 4. [Routing & Routing Protocols](./04-routing/)
+**Finding the Best Path**
+
+- Static vs Dynamic routing
+- Routing tables
+- BGP (Border Gateway Protocol)
+- OSPF (Open Shortest Path First)
+- RIP (Routing Information Protocol)
+
+**Key Visuals:**
+- Routing path diagrams
+- Protocol comparison
+- Routing decision flows
+
+---
+
+### 5. [VLANs (Virtual LANs)](./05-vlans/)
+**Logical Network Segmentation**
+
+- VLAN concepts and benefits
+- VLAN tagging (802.1Q)
+- Trunk ports vs Access ports
+- Inter-VLAN routing
+- Network segmentation
+
+**Key Visuals:**
+- VLAN topology diagrams
+- Tagging process flows
+- Port type comparisons
+
+---
+
+### 6. [IPv6 Deep Dive](./06-ipv6/)
+**Next Generation IP Addressing**
+
+- IPv6 addressing format
+- IPv6 vs IPv4 comparison
+- IPv6 transition mechanisms
+- IPv6 routing
+- Address compression
+
+**Key Visuals:**
+- IPv6 address breakdown
+- Transition scenarios
+- Address format examples
+
+---
+
+### 7. [HTTP/HTTPS & Web Protocols](./07-http-https/)
 **Web Communication Protocols**
 
 - HTTP request/response cycle
@@ -92,25 +138,25 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 5. [Load Balancing](./05-load-balancing/)
-**Distributing Traffic Across Servers**
+### 8. [DNS (Domain Name System)](./08-dns/)
+**The Phonebook of the Internet**
 
-- Load balancing algorithms (Round Robin, Least Connections, etc.)
-- Layer 4 vs Layer 7 load balancing
-- High availability setups
-- Health checks and failover
-- AWS ALB and NGINX examples
-- Microservices load balancing
+- DNS hierarchy and architecture
+- DNS resolution flow (step-by-step)
+- DNS record types (A, AAAA, CNAME, MX, NS, TXT)
+- DNS caching layers
+- Real-world DNS scenarios
+- AWS Route53 and Kubernetes DNS
 
 **Key Visuals:**
-- Algorithm comparison diagrams
-- Architecture patterns
-- Health check mechanisms
-- Cloud load balancer configurations
+- DNS query flow diagrams
+- Record type examples
+- Caching mechanism visualization
+- Troubleshooting command reference
 
 ---
 
-### 6. [Firewalls & Security Groups](./06-firewalls/)
+### 9. [Firewalls & Security Groups](./09-firewalls/)
 **Network Security Fundamentals**
 
 - Firewall types and architectures
@@ -128,25 +174,25 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 7. [VPN & Tunneling](./07-vpn-tunneling/)
-**Secure Remote Access**
+### 10. [Load Balancing](./10-load-balancing/)
+**Distributing Traffic Across Servers**
 
-- VPN types and protocols
-- Tunneling mechanisms
-- Site-to-site VPNs
-- Remote access VPNs
-- Cloud VPN solutions
-- Encryption and authentication
+- Load balancing algorithms (Round Robin, Least Connections, etc.)
+- Layer 4 vs Layer 7 load balancing
+- High availability setups
+- Health checks and failover
+- AWS ALB and NGINX examples
+- Microservices load balancing
 
 **Key Visuals:**
-- VPN architecture diagrams
-- Tunneling process flows
-- Protocol comparison
-- Cloud VPN setups
+- Algorithm comparison diagrams
+- Architecture patterns
+- Health check mechanisms
+- Cloud load balancer configurations
 
 ---
 
-### 8. [Proxies & Reverse Proxies](./08-proxies/)
+### 11. [Proxies & Reverse Proxies](./11-proxies/)
 **Intermediary Servers**
 
 - Forward proxies vs Reverse proxies
@@ -164,7 +210,7 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 9. [CDN (Content Delivery Network)](./09-cdn/)
+### 12. [CDN (Content Delivery Network)](./12-cdn/)
 **Global Content Distribution**
 
 - CDN architecture
@@ -182,7 +228,25 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 10. [Docker Networking](./10-docker-networking/)
+### 13. [VPN & Tunneling](./13-vpn-tunneling/)
+**Secure Remote Access**
+
+- VPN types and protocols
+- Tunneling mechanisms
+- Site-to-site VPNs
+- Remote access VPNs
+- Cloud VPN solutions
+- Encryption and authentication
+
+**Key Visuals:**
+- VPN architecture diagrams
+- Tunneling process flows
+- Protocol comparison
+- Cloud VPN setups
+
+---
+
+### 14. [Docker Networking](./14-docker-networking/)
 **Container Network Models**
 
 - Docker network types (bridge, host, overlay)
@@ -200,7 +264,7 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
-### 11. [Kubernetes Networking](./11-kubernetes-networking/)
+### 15. [Kubernetes Networking](./15-kubernetes-networking/)
 **Container Orchestration Networking**
 
 - Pod networking
@@ -215,70 +279,6 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 - Pod-to-pod communication
 - Service discovery flows
 - Ingress routing examples
-
----
-
-### 12. [NAT (Network Address Translation)](./12-nat/)
-**IP Address Translation**
-
-- Static NAT vs Dynamic NAT
-- PAT (Port Address Translation)
-- SNAT vs DNAT
-- NAT traversal
-- Cloud NAT (AWS, Azure, GCP)
-
-**Key Visuals:**
-- NAT flow diagrams
-- Before/after IP mapping
-- Cloud NAT architectures
-
----
-
-### 13. [Routing & Routing Protocols](./13-routing/)
-**Finding the Best Path**
-
-- Static vs Dynamic routing
-- Routing tables
-- BGP (Border Gateway Protocol)
-- OSPF (Open Shortest Path First)
-- RIP (Routing Information Protocol)
-
-**Key Visuals:**
-- Routing path diagrams
-- Protocol comparison
-- Routing decision flows
-
----
-
-### 14. [VLANs (Virtual LANs)](./14-vlans/)
-**Logical Network Segmentation**
-
-- VLAN concepts and benefits
-- VLAN tagging (802.1Q)
-- Trunk ports vs Access ports
-- Inter-VLAN routing
-- Network segmentation
-
-**Key Visuals:**
-- VLAN topology diagrams
-- Tagging process flows
-- Port type comparisons
-
----
-
-### 15. [IPv6 Deep Dive](./15-ipv6/)
-**Next Generation IP Addressing**
-
-- IPv6 addressing format
-- IPv6 vs IPv4 comparison
-- IPv6 transition mechanisms
-- IPv6 routing
-- Address compression
-
-**Key Visuals:**
-- IPv6 address breakdown
-- Transition scenarios
-- Address format examples
 
 ---
 
@@ -322,37 +322,41 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
    ↓
 2. TCP/IP & OSI Model
    ↓
-3. DNS
+3. NAT (Network Address Translation)
    ↓
-4. HTTP/HTTPS
+4. Routing & Routing Protocols
    ↓
-5. Load Balancing
+5. HTTP/HTTPS & Web Protocols
+   ↓
+6. DNS
 ```
 
 ### For Intermediate/DevOps Engineers
 ```
-1. Quick review of IP Addressing
+1. Quick review of IP Addressing & NAT
    ↓
-2. Load Balancing (deep dive)
+2. Firewalls & Security Groups
    ↓
-3. Docker Networking
+3. Load Balancing (deep dive)
    ↓
-4. Kubernetes Networking
+4. Docker Networking
    ↓
-5. Firewalls & Security Groups
+5. Kubernetes Networking
 ```
 
 ### For Cloud Engineers
 ```
 1. IP Addressing & Subnetting (VPC focus)
    ↓
-2. Load Balancing (Cloud ALB/NLB)
+2. NAT (Cloud NAT Gateway)
    ↓
-3. Firewalls & Security Groups (Cloud-specific)
+3. Load Balancing (Cloud ALB/NLB)
    ↓
-4. VPN & Tunneling (Cloud VPN)
+4. Firewalls & Security Groups (Cloud-specific)
    ↓
-5. CDN (CloudFront/Cloudflare)
+5. VPN & Tunneling (Cloud VPN)
+   ↓
+6. CDN (CloudFront/Cloudflare)
 ```
 
 ---
@@ -467,19 +471,19 @@ This enhanced version adds:
 |-------|-------------|--------------|
 | [IP Addressing](./01-ip-addressing/) | Binary diagrams, Subnetting | AWS VPC |
 | [TCP/IP & OSI](./02-tcp-ip/) | Layer diagrams, Flows | Container networking |
-| [DNS](./03-dns/) | Query flows, Hierarchy | Route53, CoreDNS |
-| [HTTP/HTTPS](./04-http-https/) | Request/Response flows | API Gateway |
-| [Load Balancing](./05-load-balancing/) | Algorithm diagrams | ALB, NGINX |
-| [Firewalls](./06-firewalls/) | Rule flows | Security Groups |
-| [VPN](./07-vpn-tunneling/) | Tunnel diagrams | Cloud VPN |
-| [Proxies](./08-proxies/) | Proxy flows | Reverse proxies |
-| [CDN](./09-cdn/) | Distribution maps | CloudFront |
-| [Docker](./10-docker-networking/) | Network types | Docker Compose |
-| [Kubernetes](./11-kubernetes-networking/) | Pod networking | CNI, Ingress |
-| [NAT](./12-nat/) | Translation flows | Cloud NAT |
-| [Routing](./13-routing/) | Path selection | BGP, OSPF |
-| [VLANs](./14-vlans/) | Segmentation | 802.1Q tagging |
-| [IPv6](./15-ipv6/) | Address format | Transition |
+| [NAT](./03-nat/) | Translation flows | Cloud NAT |
+| [Routing](./04-routing/) | Path selection | BGP, OSPF |
+| [VLANs](./05-vlans/) | Segmentation | 802.1Q tagging |
+| [IPv6](./06-ipv6/) | Address format | Transition |
+| [HTTP/HTTPS](./07-http-https/) | Request/Response flows | API Gateway |
+| [DNS](./08-dns/) | Query flows, Hierarchy | Route53, CoreDNS |
+| [Firewalls](./09-firewalls/) | Rule flows | Security Groups |
+| [Load Balancing](./10-load-balancing/) | Algorithm diagrams | ALB, NGINX |
+| [Proxies](./11-proxies/) | Proxy flows | Reverse proxies |
+| [CDN](./12-cdn/) | Distribution maps | CloudFront |
+| [VPN](./13-vpn-tunneling/) | Tunnel diagrams | Cloud VPN |
+| [Docker](./14-docker-networking/) | Network types | Docker Compose |
+| [Kubernetes](./15-kubernetes-networking/) | Pod networking | CNI, Ingress |
 | [Monitoring](./16-network-monitoring/) | Troubleshooting | Wireshark |
 | [Service Mesh](./17-service-mesh/) | Sidecar pattern | Istio, Linkerd |
 

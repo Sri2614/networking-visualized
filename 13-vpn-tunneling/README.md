@@ -552,6 +552,165 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- IP addressing and routing → [See IP Addressing](../01-ip-addressing/) and [Routing](../04-routing/)
+- TCP/IP model → [See TCP/IP Guide](../02-tcp-ip/)
+- Basic encryption concepts (symmetric/asymmetric)
+- Firewall concepts → [See Firewalls Guide](../09-firewalls/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Using Weak Encryption
+```
+❌ Wrong: Using outdated protocols (PPTP, DES)
+✅ Correct: Use strong encryption: AES-256, IKEv2, WireGuard
+```
+
+### Mistake 2: Split Tunneling Without Security
+```
+❌ Wrong: Split tunnel exposing internal traffic to public network
+✅ Correct: Carefully plan split tunnel; use firewall rules on clients
+```
+
+### Mistake 3: Overlapping IP Ranges
+```
+❌ Wrong: VPN client network overlaps with destination network
+✅ Correct: Plan IP addressing to avoid conflicts (e.g., use unique ranges)
+```
+
+### Mistake 4: Single Point of Failure
+```
+❌ Wrong: One VPN gateway, no redundancy
+✅ Correct: Deploy redundant VPN gateways with failover
+```
+
+---
+
+## 🛠️ Command Reference
+
+### OpenVPN
+```bash
+# Server setup
+openvpn --genkey --secret /etc/openvpn/static.key
+openvpn --config /etc/openvpn/server.conf
+
+# Client connection
+openvpn --config client.ovpn
+
+# Check status
+systemctl status openvpn@server
+cat /var/log/openvpn/status.log
+```
+
+### WireGuard
+```bash
+# Generate keys
+wg genkey | tee privatekey | wg pubkey > publickey
+
+# Server config (/etc/wireguard/wg0.conf)
+# [Interface]
+# PrivateKey = <server-private-key>
+# Address = 10.0.0.1/24
+# ListenPort = 51820
+#
+# [Peer]
+# PublicKey = <client-public-key>
+# AllowedIPs = 10.0.0.2/32
+
+# Start/stop
+wg-quick up wg0
+wg-quick down wg0
+
+# Show status
+wg show
+```
+
+### IPsec (strongSwan)
+```bash
+# Start/stop
+systemctl start strongswan
+ipsec up <connection-name>
+ipsec down <connection-name>
+
+# Status
+ipsec status
+ipsec statusall
+```
+
+### AWS Site-to-Site VPN
+```bash
+# Create VPN Gateway
+aws ec2 create-vpn-gateway --type ipsec.1
+
+# Attach to VPC
+aws ec2 attach-vpn-gateway \
+  --vpn-gateway-id vgw-xxx \
+  --vpc-id vpc-xxx
+
+# Create Customer Gateway
+aws ec2 create-customer-gateway \
+  --type ipsec.1 \
+  --public-ip <on-premises-ip> \
+  --bgp-asn 65000
+
+# Create VPN Connection
+aws ec2 create-vpn-connection \
+  --type ipsec.1 \
+  --customer-gateway-id cgw-xxx \
+  --vpn-gateway-id vgw-xxx
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              VPN & TUNNELING QUICK REFERENCE                │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  VPN Types:                                                 │
+│    Remote Access - Individual users to network             │
+│    Site-to-Site  - Network to network                      │
+│                                                              │
+│  VPN Protocols:                                             │
+│    ┌───────────┬──────────────────────────────────┐        │
+│    │ Protocol  │ Characteristics                   │        │
+│    ├───────────┼──────────────────────────────────┤        │
+│    │ IPsec     │ Standard, complex, very secure   │        │
+│    │ OpenVPN   │ Flexible, SSL-based, open source │        │
+│    │ WireGuard │ Modern, fast, simple config      │        │
+│    │ L2TP/IPsec│ Wide compatibility               │        │
+│    │ SSTP      │ Windows native, uses HTTPS       │        │
+│    └───────────┴──────────────────────────────────┘        │
+│                                                              │
+│  Tunneling Concept:                                         │
+│    Original Packet → Encrypted → Encapsulated → Sent       │
+│    Received → Decapsulated → Decrypted → Original          │
+│                                                              │
+│  Cloud VPN Services:                                        │
+│    AWS:   VPN Gateway, Client VPN                          │
+│    Azure: VPN Gateway                                       │
+│    GCP:   Cloud VPN                                        │
+│                                                              │
+│  Split Tunneling:                                           │
+│    Full Tunnel - All traffic through VPN                   │
+│    Split Tunnel - Only specific traffic through VPN        │
+│                                                              │
+│  Key Ports:                                                 │
+│    IPsec:   UDP 500 (IKE), UDP 4500 (NAT-T)               │
+│    OpenVPN: UDP/TCP 1194                                   │
+│    WireGuard: UDP 51820                                    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **VPN = Secure Tunnel** - Creates encrypted connection over public network
@@ -574,4 +733,4 @@
 
 ---
 
-**Previous:** [Firewalls](../06-firewalls/) | **Next:** [Proxies](../08-proxies/)
+**Previous:** [CDN](../12-cdn/) | **Next:** [Docker Networking](../14-docker-networking/)

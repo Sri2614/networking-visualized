@@ -550,6 +550,171 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- TCP/IP model (Layer 4 vs Layer 7) → [See TCP/IP Guide](../02-tcp-ip/)
+- HTTP/HTTPS basics → [See HTTP/HTTPS Guide](../07-http-https/)
+- DNS concepts → [See DNS Guide](../08-dns/)
+- Basic server concepts (ports, services)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: No Health Checks
+```
+❌ Wrong: Routing traffic to servers without health checks
+✅ Correct: Configure health checks to auto-remove unhealthy servers
+```
+
+### Mistake 2: Wrong Algorithm for Use Case
+```
+❌ Wrong: Round Robin for stateful applications (sessions lost)
+✅ Correct: Use IP Hash or sticky sessions for stateful apps
+```
+
+### Mistake 3: Single Load Balancer (SPOF)
+```
+❌ Wrong: One load balancer handling all traffic
+✅ Correct: Deploy redundant LBs with failover (active-passive or active-active)
+```
+
+### Mistake 4: Ignoring Connection Draining
+```
+❌ Wrong: Immediately removing server from pool
+✅ Correct: Enable connection draining to complete in-flight requests
+```
+
+---
+
+## 🛠️ Command Reference
+
+### NGINX Configuration
+```nginx
+# Basic load balancing
+upstream backend {
+    server backend1.example.com;
+    server backend2.example.com;
+    server backend3.example.com;
+}
+
+# Weighted load balancing
+upstream backend {
+    server backend1.example.com weight=3;
+    server backend2.example.com weight=2;
+    server backend3.example.com weight=1;
+}
+
+# Least connections
+upstream backend {
+    least_conn;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+
+# IP Hash (sticky sessions)
+upstream backend {
+    ip_hash;
+    server backend1.example.com;
+    server backend2.example.com;
+}
+
+# Health checks
+upstream backend {
+    server backend1.example.com max_fails=3 fail_timeout=30s;
+    server backend2.example.com max_fails=3 fail_timeout=30s;
+}
+
+server {
+    location / {
+        proxy_pass http://backend;
+    }
+}
+```
+
+### HAProxy Configuration
+```
+# Basic configuration
+frontend http_front
+    bind *:80
+    default_backend servers
+
+backend servers
+    balance roundrobin
+    server server1 192.168.1.1:80 check
+    server server2 192.168.1.2:80 check
+```
+
+### AWS ALB (CLI)
+```bash
+# Create target group
+aws elbv2 create-target-group \
+  --name my-targets \
+  --protocol HTTP \
+  --port 80 \
+  --vpc-id vpc-xxx \
+  --health-check-path /health
+
+# Create load balancer
+aws elbv2 create-load-balancer \
+  --name my-alb \
+  --subnets subnet-xxx subnet-yyy \
+  --security-groups sg-xxx
+
+# Register targets
+aws elbv2 register-targets \
+  --target-group-arn arn:aws:... \
+  --targets Id=i-xxx Id=i-yyy
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│             LOAD BALANCING QUICK REFERENCE                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Algorithms:                                                │
+│    Round Robin      - Equal distribution                   │
+│    Weighted RR      - Distribution by weight               │
+│    Least Connections - Fewest active connections           │
+│    IP Hash          - Same client → same server           │
+│    Least Response   - Fastest responding server            │
+│                                                              │
+│  Layer 4 vs Layer 7:                                        │
+│    ┌─────────────┬────────────────────────────────┐        │
+│    │ Layer 4 (L4)│ Layer 7 (L7)                   │        │
+│    ├─────────────┼────────────────────────────────┤        │
+│    │ TCP/UDP     │ HTTP/HTTPS                     │        │
+│    │ Faster      │ More features                  │        │
+│    │ IP/Port only│ URL, headers, cookies          │        │
+│    │ NLB         │ ALB                            │        │
+│    └─────────────┴────────────────────────────────┘        │
+│                                                              │
+│  Health Check Types:                                        │
+│    TCP    - Port connection check                          │
+│    HTTP   - Response code check (200 OK)                   │
+│    Custom - Script-based checks                            │
+│                                                              │
+│  AWS Load Balancers:                                        │
+│    ALB - Application (L7, HTTP routing)                    │
+│    NLB - Network (L4, ultra-low latency)                   │
+│    CLB - Classic (legacy, L4+L7)                           │
+│                                                              │
+│  Key Metrics:                                               │
+│    • Requests per second (RPS)                             │
+│    • Response time (latency)                               │
+│    • Error rate (4xx, 5xx)                                 │
+│    • Healthy host count                                    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Load Balancing = Traffic Distribution** - Spreads load across multiple servers
@@ -571,4 +736,4 @@
 
 ---
 
-**Previous: [Firewalls & Security Groups](../05-firewalls/)/) | **Next: [Proxies & Reverse Proxies](../07-proxies/)/)
+**Previous:** [Firewalls & Security Groups](../09-firewalls/) | **Next:** [Proxies & Reverse Proxies](../11-proxies/)

@@ -405,6 +405,132 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- Basic networking concepts (switches, MAC addresses)
+- IP addressing and subnetting → [See IP Addressing Guide](../01-ip-addressing/)
+- Layer 2 vs Layer 3 concepts → [See TCP/IP Guide](../02-tcp-ip/)
+- Basic routing concepts → [See Routing Guide](../04-routing/)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Native VLAN Mismatch
+```
+❌ Wrong: Different native VLANs on trunk ports between switches
+✅ Correct: Ensure native VLAN is consistent on both ends of trunk
+```
+
+### Mistake 2: Forgetting to Allow VLAN on Trunk
+```
+❌ Wrong: Creating VLAN but not allowing it on trunk ports
+✅ Correct: Explicitly allow VLAN on trunk: switchport trunk allowed vlan add 20
+```
+
+### Mistake 3: Not Setting Up Inter-VLAN Routing
+```
+❌ Wrong: Expecting VLANs to communicate without router/L3 switch
+✅ Correct: Configure router-on-a-stick or L3 switch for inter-VLAN routing
+```
+
+### Mistake 4: Using VLAN 1 for Production
+```
+❌ Wrong: Using default VLAN 1 for production traffic
+✅ Correct: Create dedicated VLANs; VLAN 1 should only be for management
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Cisco Switch Commands
+```
+! Create VLAN
+vlan 10
+ name Sales
+vlan 20
+ name Engineering
+
+! Configure access port
+interface GigabitEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+
+! Configure trunk port
+interface GigabitEthernet0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30
+ switchport trunk native vlan 99
+
+! View VLAN configuration
+show vlan brief
+show vlan id 10
+show interfaces trunk
+show interfaces switchport
+
+! Inter-VLAN routing (Router-on-a-stick)
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+```
+
+### Linux (with vlan package)
+```bash
+# Create VLAN interface
+ip link add link eth0 name eth0.10 type vlan id 10
+ip addr add 192.168.10.1/24 dev eth0.10
+ip link set dev eth0.10 up
+
+# View VLAN configuration
+cat /proc/net/vlan/config
+ip -d link show eth0.10
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   VLAN QUICK REFERENCE                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  VLAN Basics:                                               │
+│    • VLAN ID Range: 1-4094                                  │
+│    • VLAN 1: Default (avoid for production)                │
+│    • 802.1Q: Industry standard tagging                     │
+│                                                              │
+│  Port Types:                                                │
+│    • Access Port: One VLAN, untagged frames               │
+│    • Trunk Port: Multiple VLANs, tagged frames            │
+│    • Native VLAN: Untagged traffic on trunk               │
+│                                                              │
+│  802.1Q Tag (4 bytes):                                      │
+│    ┌────────┬─────┬──────────────┐                         │
+│    │ TPID   │ PRI │ VLAN ID      │                         │
+│    │ 0x8100 │ 3b  │ 12 bits      │                         │
+│    └────────┴─────┴──────────────┘                         │
+│                                                              │
+│  Inter-VLAN Routing Options:                                │
+│    • Router-on-a-stick (subinterfaces)                     │
+│    • Layer 3 switch (SVIs)                                 │
+│    • Dedicated router per VLAN (expensive)                 │
+│                                                              │
+│  Best Practices:                                            │
+│    • Don't use VLAN 1 for production                       │
+│    • Match native VLAN on trunk ports                      │
+│    • Document VLAN assignments                             │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **VLAN = Logical Network** - Virtual segmentation on physical network
@@ -426,4 +552,4 @@
 
 ---
 
-**Previous:** [Routing & Routing Protocols](../13-routing/) | **Next:** [IPv6 Deep Dive](../15-ipv6/)
+**Previous:** [Routing & Routing Protocols](../04-routing/) | **Next:** [IPv6](../06-ipv6/)

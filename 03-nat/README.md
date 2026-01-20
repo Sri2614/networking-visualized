@@ -517,6 +517,127 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- IP addressing and subnetting → [See IP Addressing Guide](../01-ip-addressing/)
+- Private vs Public IP addresses
+- TCP/IP basics → [See TCP/IP Guide](../02-tcp-ip/)
+- Basic understanding of ports
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Confusing SNAT and DNAT
+```
+❌ Wrong: "SNAT is for incoming traffic"
+✅ Correct: SNAT = Source NAT (outbound), DNAT = Destination NAT (inbound)
+```
+
+### Mistake 2: Forgetting NAT Table Limits
+```
+❌ Wrong: Assuming unlimited concurrent connections through NAT
+✅ Correct: NAT tables have limits (typically 64K ports per public IP)
+```
+
+### Mistake 3: Port Forwarding Without Security
+```
+❌ Wrong: Port forward without firewall rules
+✅ Correct: Always combine port forwarding with proper firewall rules
+```
+
+### Mistake 4: Using NAT Instead of Proper Routing
+```
+❌ Wrong: Using NAT between internal networks for "security"
+✅ Correct: Use proper routing + firewalls; NAT adds complexity
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Linux Commands (iptables)
+```bash
+# View NAT rules
+iptables -t nat -L -n -v
+iptables -t nat -L PREROUTING
+iptables -t nat -L POSTROUTING
+
+# SNAT (source NAT) - outbound
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j SNAT --to-source 203.0.113.10
+
+# DNAT (destination NAT) - port forwarding
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination 192.168.1.10:80
+
+# View connection tracking (NAT table)
+cat /proc/net/nf_conntrack
+conntrack -L
+```
+
+### AWS NAT Gateway
+```bash
+# Create NAT Gateway (AWS CLI)
+aws ec2 create-nat-gateway \
+  --subnet-id subnet-xxx \
+  --allocation-id eipalloc-xxx
+
+# Update route table for private subnet
+aws ec2 create-route \
+  --route-table-id rtb-xxx \
+  --destination-cidr-block 0.0.0.0/0 \
+  --nat-gateway-id nat-xxx
+```
+
+### Windows Commands
+```powershell
+# View NAT configuration
+Get-NetNat
+Get-NetNatStaticMapping
+
+# Create NAT (PowerShell)
+New-NetNat -Name "MyNAT" -InternalIPInterfaceAddressPrefix 192.168.1.0/24
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   NAT QUICK REFERENCE                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  NAT Types:                                                  │
+│    • Static NAT   - 1:1 mapping (servers, DMZ)             │
+│    • Dynamic NAT  - Pool of public IPs                     │
+│    • PAT/NAPT     - Many:1 using ports (most common)       │
+│                                                              │
+│  Direction:                                                  │
+│    • SNAT - Source NAT (outbound traffic)                  │
+│    • DNAT - Destination NAT (inbound/port forwarding)      │
+│                                                              │
+│  Cloud NAT Services:                                        │
+│    • AWS: NAT Gateway (managed), NAT Instance              │
+│    • Azure: NAT Gateway, Load Balancer outbound rules      │
+│    • GCP: Cloud NAT                                        │
+│                                                              │
+│  Key Concepts:                                              │
+│    • NAT Table - Tracks IP:port mappings                   │
+│    • Port exhaustion - Max ~64K connections per public IP  │
+│    • Hairpin NAT - Internal traffic via NAT (avoid!)       │
+│                                                              │
+│  Common Use Cases:                                          │
+│    • Private subnet → Internet access                      │
+│    • Port forwarding → Expose internal services            │
+│    • IP masquerading → Hide internal network               │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **NAT = IP Translation** - Converts private IPs to public IPs
@@ -539,4 +660,4 @@
 
 ---
 
-**Previous:** [VPN & Tunneling](../09-vpn-tunneling/) | **Next:** [Routing & Routing Protocols](../13-routing/)
+**Previous:** [TCP/IP & OSI Model](../02-tcp-ip/) | **Next:** [Routing & Routing Protocols](../04-routing/)

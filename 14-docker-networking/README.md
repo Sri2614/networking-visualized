@@ -562,6 +562,180 @@
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- TCP/IP basics → [See TCP/IP Guide](../02-tcp-ip/)
+- IP addressing and subnetting → [See IP Addressing Guide](../01-ip-addressing/)
+- NAT concepts → [See NAT Guide](../03-nat/)
+- Basic Docker concepts (containers, images)
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Using Default Bridge for Production
+```
+❌ Wrong: Running containers on default "bridge" network
+✅ Correct: Create user-defined bridge networks for DNS and isolation
+```
+
+### Mistake 2: Port Conflicts
+```
+❌ Wrong: Multiple containers trying to bind same host port
+✅ Correct: Use different host ports or use internal networking
+```
+
+### Mistake 3: Hardcoding Container IPs
+```
+❌ Wrong: Using IP addresses to communicate between containers
+✅ Correct: Use container/service names (DNS resolution)
+```
+
+### Mistake 4: Not Limiting Network Access
+```
+❌ Wrong: All containers on same network
+✅ Correct: Use multiple networks to segment frontend/backend/db
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Docker Network Commands
+```bash
+# List networks
+docker network ls
+
+# Create network
+docker network create mynetwork
+docker network create --driver bridge --subnet 172.20.0.0/16 mynetwork
+
+# Inspect network
+docker network inspect mynetwork
+
+# Connect container to network
+docker network connect mynetwork container_name
+
+# Disconnect container
+docker network disconnect mynetwork container_name
+
+# Remove network
+docker network rm mynetwork
+
+# Prune unused networks
+docker network prune
+```
+
+### Running Containers with Networking
+```bash
+# Run with port mapping
+docker run -p 8080:80 nginx
+docker run -p 127.0.0.1:8080:80 nginx  # localhost only
+
+# Run on specific network
+docker run --network mynetwork nginx
+
+# Run with host networking
+docker run --network host nginx
+
+# Run with static IP
+docker run --network mynetwork --ip 172.20.0.10 nginx
+
+# Run with DNS
+docker run --dns 8.8.8.8 nginx
+
+# Run with hostname
+docker run --hostname myapp nginx
+```
+
+### Docker Compose Networking
+```yaml
+# docker-compose.yml
+version: '3'
+services:
+  web:
+    image: nginx
+    networks:
+      - frontend
+    ports:
+      - "80:80"
+  
+  api:
+    image: myapi
+    networks:
+      - frontend
+      - backend
+  
+  db:
+    image: postgres
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
+```
+
+### Troubleshooting
+```bash
+# View container IP
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name
+
+# Test connectivity between containers
+docker exec container1 ping container2
+
+# View port mappings
+docker port container_name
+
+# Check DNS resolution
+docker exec container1 nslookup container2
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│             DOCKER NETWORKING QUICK REFERENCE               │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  Network Drivers:                                           │
+│    bridge  - Default, containers on same host (use custom)│
+│    host    - No isolation, container uses host network    │
+│    overlay - Multi-host networking (Swarm/K8s)            │
+│    macvlan - Container gets MAC address on physical net   │
+│    none    - No networking                                 │
+│                                                              │
+│  Port Mapping:                                              │
+│    -p 8080:80        - Host 8080 → Container 80           │
+│    -p 127.0.0.1:80:80- Localhost only                     │
+│    -p 8080-8090:80-90- Port range                         │
+│    -P                 - Random host ports                  │
+│                                                              │
+│  DNS Resolution (user-defined networks):                    │
+│    • Container name = hostname                             │
+│    • Service name in Compose = hostname                    │
+│    • Automatic DNS within same network                     │
+│                                                              │
+│  Useful Commands:                                           │
+│    docker network ls          - List networks              │
+│    docker network create net1 - Create network             │
+│    docker network inspect net1- Show network details       │
+│    docker network connect     - Add container to network   │
+│                                                              │
+│  Best Practices:                                            │
+│    ✓ Use user-defined bridge networks                     │
+│    ✓ Don't use container IPs directly                     │
+│    ✓ Segment networks (frontend/backend/db)               │
+│    ✓ Use Docker Compose for multi-container apps          │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **Bridge Network** - Default, containers on same host communicate
@@ -577,10 +751,10 @@
 ## 📚 Further Reading
 
 - Docker Swarm networking
-- Kubernetes CNI plugins
+- Kubernetes CNI plugins → [See Kubernetes Networking](../15-kubernetes-networking/)
 - Network plugins and drivers
 - MacVLAN and IPvLAN networks
 
 ---
 
-**Previous: [VPN & Tunneling](../09-vpn-tunneling/)/) | **Next: [Kubernetes Networking](../11-kubernetes-networking/)/)
+**Previous:** [VPN & Tunneling](../13-vpn-tunneling/) | **Next:** [Kubernetes Networking](../15-kubernetes-networking/)
