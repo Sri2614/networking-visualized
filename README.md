@@ -4,20 +4,13 @@
 
 **From IP Addresses to Service Mesh — Everything You Need to Know**
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                                                                          │
-│  FUNDAMENTALS                                                            │
-│  IP Addressing → TCP/IP → NAT → Routing → VLANs → IPv6                   │
-│                                    │                                     │
-│  APPLICATIONS                      ▼                                     │
-│  HTTP/HTTPS → DNS → Firewalls → Load Balancing → Proxies → CDN          │
-│                                    │                                     │
-│  ADVANCED                          ▼                                     │
-│  VPN → Docker Networking → Kubernetes → Monitoring → Service Mesh       │
-│                                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
-```
+**Learning Path:**
+
+> **Fundamentals:** IP Addressing → TCP/IP → NAT → Routing → VLANs → IPv6
+> 
+> **Applications:** HTTP/HTTPS → DNS → Firewalls → Load Balancing → Proxies → CDN
+> 
+> **Advanced:** VPN → Docker Networking → Kubernetes → Monitoring → Service Mesh
 
 ## 📋 Overview
 
