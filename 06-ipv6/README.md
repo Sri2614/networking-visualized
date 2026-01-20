@@ -372,42 +372,39 @@ show ipv6 neighbors
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   IPv6 QUICK REFERENCE                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Address Format:                                            │
-│    • 128 bits, 8 groups of 4 hex digits                    │
-│    • Example: 2001:0db8:0000:0000:0000:0000:0000:0001       │
-│    • Compressed: 2001:db8::1                                │
-│                                                              │
-│  Compression Rules:                                         │
-│    • Leading zeros can be omitted: 0db8 → db8              │
-│    • :: replaces consecutive zero groups (once only)       │
-│                                                              │
-│  Address Types:                                             │
-│    • Unicast:    One-to-one communication                  │
-│    • Multicast:  One-to-many (ff00::/8)                    │
-│    • Anycast:    One-to-nearest                            │
-│    • Link-local: fe80::/10 (auto-configured)               │
-│    • Global:     2000::/3 (routable)                       │
-│    • Loopback:   ::1                                       │
-│                                                              │
-│  Common Prefixes:                                           │
-│    • /64  - Standard subnet (recommended)                  │
-│    • /48  - Site allocation                                │
-│    • /128 - Single host                                    │
-│                                                              │
-│  IPv4 vs IPv6:                                              │
-│    IPv4: 32-bit, 4.3B addresses, NAT required             │
-│    IPv6: 128-bit, 340 undecillion addresses, no NAT       │
-│                                                              │
-│  Transition Mechanisms:                                     │
-│    • Dual Stack - Run both IPv4 and IPv6                   │
-│    • Tunneling  - IPv6 over IPv4 (6to4, Teredo)           │
-│    • NAT64      - Translate between protocols              │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+IPv6 QUICK REFERENCE
+====================
+
+Address Format:
+  - 128 bits, 8 groups of 4 hex digits
+  - Example: 2001:0db8:0000:0000:0000:0000:0000:0001
+  - Compressed: 2001:db8::1
+
+Compression Rules:
+  - Leading zeros can be omitted: 0db8 -> db8
+  - :: replaces consecutive zero groups (once only)
+
+Address Types:
+  - Unicast:    One-to-one communication
+  - Multicast:  One-to-many (ff00::/8)
+  - Anycast:    One-to-nearest
+  - Link-local: fe80::/10 (auto-configured)
+  - Global:     2000::/3 (routable)
+  - Loopback:   ::1
+
+Common Prefixes:
+  - /64  - Standard subnet (recommended)
+  - /48  - Site allocation
+  - /128 - Single host
+
+IPv4 vs IPv6:
+  IPv4: 32-bit, 4.3B addresses, NAT required
+  IPv6: 128-bit, 340 undecillion addresses, no NAT
+
+Transition Mechanisms:
+  - Dual Stack - Run both IPv4 and IPv6
+  - Tunneling  - IPv6 over IPv4 (6to4, Teredo)
+  - NAT64      - Translate between protocols
 ```
 
 ---

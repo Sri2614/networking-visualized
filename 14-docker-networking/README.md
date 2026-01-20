@@ -697,41 +697,38 @@ docker exec container1 nslookup container2
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│             DOCKER NETWORKING QUICK REFERENCE               │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Network Drivers:                                           │
-│    bridge  - Default, containers on same host (use custom)│
-│    host    - No isolation, container uses host network    │
-│    overlay - Multi-host networking (Swarm/K8s)            │
-│    macvlan - Container gets MAC address on physical net   │
-│    none    - No networking                                 │
-│                                                              │
-│  Port Mapping:                                              │
-│    -p 8080:80        - Host 8080 → Container 80           │
-│    -p 127.0.0.1:80:80- Localhost only                     │
-│    -p 8080-8090:80-90- Port range                         │
-│    -P                 - Random host ports                  │
-│                                                              │
-│  DNS Resolution (user-defined networks):                    │
-│    • Container name = hostname                             │
-│    • Service name in Compose = hostname                    │
-│    • Automatic DNS within same network                     │
-│                                                              │
-│  Useful Commands:                                           │
-│    docker network ls          - List networks              │
-│    docker network create net1 - Create network             │
-│    docker network inspect net1- Show network details       │
-│    docker network connect     - Add container to network   │
-│                                                              │
-│  Best Practices:                                            │
-│    ✓ Use user-defined bridge networks                     │
-│    ✓ Don't use container IPs directly                     │
-│    ✓ Segment networks (frontend/backend/db)               │
-│    ✓ Use Docker Compose for multi-container apps          │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+DOCKER NETWORKING QUICK REFERENCE
+=================================
+
+Network Drivers:
+  bridge  - Default, containers on same host (use custom)
+  host    - No isolation, container uses host network
+  overlay - Multi-host networking (Swarm/K8s)
+  macvlan - Container gets MAC address on physical net
+  none    - No networking
+
+Port Mapping:
+  -p 8080:80         - Host 8080 -> Container 80
+  -p 127.0.0.1:80:80 - Localhost only
+  -p 8080-8090:80-90 - Port range
+  -P                 - Random host ports
+
+DNS Resolution (user-defined networks):
+  - Container name = hostname
+  - Service name in Compose = hostname
+  - Automatic DNS within same network
+
+Useful Commands:
+  docker network ls           - List networks
+  docker network create net1  - Create network
+  docker network inspect net1 - Show network details
+  docker network connect      - Add container to network
+
+Best Practices:
+  * Use user-defined bridge networks
+  * Don't use container IPs directly
+  * Segment networks (frontend/backend/db)
+  * Use Docker Compose for multi-container apps
 ```
 
 ---

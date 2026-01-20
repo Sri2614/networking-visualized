@@ -669,44 +669,39 @@ aws ec2 create-vpn-connection \
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              VPN & TUNNELING QUICK REFERENCE                │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  VPN Types:                                                 │
-│    Remote Access - Individual users to network             │
-│    Site-to-Site  - Network to network                      │
-│                                                              │
-│  VPN Protocols:                                             │
-│    ┌───────────┬──────────────────────────────────┐        │
-│    │ Protocol  │ Characteristics                   │        │
-│    ├───────────┼──────────────────────────────────┤        │
-│    │ IPsec     │ Standard, complex, very secure   │        │
-│    │ OpenVPN   │ Flexible, SSL-based, open source │        │
-│    │ WireGuard │ Modern, fast, simple config      │        │
-│    │ L2TP/IPsec│ Wide compatibility               │        │
-│    │ SSTP      │ Windows native, uses HTTPS       │        │
-│    └───────────┴──────────────────────────────────┘        │
-│                                                              │
-│  Tunneling Concept:                                         │
-│    Original Packet → Encrypted → Encapsulated → Sent       │
-│    Received → Decapsulated → Decrypted → Original          │
-│                                                              │
-│  Cloud VPN Services:                                        │
-│    AWS:   VPN Gateway, Client VPN                          │
-│    Azure: VPN Gateway                                       │
-│    GCP:   Cloud VPN                                        │
-│                                                              │
-│  Split Tunneling:                                           │
-│    Full Tunnel - All traffic through VPN                   │
-│    Split Tunnel - Only specific traffic through VPN        │
-│                                                              │
-│  Key Ports:                                                 │
-│    IPsec:   UDP 500 (IKE), UDP 4500 (NAT-T)               │
-│    OpenVPN: UDP/TCP 1194                                   │
-│    WireGuard: UDP 51820                                    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+VPN & TUNNELING QUICK REFERENCE
+===============================
+
+VPN Types:
+  Remote Access - Individual users to network
+  Site-to-Site  - Network to network
+
+VPN Protocols:
+  Protocol   | Characteristics
+  -----------|--------------------------------
+  IPsec      | Standard, complex, very secure
+  OpenVPN    | Flexible, SSL-based, open source
+  WireGuard  | Modern, fast, simple config
+  L2TP/IPsec | Wide compatibility
+  SSTP       | Windows native, uses HTTPS
+
+Tunneling Concept:
+  Original Packet -> Encrypted -> Encapsulated -> Sent
+  Received -> Decapsulated -> Decrypted -> Original
+
+Cloud VPN Services:
+  AWS:   VPN Gateway, Client VPN
+  Azure: VPN Gateway
+  GCP:   Cloud VPN
+
+Split Tunneling:
+  Full Tunnel  - All traffic through VPN
+  Split Tunnel - Only specific traffic through VPN
+
+Key Ports:
+  IPsec:    UDP 500 (IKE), UDP 4500 (NAT-T)
+  OpenVPN:  UDP/TCP 1194
+  WireGuard: UDP 51820
 ```
 
 ---

@@ -923,41 +923,38 @@ F12 → Network tab → View all HTTP requests
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│               HTTP/HTTPS QUICK REFERENCE                    │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  HTTP Methods:                                              │
-│    GET    - Retrieve data (safe, idempotent)               │
-│    POST   - Create new resource                            │
-│    PUT    - Update/replace resource (idempotent)           │
-│    PATCH  - Partial update                                 │
-│    DELETE - Remove resource (idempotent)                   │
-│                                                              │
-│  Status Code Categories:                                    │
-│    1xx - Informational                                     │
-│    2xx - Success (200 OK, 201 Created, 204 No Content)    │
-│    3xx - Redirect (301 Moved, 302 Found, 304 Not Modified)│
-│    4xx - Client Error (400 Bad, 401 Unauth, 404 Not Found)│
-│    5xx - Server Error (500 Internal, 502 Gateway, 503 Down)│
-│                                                              │
-│  Important Headers:                                         │
-│    Content-Type:   application/json, text/html             │
-│    Authorization:  Bearer <token>                          │
-│    Cache-Control:  max-age=3600, no-cache                  │
-│    Cookie:         session=abc123                          │
-│                                                              │
-│  HTTPS = HTTP + TLS:                                        │
-│    • Port 443 (vs 80 for HTTP)                            │
-│    • Encrypts data in transit                             │
-│    • Verifies server identity                              │
-│                                                              │
-│  HTTP Versions:                                             │
-│    HTTP/1.1 - One request per connection (keep-alive)     │
-│    HTTP/2   - Multiplexing, binary, header compression    │
-│    HTTP/3   - QUIC (UDP-based), faster connections        │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+HTTP/HTTPS QUICK REFERENCE
+==========================
+
+HTTP Methods:
+  GET    - Retrieve data (safe, idempotent)
+  POST   - Create new resource
+  PUT    - Update/replace resource (idempotent)
+  PATCH  - Partial update
+  DELETE - Remove resource (idempotent)
+
+Status Code Categories:
+  1xx - Informational
+  2xx - Success (200 OK, 201 Created, 204 No Content)
+  3xx - Redirect (301 Moved, 302 Found, 304 Not Modified)
+  4xx - Client Error (400 Bad, 401 Unauth, 404 Not Found)
+  5xx - Server Error (500 Internal, 502 Gateway, 503 Down)
+
+Important Headers:
+  Content-Type:   application/json, text/html
+  Authorization:  Bearer <token>
+  Cache-Control:  max-age=3600, no-cache
+  Cookie:         session=abc123
+
+HTTPS = HTTP + TLS:
+  - Port 443 (vs 80 for HTTP)
+  - Encrypts data in transit
+  - Verifies server identity
+
+HTTP Versions:
+  HTTP/1.1 - One request per connection (keep-alive)
+  HTTP/2   - Multiplexing, binary, header compression
+  HTTP/3   - QUIC (UDP-based), faster connections
 ```
 
 ---

@@ -396,35 +396,6 @@ Binary:   11000000.10101000.00000001.01100100
 
 ---
 
-## 📝 Quick Reference Card
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│              IP ADDRESSING QUICK REFERENCE                  │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  IPv4 Format:        XXX.XXX.XXX.XXX (0-255 each)          │
-│  Total Addresses:    4.3 billion                            │
-│                                                              │
-│  Private Ranges:                                            │
-│    • 10.0.0.0/8        (16M addresses)                      │
-│    • 172.16.0.0/12     (1M addresses)                       │
-│    • 192.168.0.0/16    (65K addresses)                      │
-│                                                              │
-│  Common Subnets:                                            │
-│    • /24 = 254 hosts  (home/office)                         │
-│    • /26 = 62 hosts   (department)                          │
-│    • /28 = 14 hosts   (small team)                          │
-│                                                              │
-│  Calculation:                                               │
-│    Hosts = 2^(32-CIDR) - 2                                 │
-│    (Minus 2 for network & broadcast)                        │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
 ## 📋 Prerequisites
 
 Before starting this topic, you should understand:
@@ -518,35 +489,32 @@ aws ec2 create-subnet --vpc-id vpc-xxx --cidr-block 10.0.1.0/24
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              IP ADDRESSING QUICK REFERENCE                  │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  IPv4 Format:        XXX.XXX.XXX.XXX (0-255 each)          │
-│  Total Addresses:    4.3 billion                            │
-│  Address Length:     32 bits                                 │
-│                                                              │
-│  Private Ranges:                                            │
-│    • 10.0.0.0/8        (16M addresses)                      │
-│    • 172.16.0.0/12     (1M addresses)                       │
-│    • 192.168.0.0/16    (65K addresses)                      │
-│                                                              │
-│  Common Subnets:                                            │
-│    • /24 = 254 hosts  (home/office)                         │
-│    • /26 = 62 hosts   (department)                          │
-│    • /28 = 14 hosts   (small team)                          │
-│    • /30 = 2 hosts    (point-to-point)                     │
-│                                                              │
-│  Calculation:                                               │
-│    Hosts = 2^(32-CIDR) - 2                                 │
-│    (Minus 2 for network & broadcast)                        │
-│                                                              │
-│  Key Concepts:                                              │
-│    • Network Address: All host bits = 0                     │
-│    • Broadcast Address: All host bits = 1                   │
-│    • Usable Hosts: Network + 1 to Broadcast - 1            │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+IP ADDRESSING QUICK REFERENCE
+=============================
+
+IPv4 Format:        XXX.XXX.XXX.XXX (0-255 each)
+Total Addresses:    4.3 billion
+Address Length:     32 bits
+
+Private Ranges:
+  - 10.0.0.0/8        (16M addresses)
+  - 172.16.0.0/12     (1M addresses)
+  - 192.168.0.0/16    (65K addresses)
+
+Common Subnets:
+  - /24 = 254 hosts  (home/office)
+  - /26 = 62 hosts   (department)
+  - /28 = 14 hosts   (small team)
+  - /30 = 2 hosts    (point-to-point)
+
+Calculation:
+  Hosts = 2^(32-CIDR) - 2
+  (Minus 2 for network & broadcast)
+
+Key Concepts:
+  - Network Address: All host bits = 0
+  - Broadcast Address: All host bits = 1
+  - Usable Hosts: Network + 1 to Broadcast - 1
 ```
 
 ---

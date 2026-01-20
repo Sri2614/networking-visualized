@@ -478,37 +478,34 @@ aws ec2 describe-route-tables --route-table-ids rtb-xxx
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                 ROUTING QUICK REFERENCE                     │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Routing Types:                                             │
-│    • Static  - Manual, simple, no overhead                 │
-│    • Dynamic - Automatic, adapts to changes                │
-│                                                              │
-│  Dynamic Routing Protocols:                                 │
-│    • RIP   - Distance vector, max 15 hops, simple          │
-│    • OSPF  - Link-state, fast convergence, scalable        │
-│    • BGP   - Path vector, internet routing, complex        │
-│                                                              │
-│  Administrative Distance (lower = preferred):               │
-│    Connected = 0    Static = 1    OSPF = 110               │
-│    eBGP = 20        iBGP = 200    RIP = 120                │
-│                                                              │
-│  Route Selection (in order):                                │
-│    1. Longest prefix match (most specific)                 │
-│    2. Lowest administrative distance                       │
-│    3. Lowest metric                                        │
-│                                                              │
-│  Routing Table Entry:                                       │
-│    Destination | Netmask | Gateway | Interface | Metric    │
-│                                                              │
-│  Key Commands:                                              │
-│    ip route show     - View routes (Linux)                 │
-│    traceroute x.x.x.x - Trace path                         │
-│    show ip route     - View routes (Cisco)                 │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+ROUTING QUICK REFERENCE
+=======================
+
+Routing Types:
+  - Static  - Manual, simple, no overhead
+  - Dynamic - Automatic, adapts to changes
+
+Dynamic Routing Protocols:
+  - RIP   - Distance vector, max 15 hops, simple
+  - OSPF  - Link-state, fast convergence, scalable
+  - BGP   - Path vector, internet routing, complex
+
+Administrative Distance (lower = preferred):
+  Connected = 0    Static = 1    OSPF = 110
+  eBGP = 20        iBGP = 200    RIP = 120
+
+Route Selection (in order):
+  1. Longest prefix match (most specific)
+  2. Lowest administrative distance
+  3. Lowest metric
+
+Routing Table Entry:
+  Destination | Netmask | Gateway | Interface | Metric
+
+Key Commands:
+  ip route show      - View routes (Linux)
+  traceroute x.x.x.x - Trace path
+  show ip route      - View routes (Cisco)
 ```
 
 ---

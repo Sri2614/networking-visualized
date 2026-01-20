@@ -496,37 +496,31 @@ ip -d link show eth0.10
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   VLAN QUICK REFERENCE                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  VLAN Basics:                                               │
-│    • VLAN ID Range: 1-4094                                  │
-│    • VLAN 1: Default (avoid for production)                │
-│    • 802.1Q: Industry standard tagging                     │
-│                                                              │
-│  Port Types:                                                │
-│    • Access Port: One VLAN, untagged frames               │
-│    • Trunk Port: Multiple VLANs, tagged frames            │
-│    • Native VLAN: Untagged traffic on trunk               │
-│                                                              │
-│  802.1Q Tag (4 bytes):                                      │
-│    ┌────────┬─────┬──────────────┐                         │
-│    │ TPID   │ PRI │ VLAN ID      │                         │
-│    │ 0x8100 │ 3b  │ 12 bits      │                         │
-│    └────────┴─────┴──────────────┘                         │
-│                                                              │
-│  Inter-VLAN Routing Options:                                │
-│    • Router-on-a-stick (subinterfaces)                     │
-│    • Layer 3 switch (SVIs)                                 │
-│    • Dedicated router per VLAN (expensive)                 │
-│                                                              │
-│  Best Practices:                                            │
-│    • Don't use VLAN 1 for production                       │
-│    • Match native VLAN on trunk ports                      │
-│    • Document VLAN assignments                             │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+VLAN QUICK REFERENCE
+====================
+
+VLAN Basics:
+  - VLAN ID Range: 1-4094
+  - VLAN 1: Default (avoid for production)
+  - 802.1Q: Industry standard tagging
+
+Port Types:
+  - Access Port: One VLAN, untagged frames
+  - Trunk Port: Multiple VLANs, tagged frames
+  - Native VLAN: Untagged traffic on trunk
+
+802.1Q Tag (4 bytes):
+  | TPID (0x8100) | PRI (3b) | VLAN ID (12 bits) |
+
+Inter-VLAN Routing Options:
+  - Router-on-a-stick (subinterfaces)
+  - Layer 3 switch (SVIs)
+  - Dedicated router per VLAN (expensive)
+
+Best Practices:
+  - Don't use VLAN 1 for production
+  - Match native VLAN on trunk ports
+  - Document VLAN assignments
 ```
 
 ---

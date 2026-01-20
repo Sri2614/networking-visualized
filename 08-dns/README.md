@@ -656,40 +656,37 @@ aws route53 change-resource-record-sets \
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   DNS QUICK REFERENCE                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  DNS Record Types:                                          │
-│    A      - IPv4 address                                   │
-│    AAAA   - IPv6 address                                   │
-│    CNAME  - Alias to another domain                        │
-│    MX     - Mail server (with priority)                    │
-│    NS     - Nameserver for zone                            │
-│    TXT    - Text data (SPF, DKIM, verification)           │
-│    SOA    - Start of Authority (zone info)                 │
-│    PTR    - Reverse DNS (IP → domain)                      │
-│    SRV    - Service location (port, priority)              │
-│                                                              │
-│  DNS Hierarchy:                                             │
-│    . (root) → .com (TLD) → example.com → www.example.com  │
-│                                                              │
-│  TTL Guidelines:                                            │
-│    60-300s   - Dynamic content, frequent changes           │
-│    3600s     - Standard (1 hour)                           │
-│    86400s    - Stable content (1 day)                      │
-│                                                              │
-│  Common DNS Servers:                                        │
-│    Google:     8.8.8.8, 8.8.4.4                           │
-│    Cloudflare: 1.1.1.1, 1.0.0.1                           │
-│    Quad9:      9.9.9.9                                     │
-│                                                              │
-│  Troubleshooting Commands:                                  │
-│    dig +trace example.com     - Full resolution path       │
-│    dig @8.8.8.8 example.com   - Query specific server     │
-│    dig +short example.com     - Quick answer              │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+DNS QUICK REFERENCE
+===================
+
+DNS Record Types:
+  A      - IPv4 address
+  AAAA   - IPv6 address
+  CNAME  - Alias to another domain
+  MX     - Mail server (with priority)
+  NS     - Nameserver for zone
+  TXT    - Text data (SPF, DKIM, verification)
+  SOA    - Start of Authority (zone info)
+  PTR    - Reverse DNS (IP -> domain)
+  SRV    - Service location (port, priority)
+
+DNS Hierarchy:
+  . (root) -> .com (TLD) -> example.com -> www.example.com
+
+TTL Guidelines:
+  60-300s   - Dynamic content, frequent changes
+  3600s     - Standard (1 hour)
+  86400s    - Stable content (1 day)
+
+Common DNS Servers:
+  Google:     8.8.8.8, 8.8.4.4
+  Cloudflare: 1.1.1.1, 1.0.0.1
+  Quad9:      9.9.9.9
+
+Troubleshooting Commands:
+  dig +trace example.com     - Full resolution path
+  dig @8.8.8.8 example.com   - Query specific server
+  dig +short example.com     - Quick answer
 ```
 
 ---

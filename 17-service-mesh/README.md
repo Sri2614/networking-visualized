@@ -431,49 +431,46 @@ linkerd diagnostics proxy-metrics <pod-name>
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              SERVICE MESH QUICK REFERENCE                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Service Mesh Components:                                   │
-│    Data Plane  - Sidecar proxies (Envoy, Linkerd-proxy)   │
-│    Control Plane - Configuration, policies, telemetry      │
-│                                                              │
-│  Core Features:                                             │
-│    Traffic Management:                                      │
-│      • Load balancing                                      │
-│      • Canary deployments                                  │
-│      • A/B testing                                         │
-│      • Circuit breakers                                    │
-│      • Retries, timeouts                                   │
-│                                                              │
-│    Security:                                                │
-│      • mTLS (mutual TLS)                                   │
-│      • Authorization policies                              │
-│      • Certificate rotation                                │
-│                                                              │
-│    Observability:                                           │
-│      • Distributed tracing                                 │
-│      • Metrics (Prometheus)                                │
-│      • Service topology                                    │
-│                                                              │
-│  Istio vs Linkerd:                                          │
-│    Istio:   Feature-rich, complex, enterprise-grade        │
-│    Linkerd: Simple, lightweight, easy to operate           │
-│                                                              │
-│  When to Use Service Mesh:                                  │
-│    ✓ 10+ microservices                                     │
-│    ✓ Need for mTLS between services                        │
-│    ✓ Complex traffic routing requirements                  │
-│    ✓ Observability across services                         │
-│                                                              │
-│  Key Commands:                                              │
-│    istioctl proxy-status    - Check proxies                │
-│    istioctl analyze         - Config validation            │
-│    linkerd check            - Verify installation          │
-│    linkerd stat deploy      - View deployment stats        │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+SERVICE MESH QUICK REFERENCE
+============================
+
+Service Mesh Components:
+  Data Plane   - Sidecar proxies (Envoy, Linkerd-proxy)
+  Control Plane - Configuration, policies, telemetry
+
+Core Features:
+  Traffic Management:
+    - Load balancing
+    - Canary deployments
+    - A/B testing
+    - Circuit breakers
+    - Retries, timeouts
+
+  Security:
+    - mTLS (mutual TLS)
+    - Authorization policies
+    - Certificate rotation
+
+  Observability:
+    - Distributed tracing
+    - Metrics (Prometheus)
+    - Service topology
+
+Istio vs Linkerd:
+  Istio:   Feature-rich, complex, enterprise-grade
+  Linkerd: Simple, lightweight, easy to operate
+
+When to Use Service Mesh:
+  * 10+ microservices
+  * Need for mTLS between services
+  * Complex traffic routing requirements
+  * Observability across services
+
+Key Commands:
+  istioctl proxy-status  - Check proxies
+  istioctl analyze       - Config validation
+  linkerd check          - Verify installation
+  linkerd stat deploy    - View deployment stats
 ```
 
 ---

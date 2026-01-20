@@ -673,44 +673,39 @@ aws elbv2 register-targets \
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│             LOAD BALANCING QUICK REFERENCE                  │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Algorithms:                                                │
-│    Round Robin      - Equal distribution                   │
-│    Weighted RR      - Distribution by weight               │
-│    Least Connections - Fewest active connections           │
-│    IP Hash          - Same client → same server           │
-│    Least Response   - Fastest responding server            │
-│                                                              │
-│  Layer 4 vs Layer 7:                                        │
-│    ┌─────────────┬────────────────────────────────┐        │
-│    │ Layer 4 (L4)│ Layer 7 (L7)                   │        │
-│    ├─────────────┼────────────────────────────────┤        │
-│    │ TCP/UDP     │ HTTP/HTTPS                     │        │
-│    │ Faster      │ More features                  │        │
-│    │ IP/Port only│ URL, headers, cookies          │        │
-│    │ NLB         │ ALB                            │        │
-│    └─────────────┴────────────────────────────────┘        │
-│                                                              │
-│  Health Check Types:                                        │
-│    TCP    - Port connection check                          │
-│    HTTP   - Response code check (200 OK)                   │
-│    Custom - Script-based checks                            │
-│                                                              │
-│  AWS Load Balancers:                                        │
-│    ALB - Application (L7, HTTP routing)                    │
-│    NLB - Network (L4, ultra-low latency)                   │
-│    CLB - Classic (legacy, L4+L7)                           │
-│                                                              │
-│  Key Metrics:                                               │
-│    • Requests per second (RPS)                             │
-│    • Response time (latency)                               │
-│    • Error rate (4xx, 5xx)                                 │
-│    • Healthy host count                                    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+LOAD BALANCING QUICK REFERENCE
+==============================
+
+Algorithms:
+  Round Robin       - Equal distribution
+  Weighted RR       - Distribution by weight
+  Least Connections - Fewest active connections
+  IP Hash           - Same client -> same server
+  Least Response    - Fastest responding server
+
+Layer 4 vs Layer 7:
+  Feature     | Layer 4 (L4)  | Layer 7 (L7)
+  ------------|---------------|------------------
+  Protocol    | TCP/UDP       | HTTP/HTTPS
+  Speed       | Faster        | More features
+  Routing     | IP/Port only  | URL, headers, cookies
+  AWS         | NLB           | ALB
+
+Health Check Types:
+  TCP    - Port connection check
+  HTTP   - Response code check (200 OK)
+  Custom - Script-based checks
+
+AWS Load Balancers:
+  ALB - Application (L7, HTTP routing)
+  NLB - Network (L4, ultra-low latency)
+  CLB - Classic (legacy, L4+L7)
+
+Key Metrics:
+  - Requests per second (RPS)
+  - Response time (latency)
+  - Error rate (4xx, 5xx)
+  - Healthy host count
 ```
 
 ---

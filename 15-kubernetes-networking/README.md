@@ -785,44 +785,41 @@ kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│           KUBERNETES NETWORKING QUICK REFERENCE             │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Service Types:                                             │
-│    ClusterIP   - Internal only (default)                   │
-│    NodePort    - Exposes on all nodes (30000-32767)        │
-│    LoadBalancer- Cloud load balancer (external)            │
-│    ExternalName- DNS CNAME record                          │
-│                                                              │
-│  DNS Format:                                                │
-│    <service>.<namespace>.svc.cluster.local                 │
-│    my-svc.default.svc.cluster.local                        │
-│    Short: my-svc (same namespace)                          │
-│                                                              │
-│  Network Model Requirements:                                │
-│    • Every pod gets unique IP                              │
-│    • Pods can communicate without NAT                      │
-│    • Nodes can communicate with pods without NAT           │
-│                                                              │
-│  Common CNI Plugins:                                        │
-│    Calico   - Network policies, BGP routing               │
-│    Flannel  - Simple overlay network                      │
-│    Cilium   - eBPF-based, high performance                │
-│    Weave    - Easy setup, encryption                      │
-│                                                              │
-│  Network Policy (example):                                  │
-│    podSelector: Select which pods policy applies to        │
-│    ingress:     Rules for incoming traffic                 │
-│    egress:      Rules for outgoing traffic                 │
-│                                                              │
-│  Useful Commands:                                           │
-│    kubectl get pods -o wide         - Show pod IPs         │
-│    kubectl get svc                  - List services        │
-│    kubectl get netpol               - List policies        │
-│    kubectl exec pod -- nslookup svc - Test DNS            │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+KUBERNETES NETWORKING QUICK REFERENCE
+=====================================
+
+Service Types:
+  ClusterIP    - Internal only (default)
+  NodePort     - Exposes on all nodes (30000-32767)
+  LoadBalancer - Cloud load balancer (external)
+  ExternalName - DNS CNAME record
+
+DNS Format:
+  <service>.<namespace>.svc.cluster.local
+  my-svc.default.svc.cluster.local
+  Short: my-svc (same namespace)
+
+Network Model Requirements:
+  - Every pod gets unique IP
+  - Pods can communicate without NAT
+  - Nodes can communicate with pods without NAT
+
+Common CNI Plugins:
+  Calico   - Network policies, BGP routing
+  Flannel  - Simple overlay network
+  Cilium   - eBPF-based, high performance
+  Weave    - Easy setup, encryption
+
+Network Policy (example):
+  podSelector: Select which pods policy applies to
+  ingress:     Rules for incoming traffic
+  egress:      Rules for outgoing traffic
+
+Useful Commands:
+  kubectl get pods -o wide         - Show pod IPs
+  kubectl get svc                  - List services
+  kubectl get netpol               - List policies
+  kubectl exec pod -- nslookup svc - Test DNS
 ```
 
 ---

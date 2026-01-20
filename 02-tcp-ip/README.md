@@ -687,35 +687,32 @@ Test-NetConnection -ComputerName hostname -Port 80
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              TCP/IP & OSI QUICK REFERENCE                   │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  OSI Model (7 Layers):                                      │
-│    7. Application  - HTTP, DNS, FTP                        │
-│    6. Presentation - SSL/TLS, encryption                   │
-│    5. Session      - Sessions, authentication              │
-│    4. Transport    - TCP, UDP, ports                       │
-│    3. Network      - IP, routing                           │
-│    2. Data Link    - Ethernet, MAC addresses               │
-│    1. Physical     - Cables, wireless                      │
-│                                                              │
-│  TCP/IP Model (4 Layers):                                   │
-│    4. Application  = OSI 5,6,7                             │
-│    3. Transport    = OSI 4                                 │
-│    2. Internet     = OSI 3                                 │
-│    1. Network      = OSI 1,2                               │
-│                                                              │
-│  TCP vs UDP:                                                │
-│    TCP: Reliable, ordered, connection-oriented             │
-│    UDP: Fast, no guarantee, connectionless                 │
-│                                                              │
-│  Common Ports:                                              │
-│    22=SSH, 80=HTTP, 443=HTTPS, 3306=MySQL, 5432=PostgreSQL │
-│                                                              │
-│  TCP Handshake: SYN → SYN-ACK → ACK                        │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+TCP/IP & OSI QUICK REFERENCE
+============================
+
+OSI Model (7 Layers):
+  7. Application  - HTTP, DNS, FTP
+  6. Presentation - SSL/TLS, encryption
+  5. Session      - Sessions, authentication
+  4. Transport    - TCP, UDP, ports
+  3. Network      - IP, routing
+  2. Data Link    - Ethernet, MAC addresses
+  1. Physical     - Cables, wireless
+
+TCP/IP Model (4 Layers):
+  4. Application  = OSI 5,6,7
+  3. Transport    = OSI 4
+  2. Internet     = OSI 3
+  1. Network      = OSI 1,2
+
+TCP vs UDP:
+  TCP: Reliable, ordered, connection-oriented
+  UDP: Fast, no guarantee, connectionless
+
+Common Ports:
+  22=SSH, 80=HTTP, 443=HTTPS, 3306=MySQL, 5432=PostgreSQL
+
+TCP Handshake: SYN -> SYN-ACK -> ACK
 ```
 
 ---

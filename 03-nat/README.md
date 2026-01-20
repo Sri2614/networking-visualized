@@ -605,35 +605,32 @@ New-NetNat -Name "MyNAT" -InternalIPInterfaceAddressPrefix 192.168.1.0/24
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   NAT QUICK REFERENCE                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  NAT Types:                                                  │
-│    • Static NAT   - 1:1 mapping (servers, DMZ)             │
-│    • Dynamic NAT  - Pool of public IPs                     │
-│    • PAT/NAPT     - Many:1 using ports (most common)       │
-│                                                              │
-│  Direction:                                                  │
-│    • SNAT - Source NAT (outbound traffic)                  │
-│    • DNAT - Destination NAT (inbound/port forwarding)      │
-│                                                              │
-│  Cloud NAT Services:                                        │
-│    • AWS: NAT Gateway (managed), NAT Instance              │
-│    • Azure: NAT Gateway, Load Balancer outbound rules      │
-│    • GCP: Cloud NAT                                        │
-│                                                              │
-│  Key Concepts:                                              │
-│    • NAT Table - Tracks IP:port mappings                   │
-│    • Port exhaustion - Max ~64K connections per public IP  │
-│    • Hairpin NAT - Internal traffic via NAT (avoid!)       │
-│                                                              │
-│  Common Use Cases:                                          │
-│    • Private subnet → Internet access                      │
-│    • Port forwarding → Expose internal services            │
-│    • IP masquerading → Hide internal network               │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+NAT QUICK REFERENCE
+===================
+
+NAT Types:
+  - Static NAT   - 1:1 mapping (servers, DMZ)
+  - Dynamic NAT  - Pool of public IPs
+  - PAT/NAPT     - Many:1 using ports (most common)
+
+Direction:
+  - SNAT - Source NAT (outbound traffic)
+  - DNAT - Destination NAT (inbound/port forwarding)
+
+Cloud NAT Services:
+  - AWS: NAT Gateway (managed), NAT Instance
+  - Azure: NAT Gateway, Load Balancer outbound rules
+  - GCP: Cloud NAT
+
+Key Concepts:
+  - NAT Table - Tracks IP:port mappings
+  - Port exhaustion - Max ~64K connections per public IP
+  - Hairpin NAT - Internal traffic via NAT (avoid!)
+
+Common Use Cases:
+  - Private subnet -> Internet access
+  - Port forwarding -> Expose internal services
+  - IP masquerading -> Hide internal network
 ```
 
 ---

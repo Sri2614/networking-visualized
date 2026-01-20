@@ -580,43 +580,40 @@ curl -v https://example.com | grep -i "x-forwarded"
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                 PROXY QUICK REFERENCE                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Proxy Types:                                               │
-│    Forward Proxy - Client → Proxy → Internet               │
-│      • Hides client IP                                     │
-│      • Content filtering                                   │
-│      • Corporate access control                            │
-│                                                              │
-│    Reverse Proxy - Internet → Proxy → Backend              │
-│      • Hides backend servers                               │
-│      • SSL termination                                     │
-│      • Load balancing                                      │
-│      • Caching                                             │
-│                                                              │
-│  Important Headers:                                         │
-│    X-Forwarded-For:    Client's original IP               │
-│    X-Real-IP:          Client's IP (single)               │
-│    X-Forwarded-Proto:  Original protocol (http/https)     │
-│    X-Forwarded-Host:   Original host header               │
-│                                                              │
-│  Common Proxy Software:                                     │
-│    NGINX      - Reverse proxy, load balancer              │
-│    HAProxy    - High-performance TCP/HTTP proxy           │
-│    Squid      - Forward proxy, caching                    │
-│    Envoy      - Cloud-native proxy, service mesh          │
-│    Traefik    - Cloud-native, auto-discovery              │
-│                                                              │
-│  Proxy Functions:                                           │
-│    • Load balancing across backends                        │
-│    • SSL/TLS termination                                   │
-│    • Caching static content                               │
-│    • Request/response modification                        │
-│    • Authentication and access control                    │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+PROXY QUICK REFERENCE
+=====================
+
+Proxy Types:
+  Forward Proxy - Client -> Proxy -> Internet
+    - Hides client IP
+    - Content filtering
+    - Corporate access control
+
+  Reverse Proxy - Internet -> Proxy -> Backend
+    - Hides backend servers
+    - SSL termination
+    - Load balancing
+    - Caching
+
+Important Headers:
+  X-Forwarded-For:    Client's original IP
+  X-Real-IP:          Client's IP (single)
+  X-Forwarded-Proto:  Original protocol (http/https)
+  X-Forwarded-Host:   Original host header
+
+Common Proxy Software:
+  NGINX      - Reverse proxy, load balancer
+  HAProxy    - High-performance TCP/HTTP proxy
+  Squid      - Forward proxy, caching
+  Envoy      - Cloud-native proxy, service mesh
+  Traefik    - Cloud-native, auto-discovery
+
+Proxy Functions:
+  - Load balancing across backends
+  - SSL/TLS termination
+  - Caching static content
+  - Request/response modification
+  - Authentication and access control
 ```
 
 ---

@@ -577,46 +577,43 @@ location ~* \.html$ {
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                   CDN QUICK REFERENCE                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  CDN Flow:                                                  │
-│    User → Nearest Edge → Cache Hit? → Return content       │
-│                                    → Cache Miss? → Origin  │
-│                                                              │
-│  Cache Control Headers:                                     │
-│    max-age=3600      - Cache for 1 hour                   │
-│    s-maxage=86400    - CDN cache for 1 day                │
-│    no-cache          - Validate with origin               │
-│    no-store          - Never cache                        │
-│    public/private    - CDN can/cannot cache               │
-│    immutable         - Never changes (with versioned URL) │
-│                                                              │
-│  Cache Status (X-Cache header):                             │
-│    Hit     - Served from CDN cache                        │
-│    Miss    - Fetched from origin                          │
-│    Refresh - Revalidated with origin                      │
-│                                                              │
-│  CDN Providers:                                             │
-│    AWS CloudFront  - Integrated with AWS services          │
-│    Cloudflare      - DDoS protection, easy setup          │
-│    Akamai          - Enterprise, largest network          │
-│    Fastly          - Instant purge, edge compute          │
-│    Azure CDN       - Microsoft integration                 │
-│                                                              │
-│  Best Practices:                                            │
-│    • Use versioned URLs for cache busting                  │
-│    • Set long TTLs for static assets                       │
-│    • Configure proper CORS headers                         │
-│    • Monitor cache hit ratio (target >90%)                 │
-│                                                              │
-│  TTL Guidelines:                                            │
-│    Static assets (CSS/JS/images): 1 year                   │
-│    API responses: 0-60 seconds                             │
-│    HTML pages: 0-5 minutes                                 │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+CDN QUICK REFERENCE
+===================
+
+CDN Flow:
+  User -> Nearest Edge -> Cache Hit? -> Return content
+                                     -> Cache Miss? -> Origin
+
+Cache Control Headers:
+  max-age=3600      - Cache for 1 hour
+  s-maxage=86400    - CDN cache for 1 day
+  no-cache          - Validate with origin
+  no-store          - Never cache
+  public/private    - CDN can/cannot cache
+  immutable         - Never changes (with versioned URL)
+
+Cache Status (X-Cache header):
+  Hit     - Served from CDN cache
+  Miss    - Fetched from origin
+  Refresh - Revalidated with origin
+
+CDN Providers:
+  AWS CloudFront  - Integrated with AWS services
+  Cloudflare      - DDoS protection, easy setup
+  Akamai          - Enterprise, largest network
+  Fastly          - Instant purge, edge compute
+  Azure CDN       - Microsoft integration
+
+Best Practices:
+  - Use versioned URLs for cache busting
+  - Set long TTLs for static assets
+  - Configure proper CORS headers
+  - Monitor cache hit ratio (target >90%)
+
+TTL Guidelines:
+  Static assets (CSS/JS/images): 1 year
+  API responses: 0-60 seconds
+  HTML pages: 0-5 minutes
 ```
 
 ---

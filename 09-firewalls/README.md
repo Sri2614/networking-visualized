@@ -716,43 +716,38 @@ New-NetFirewallRule -DisplayName "Block IP" -Direction Inbound -RemoteAddress 19
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│              FIREWALL QUICK REFERENCE                       │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Firewall Types:                                            │
-│    • Packet Filter - Basic, checks headers only            │
-│    • Stateful      - Tracks connections, more secure       │
-│    • Application   - Layer 7, inspects content (WAF)       │
-│                                                              │
-│  Cloud Security:                                            │
-│    ┌──────────────┬─────────────┬─────────────────┐        │
-│    │   Feature    │ Security Grp│  Network ACL    │        │
-│    ├──────────────┼─────────────┼─────────────────┤        │
-│    │ Level        │ Instance    │ Subnet          │        │
-│    │ Stateful     │ Yes         │ No              │        │
-│    │ Rules        │ Allow only  │ Allow & Deny    │        │
-│    │ Evaluation   │ All rules   │ Order matters   │        │
-│    └──────────────┴─────────────┴─────────────────┘        │
-│                                                              │
-│  Rule Components:                                           │
-│    • Direction: Inbound / Outbound                         │
-│    • Protocol:  TCP, UDP, ICMP, All                        │
-│    • Port:      Single, range, or all                      │
-│    • Source/Dest: IP, CIDR, Security Group                 │
-│    • Action:    Allow / Deny                               │
-│                                                              │
-│  Best Practices:                                            │
-│    1. Default deny (whitelist approach)                    │
-│    2. Principle of least privilege                         │
-│    3. Document all rules                                   │
-│    4. Regular audits                                       │
-│    5. Defense in depth (multiple layers)                   │
-│                                                              │
-│  Common Ports to Secure:                                    │
-│    22=SSH, 3389=RDP, 3306=MySQL, 5432=PostgreSQL          │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+FIREWALL QUICK REFERENCE
+========================
+
+Firewall Types:
+  - Packet Filter - Basic, checks headers only
+  - Stateful      - Tracks connections, more secure
+  - Application   - Layer 7, inspects content (WAF)
+
+Cloud Security (Security Group vs Network ACL):
+  Feature      | Security Group | Network ACL
+  -------------|----------------|---------------
+  Level        | Instance       | Subnet
+  Stateful     | Yes            | No
+  Rules        | Allow only     | Allow & Deny
+  Evaluation   | All rules      | Order matters
+
+Rule Components:
+  - Direction: Inbound / Outbound
+  - Protocol:  TCP, UDP, ICMP, All
+  - Port:      Single, range, or all
+  - Source/Dest: IP, CIDR, Security Group
+  - Action:    Allow / Deny
+
+Best Practices:
+  1. Default deny (whitelist approach)
+  2. Principle of least privilege
+  3. Document all rules
+  4. Regular audits
+  5. Defense in depth (multiple layers)
+
+Common Ports to Secure:
+  22=SSH, 3389=RDP, 3306=MySQL, 5432=PostgreSQL
 ```
 
 ---

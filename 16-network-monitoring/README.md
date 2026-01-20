@@ -595,45 +595,40 @@ ip -s link show eth0
 ## 📊 Quick Reference Card
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│          NETWORK MONITORING QUICK REFERENCE                 │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  Troubleshooting Order (OSI Layers):                        │
-│    1. Physical  - Cables, lights, hardware                 │
-│    2. Data Link - MAC, switch, ARP                         │
-│    3. Network   - IP, routing, ping, traceroute            │
-│    4. Transport - TCP/UDP, ports, connections              │
-│    5-7. App     - DNS, HTTP, application logs              │
-│                                                              │
-│  Essential Tools:                                           │
-│    ┌──────────────┬────────────────────────────────┐       │
-│    │ Tool         │ Purpose                         │       │
-│    ├──────────────┼────────────────────────────────┤       │
-│    │ ping         │ Connectivity, latency          │       │
-│    │ traceroute   │ Path discovery                 │       │
-│    │ dig/nslookup │ DNS resolution                 │       │
-│    │ ss/netstat   │ Ports, connections             │       │
-│    │ tcpdump      │ Packet capture (CLI)           │       │
-│    │ Wireshark    │ Packet analysis (GUI)          │       │
-│    │ mtr          │ Combined ping+traceroute       │       │
-│    │ iperf3       │ Bandwidth testing              │       │
-│    └──────────────┴────────────────────────────────┘       │
-│                                                              │
-│  Key Metrics to Monitor:                                    │
-│    • Latency (ms)        - Response time                   │
-│    • Packet Loss (%)     - Missing packets                 │
-│    • Bandwidth (Mbps)    - Throughput                      │
-│    • Jitter (ms)         - Latency variation               │
-│    • Error Rate          - Interface errors                │
-│                                                              │
-│  Quick Checks:                                              │
-│    ping 8.8.8.8       - Internet connectivity              │
-│    dig google.com     - DNS working                        │
-│    ss -tulpn          - What's listening                   │
-│    ip route           - Default gateway set                │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
+NETWORK MONITORING QUICK REFERENCE
+==================================
+
+Troubleshooting Order (OSI Layers):
+  1. Physical  - Cables, lights, hardware
+  2. Data Link - MAC, switch, ARP
+  3. Network   - IP, routing, ping, traceroute
+  4. Transport - TCP/UDP, ports, connections
+  5-7. App     - DNS, HTTP, application logs
+
+Essential Tools:
+  Tool         | Purpose
+  -------------|-------------------------
+  ping         | Connectivity, latency
+  traceroute   | Path discovery
+  dig/nslookup | DNS resolution
+  ss/netstat   | Ports, connections
+  tcpdump      | Packet capture (CLI)
+  Wireshark    | Packet analysis (GUI)
+  mtr          | Combined ping+traceroute
+  iperf3       | Bandwidth testing
+
+Key Metrics to Monitor:
+  - Latency (ms)     - Response time
+  - Packet Loss (%)  - Missing packets
+  - Bandwidth (Mbps) - Throughput
+  - Jitter (ms)      - Latency variation
+  - Error Rate       - Interface errors
+
+Quick Checks:
+  ping 8.8.8.8   - Internet connectivity
+  dig google.com - DNS working
+  ss -tulpn      - What's listening
+  ip route       - Default gateway set
 ```
 
 ---
