@@ -22,8 +22,8 @@
 │  ┌──────────────┐                                           │
 │  │   Internet   │                                           │
 │  │              │                                           │
-│  │  ⚠️  Data visible to ISPs                             │
-│  │  ⚠️  Vulnerable to interception                       │
+│  │  [!]  Data visible to ISPs                             │
+│  │  [!]  Vulnerable to interception                       │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
@@ -33,7 +33,7 @@
 │  │   Network   │                                           │
 │  └──────────────┘                                           │
 │                                                              │
-│  ❌ Security Risk                                            │
+│  [X] Security Risk                                            │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -69,9 +69,9 @@
 │  │   Network   │                                           │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Secure connection                                       │
-│  ✅ Encrypted data                                          │
-│  ✅ Appears as if on corporate network                     │
+│  [+] Secure connection                                       │
+│  [+] Encrypted data                                          │
+│  [+] Appears as if on corporate network                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -121,9 +121,9 @@
 │            └──────────────┘                                  │
 │                                                              │
 │  Use Cases:                                                  │
-│  ✅ Remote workers                                          │
-│  ✅ Mobile employees                                        │
-│  ✅ Secure access to corporate resources                   │
+│  [+] Remote workers                                          │
+│  [+] Mobile employees                                        │
+│  [+] Secure access to corporate resources                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -165,9 +165,9 @@
 │  • 10.0.1.0/24 ↔ 10.0.2.0/24                               │
 │                                                              │
 │  Use Cases:                                                  │
-│  ✅ Connecting branch offices                               │
-│  ✅ Cloud-to-on-premises connectivity                       │
-│  ✅ Multi-site organizations                               │
+│  [+] Connecting branch offices                               │
+│  [+] Cloud-to-on-premises connectivity                       │
+│  [+] Multi-site organizations                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -190,9 +190,9 @@
 │  │  • Site-to-site VPNs                              │    │
 │  │  • Complex setup                                  │    │
 │  │                                                    │    │
-│  │  ✅ High security                                 │    │
-│  │  ✅ Standard protocol                              │    │
-│  │  ⚠️  Complex configuration                         │    │
+│  │  [+] High security                                 │    │
+│  │  [+] Standard protocol                              │    │
+│  │  [!]  Complex configuration                         │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -204,9 +204,9 @@
 │  │  • Cross-platform                                 │    │
 │  │  • Easy to configure                              │    │
 │  │                                                    │    │
-│  │  ✅ Very popular                                  │    │
-│  │  ✅ Good security                                  │    │
-│  │  ✅ Works through firewalls                       │    │
+│  │  [+] Very popular                                  │    │
+│  │  [+] Good security                                  │    │
+│  │  [+] Works through firewalls                       │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -218,9 +218,9 @@
 │  │  • Low overhead                                   │    │
 │  │  • Built-in encryption                           │    │
 │  │                                                    │    │
-│  │  ✅ Fastest performance                           │    │
-│  │  ✅ Modern cryptography                            │    │
-│  │  ✅ Easy to set up                                │    │
+│  │  [+] Fastest performance                           │    │
+│  │  [+] Modern cryptography                            │    │
+│  │  [+] Easy to set up                                │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -232,9 +232,9 @@
 │  │  • Browser-based access                          │    │
 │  │  • Easy deployment                               │    │
 │  │                                                    │    │
-│  │  ✅ Firewall-friendly                            │    │
-│  │  ✅ No client software needed                     │    │
-│  │  ⚠️  Less flexible                                │    │
+│  │  [+] Firewall-friendly                            │    │
+│  │  [+] No client software needed                     │    │
+│  │  [!]  Less flexible                                │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -302,9 +302,9 @@
 │  │  Data: "Hello"                                     │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Original packet hidden inside outer packet             │
-│  ✅ Encrypted for security                                 │
-│  ✅ Can traverse public networks                           │
+│  [+] Original packet hidden inside outer packet             │
+│  [+] Encrypted for security                                 │
+│  [+] Can traverse public networks                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -359,8 +359,8 @@
 │  • Client VPN (SSL/TLS)                                     │
 │  • AWS Direct Connect (dedicated)                          │
 │                                                              │
-│  ✅ Secure cloud connectivity                               │
-│  ✅ Hybrid cloud architecture                               │
+│  [+] Secure cloud connectivity                               │
+│  [+] Hybrid cloud architecture                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -394,9 +394,9 @@
 │  • Policy-based (static routing)                            │
 │  • Route-based (dynamic routing)                            │
 │                                                              │
-│  ✅ Hybrid connectivity                                      │
-│  ✅ Point-to-site VPN                                        │
-│  ✅ Site-to-site VPN                                         │
+│  [+] Hybrid connectivity                                      │
+│  [+] Point-to-site VPN                                        │
+│  [+] Site-to-site VPN                                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -429,7 +429,7 @@
 │  │  Verifies credentials                                  │
 │  └────┬─────┘                                              │
 │       │                                                    │
-│       │ ✅ Authenticated                                    │
+│       │ [+] Authenticated                                    │
 │       │                                                    │
 │       ▼                                                    │
 │  Step 2: Key Exchange                                      │
@@ -446,7 +446,7 @@
 │  ┌──────────┐                                              │
 │  │  Client  │ ←──[Encrypted Tunnel]──→ │  Server  │    │
 │  │          │                            │          │    │
-│  │  ✅ Secure tunnel established                        │    │
+│  │  [+] Secure tunnel established                        │    │
 │  └──────────┘                            └──────────┘    │
 │                                                              │
 │  Step 4: Data Transmission                                 │
@@ -455,7 +455,7 @@
 │  │          │                                              │
 │  │  Data → Encrypt → Tunnel → Server                     │
 │  │          │                                              │
-│  │  ✅ All data encrypted                                 │
+│  │  [+] All data encrypted                                 │
 │  └──────────┘                                              │
 │                                                              │
 │  Encryption Algorithms:                                      │
@@ -502,10 +502,10 @@
 │            └──────────────┘                                  │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Seamless connectivity                                    │
-│  ✅ Secure data transfer                                     │
-│  ✅ Extend on-premises to cloud                             │
-│  ✅ Disaster recovery                                        │
+│  [+] Seamless connectivity                                    │
+│  [+] Secure data transfer                                     │
+│  [+] Extend on-premises to cloud                             │
+│  [+] Disaster recovery                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -544,9 +544,9 @@
 │            │  └────────┘  │                                  │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ Secure remote access                                     │
-│  ✅ Access from anywhere                                     │
-│  ✅ Encrypted connections                                    │
+│  [+] Secure remote access                                     │
+│  [+] Access from anywhere                                     │
+│  [+] Encrypted connections                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 

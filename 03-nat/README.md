@@ -24,12 +24,12 @@
 │            ┌──────────────┐                                  │
 │            │   Internet   │                                  │
 │            │              │                                  │
-│            │  ⚠️  Each device needs public IP                │
-│            │  ⚠️  Expensive                                  │
-│            │  ⚠️  Security risk                              │
+│            │  [!]  Each device needs public IP                │
+│            │  [!]  Expensive                                  │
+│            │  [!]  Security risk                              │
 │            └──────────────┘                                  │
 │                                                              │
-│  ❌ Not scalable                                             │
+│  [X] Not scalable                                             │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -60,12 +60,12 @@
 │            ┌──────────────┐                                  │
 │            │   Internet   │                                  │
 │            │              │                                  │
-│            │  ✅ One public IP for all                       │
-│            │  ✅ Cost-effective                              │
-│            │  ✅ Security (hides internal IPs)              │
+│            │  [+] One public IP for all                       │
+│            │  [+] Cost-effective                              │
+│            │  [+] Security (hides internal IPs)              │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ Scalable and secure                                      │
+│  [+] Scalable and secure                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -100,9 +100,9 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Permanent mapping                                        │
-│  ✅ One private IP = One public IP                          │
-│  ✅ Used for servers that need consistent public IP        │
+│  [+] Permanent mapping                                        │
+│  [+] One private IP = One public IP                          │
+│  [+] Used for servers that need consistent public IP        │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Web servers                                               │
@@ -146,9 +146,9 @@
 │            └──────────────┘                                  │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Temporary mapping                                        │
-│  ✅ Many private IPs share pool of public IPs               │
-│  ✅ IP released when connection ends                        │
+│  [+] Temporary mapping                                        │
+│  [+] Many private IPs share pool of public IPs               │
+│  [+] IP released when connection ends                        │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Offices with many devices                                 │
@@ -193,9 +193,9 @@
 │            └──────────────┘                                  │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Many devices share ONE public IP                        │
-│  ✅ Uses port numbers to track connections                  │
-│  ✅ Most common type (home routers use this)                │
+│  [+] Many devices share ONE public IP                        │
+│  [+] Uses port numbers to track connections                  │
+│  [+] Most common type (home routers use this)                │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Home networks                                             │
@@ -282,8 +282,8 @@
 │  │  Receives response                                      │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ NAT table maintains connection state                    │
-│  ✅ Return traffic automatically routed                    │
+│  [+] NAT table maintains connection state                    │
+│  [+] Return traffic automatically routed                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -326,8 +326,8 @@
 │  │  Dest: 192.168.1.10:80                                 │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ External clients can reach internal servers            │
-│  ✅ Port forwarding enables inbound connections            │
+│  [+] External clients can reach internal servers            │
+│  [+] Port forwarding enables inbound connections            │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -402,9 +402,9 @@
 │  • Private subnet routes 0.0.0.0/0 → NAT Gateway          │
 │  • NAT Gateway routes to Internet Gateway                  │
 │                                                              │
-│  ✅ Managed service                                         │
-│  ✅ High availability                                       │
-│  ✅ Automatic scaling                                       │
+│  [+] Managed service                                         │
+│  [+] High availability                                       │
+│  [+] Automatic scaling                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -441,9 +441,9 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Features:                                                   │
-│  ✅ Managed NAT service                                     │
-│  ✅ Up to 64,000 concurrent flows                          │
-│  ✅ Zone-redundant                                          │
+│  [+] Managed NAT service                                     │
+│  [+] Up to 64,000 concurrent flows                          │
+│  [+] Zone-redundant                                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -481,9 +481,9 @@
 │            │   Internet   │                                  │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ All devices share one public IP                         │
-│  ✅ Cost-effective                                          │
-│  ✅ Security (hides internal network)                       │
+│  [+] All devices share one public IP                         │
+│  [+] Cost-effective                                          │
+│  [+] Security (hides internal network)                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -510,8 +510,8 @@
 │  2. Inbound: Looks up public IP:port, routes to private   │
 │  3. Timeout: Entry removed after connection closes         │
 │                                                              │
-│  ✅ Tracks all active connections                           │
-│  ✅ Enables return traffic routing                          │
+│  [+] Tracks all active connections                           │
+│  [+] Enables return traffic routing                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 

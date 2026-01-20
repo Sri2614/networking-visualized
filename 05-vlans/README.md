@@ -19,13 +19,13 @@
 │  │  │Marketing │  │Engineering│ │ Finance │        │    │
 │  │  │          │  │          │  │         │        │    │
 │  │  │ All on same network                            │    │
-│  │  │ ⚠️  Security risk                             │    │
-│  │  │ ⚠️  Broadcast storms                          │    │
-│  │  │ ⚠️  No isolation                              │    │
+│  │  │ [!]  Security risk                             │    │
+│  │  │ [!]  Broadcast storms                          │    │
+│  │  │ [!]  No isolation                              │    │
 │  │  └──────────┘  └──────────┘  └──────────┘        │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ❌ All traffic mixed together                              │
+│  [X] All traffic mixed together                              │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -39,19 +39,19 @@
 │  │  │ VLAN 10      │  │ VLAN 20      │             │    │
 │  │  │ Marketing    │  │ Engineering  │             │    │
 │  │  │              │  │              │             │    │
-│  │  │ ✅ Isolated  │  │ ✅ Isolated  │             │    │
-│  │  │ ✅ Secure    │  │ ✅ Secure    │             │    │
+│  │  │ [+] Isolated  │  │ [+] Isolated  │             │    │
+│  │  │ [+] Secure    │  │ [+] Secure    │             │    │
 │  │  └──────────────┘  └──────────────┘             │    │
 │  │                                                    │    │
 │  │  ┌──────────────┐                                 │    │
 │  │  │ VLAN 30      │                                 │    │
 │  │  │ Finance      │                                 │    │
 │  │  │              │                                 │    │
-│  │  │ ✅ Isolated  │                                 │    │
+│  │  │ [+] Isolated  │                                 │    │
 │  │  └──────────────┘                                 │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Logical separation on same physical network             │
+│  [+] Logical separation on same physical network             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -95,7 +95,7 @@
 │  │  Logically grouped together                            │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Same physical network, different logical networks       │
+│  [+] Same physical network, different logical networks       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -165,8 +165,8 @@
 │  │  Receives untagged frame                               │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ VLAN tag added/removed by switches                     │
-│  ✅ Devices don't see VLAN tags                            │
+│  [+] VLAN tag added/removed by switches                     │
+│  [+] Devices don't see VLAN tags                            │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -228,9 +228,9 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Connects end devices                                    │
-│  ✅ Carries traffic for ONE VLAN                          │
-│  ✅ Frames are untagged                                    │
+│  [+] Connects end devices                                    │
+│  [+] Carries traffic for ONE VLAN                          │
+│  [+] Frames are untagged                                    │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Connecting computers                                    │
@@ -270,9 +270,9 @@
 │            └────────────────────┘                           │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Connects switches                                       │
-│  ✅ Carries traffic for MULTIPLE VLANs                     │
-│  ✅ Frames are tagged (802.1Q)                             │
+│  [+] Connects switches                                       │
+│  [+] Carries traffic for MULTIPLE VLANs                     │
+│  [+] Frames are tagged (802.1Q)                             │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Switch-to-switch connections                            │
@@ -352,8 +352,8 @@
 │  │  └────────┘  │                                           │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Router enables communication between VLANs             │
-│  ✅ Each VLAN needs router interface                        │
+│  [+] Router enables communication between VLANs             │
+│  [+] Each VLAN needs router interface                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -420,25 +420,25 @@ Before starting this topic, you should understand:
 ### Mistake 1: Native VLAN Mismatch
 ```
 ❌ Wrong: Different native VLANs on trunk ports between switches
-✅ Correct: Ensure native VLAN is consistent on both ends of trunk
+[+] Correct: Ensure native VLAN is consistent on both ends of trunk
 ```
 
 ### Mistake 2: Forgetting to Allow VLAN on Trunk
 ```
 ❌ Wrong: Creating VLAN but not allowing it on trunk ports
-✅ Correct: Explicitly allow VLAN on trunk: switchport trunk allowed vlan add 20
+[+] Correct: Explicitly allow VLAN on trunk: switchport trunk allowed vlan add 20
 ```
 
 ### Mistake 3: Not Setting Up Inter-VLAN Routing
 ```
 ❌ Wrong: Expecting VLANs to communicate without router/L3 switch
-✅ Correct: Configure router-on-a-stick or L3 switch for inter-VLAN routing
+[+] Correct: Configure router-on-a-stick or L3 switch for inter-VLAN routing
 ```
 
 ### Mistake 4: Using VLAN 1 for Production
 ```
 ❌ Wrong: Using default VLAN 1 for production traffic
-✅ Correct: Create dedicated VLANs; VLAN 1 should only be for management
+[+] Correct: Create dedicated VLANs; VLAN 1 should only be for management
 ```
 
 ---

@@ -28,9 +28,9 @@
 │  │   Server     │                                           │
 │  └──────────────┘                                           │
 │                                                              │
-│  ⚠️  Client IP visible to server                            │
-│  ⚠️  No caching                                             │
-│  ⚠️  No filtering                                            │
+│  [!]  Client IP visible to server                            │
+│  [!]  No caching                                             │
+│  [!]  No filtering                                            │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -75,9 +75,9 @@
 │  │  Client  │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Client IP hidden                                        │
-│  ✅ Caching possible                                        │
-│  ✅ Content filtering                                       │
+│  [+] Client IP hidden                                        │
+│  [+] Caching possible                                        │
+│  [+] Content filtering                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -119,11 +119,11 @@
 │            └──────────────┘                                  │
 │                                                              │
 │  Use Cases:                                                  │
-│  ✅ Hide client IP addresses                                │
-│  ✅ Bypass geo-restrictions                                 │
-│  ✅ Content filtering (corporate)                           │
-│  ✅ Caching frequently accessed content                     │
-│  ✅ Anonymity                                               │
+│  [+] Hide client IP addresses                                │
+│  [+] Bypass geo-restrictions                                 │
+│  [+] Content filtering (corporate)                           │
+│  [+] Caching frequently accessed content                     │
+│  [+] Anonymity                                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -163,12 +163,12 @@
 │  └──────────┘ └──────────┘ └──────────┘                   │
 │                                                              │
 │  Use Cases:                                                  │
-│  ✅ Load balancing                                           │
-│  ✅ SSL/TLS termination                                      │
-│  ✅ Caching static content                                    │
-│  ✅ Hiding backend server details                            │
-│  ✅ Compression                                              │
-│  ✅ Security (WAF)                                           │
+│  [+] Load balancing                                           │
+│  [+] SSL/TLS termination                                      │
+│  [+] Caching static content                                    │
+│  [+] Hiding backend server details                            │
+│  [+] Compression                                              │
+│  [+] Security (WAF)                                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -224,9 +224,9 @@
 │  │  1  │  │  2  │                                           │
 │  └─────┘  └─────┘                                           │
 │                                                              │
-│  ✅ Distributes load across servers                         │
-│  ✅ High availability                                       │
-│  ✅ Health checks                                           │
+│  [+] Distributes load across servers                         │
+│  [+] High availability                                       │
+│  [+] Health checks                                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -264,9 +264,9 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Centralized certificate management                     │
-│  ✅ Reduced backend server load                            │
-│  ✅ Easier certificate updates                              │
+│  [+] Centralized certificate management                     │
+│  [+] Reduced backend server load                            │
+│  [+] Easier certificate updates                              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -288,8 +288,8 @@
 │  │   Proxy      │                                           │
 │  │              │                                           │
 │  │  Check cache:                                           │
-│  │  • Cache hit? ✅ → Return cached content               │
-│  │  • Cache miss? ❌ → Forward to backend                │
+│  │  • Cache hit? [+] → Return cached content               │
+│  │  • Cache miss? [X] → Forward to backend                │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │ Cache miss                                        │
@@ -320,10 +320,10 @@
 │  └──────────┘                                              │
 │                                                              │
 │  Next Request:                                              │
-│  Client → Proxy → ✅ Cache Hit → Client                    │
+│  Client → Proxy → [+] Cache Hit → Client                    │
 │                                                              │
-│  ✅ Faster response times                                   │
-│  ✅ Reduced backend load                                    │
+│  [+] Faster response times                                   │
+│  [+] Reduced backend load                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -360,10 +360,10 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Features:                                                   │
-│  ✅ Load balancing to backend servers                      │
-│  ✅ Header forwarding                                      │
-│  ✅ SSL termination (add SSL config)                      │
-│  ✅ Caching (add cache config)                             │
+│  [+] Load balancing to backend servers                      │
+│  [+] Header forwarding                                      │
+│  [+] SSL termination (add SSL config)                      │
+│  [+] Caching (add cache config)                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -407,9 +407,9 @@
 │            │   Internet   │                                  │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ Security and compliance                                 │
-│  ✅ Bandwidth optimization                                  │
-│  ✅ Content control                                         │
+│  [+] Security and compliance                                 │
+│  [+] Bandwidth optimization                                  │
+│  [+] Content control                                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -450,9 +450,9 @@
 │  │ Service  │ │ Service  │ │ Service  │                   │
 │  └──────────┘ └──────────┘ └──────────┘                   │
 │                                                              │
-│  ✅ Single entry point                                      │
-│  ✅ Centralized security                                    │
-│  ✅ Microservices routing                                   │
+│  [+] Single entry point                                      │
+│  [+] Centralized security                                    │
+│  [+] Microservices routing                                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 

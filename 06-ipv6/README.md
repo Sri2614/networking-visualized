@@ -19,8 +19,8 @@
 │  │  │                                                │    │
 │  │  │████████████████████████████████████████████│    │    │
 │  │  │                                                │    │
-│  │  ✅ Used: ~4.2 billion                           │    │
-│  │  ⚠️  Remaining: Very few                          │    │
+│  │  [+] Used: ~4.2 billion                           │    │
+│  │  [!]  Remaining: Very few                          │    │
 │  │                                                    │    │
 │  │  Problem:                                        │    │
 │  │  • Internet of Things (IoT) growing              │    │
@@ -38,9 +38,9 @@
 │  │  │                                                │    │
 │  │  │█ (barely visible)                             │    │
 │  │  │                                                │    │
-│  │  ✅ Used: Tiny fraction                          │    │
-│  │  ✅ Enough for every device on Earth             │    │
-│  │  ✅ Future-proof                                 │    │
+│  │  [+] Used: Tiny fraction                          │    │
+│  │  [+] Enough for every device on Earth             │    │
+│  │  [+] Future-proof                                 │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -96,10 +96,10 @@
 │  2001:db8::1                                                │
 │                                                              │
 │  Rules:                                                      │
-│  ✅ Remove leading zeros in each segment                    │
-│  ✅ Replace consecutive zero segments with ::               │
-│  ✅ Can only use :: once                                    │
-│  ⚠️  ::1 = localhost (not ::1:0)                          │
+│  [+] Remove leading zeros in each segment                    │
+│  [+] Replace consecutive zero segments with ::               │
+│  [+] Can only use :: once                                    │
+│  [!]  ::1 = localhost (not ::1:0)                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -120,9 +120,9 @@
 │  │  Format: 2000::/3                                 │    │
 │  │  Example: 2001:0db8:85a3::8a2e:0370:7334         │    │
 │  │                                                    │    │
-│  │  ✅ Globally routable                              │    │
-│  │  ✅ Unique worldwide                                │    │
-│  │  ✅ Equivalent to IPv4 public IP                   │    │
+│  │  [+] Globally routable                              │    │
+│  │  [+] Unique worldwide                                │    │
+│  │  [+] Equivalent to IPv4 public IP                   │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -132,9 +132,9 @@
 │  │  Format: fe80::/10                                │    │
 │  │  Example: fe80::1                                 │    │
 │  │                                                    │    │
-│  │  ✅ Only valid on local link                       │    │
-│  │  ✅ Auto-configured                                │    │
-│  │  ✅ Not routable                                   │    │
+│  │  [+] Only valid on local link                       │    │
+│  │  [+] Auto-configured                                │    │
+│  │  [+] Not routable                                   │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -144,9 +144,9 @@
 │  │  Format: fc00::/7 or fd00::/8                    │    │
 │  │  Example: fd00::1                                 │    │
 │  │                                                    │    │
-│  │  ✅ Private addresses                              │    │
-│  │  ✅ Not routable on internet                       │    │
-│  │  ✅ Equivalent to IPv4 private IPs                 │    │
+│  │  [+] Private addresses                              │    │
+│  │  [+] Not routable on internet                       │    │
+│  │  [+] Equivalent to IPv4 private IPs                 │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -156,8 +156,8 @@
 │  │  Format: ::1/128                                  │    │
 │  │  Example: ::1                                     │    │
 │  │                                                    │    │
-│  │  ✅ Localhost                                      │    │
-│  │  ✅ Equivalent to 127.0.0.1 in IPv4              │    │
+│  │  [+] Localhost                                      │    │
+│  │  [+] Equivalent to 127.0.0.1 in IPv4              │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -209,8 +209,8 @@
 │  │  │ 2001:db8::5 │                                      │
 │  │  └──────────────┘                                      │
 │  │                                                        │    │
-│  │  ✅ Can communicate via IPv4 or IPv6                  │    │
-│  │  ✅ Gradual migration                                 │    │
+│  │  [+] Can communicate via IPv4 or IPv6                  │    │
+│  │  [+] Gradual migration                                 │    │
 │  └──────────┘                                              │
 │                                                              │
 │  Use Cases:                                                  │
@@ -258,8 +258,8 @@
 │  │  Extract IPv6 packet                                   │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ IPv6 over IPv4 infrastructure                          │
-│  ✅ Enables IPv6 connectivity through IPv4                 │
+│  [+] IPv6 over IPv4 infrastructure                          │
+│  [+] Enables IPv6 connectivity through IPv4                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 

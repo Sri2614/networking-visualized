@@ -21,13 +21,13 @@
 │  │   Admin     │                                           │
 │  │             │                                           │
 │  │  "Where's the problem?"                                │
-│  │  ❌ No visibility                                       │
-│  │  ❌ No metrics                                          │
-│  │  ❌ No logs                                             │
-│  │  ❌ Blind troubleshooting                              │
+│  │  [X] No visibility                                       │
+│  │  [X] No metrics                                          │
+│  │  [X] No logs                                             │
+│  │  [X] Blind troubleshooting                              │
 │  └──────────────┘                                           │
 │                                                              │
-│  ⚠️  Slow problem resolution                                │
+│  [!]  Slow problem resolution                                │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -43,14 +43,14 @@
 │  │   Admin     │                                           │
 │  │             │                                           │
 │  │  Checks monitoring:                                     │
-│  │  ✅ High latency on Server 2                          │
-│  │  ✅ Packet loss on interface eth0                      │
-│  │  ✅ DNS resolution slow                                │
+│  │  [+] High latency on Server 2                          │
+│  │  [+] Packet loss on interface eth0                      │
+│  │  [+] DNS resolution slow                                │
 │  │                                                        │    │
 │  │  "Found it! Server 2 is overloaded"                  │    │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Fast problem identification                             │
+│  [+] Fast problem identification                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -92,10 +92,10 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Use Cases:                                                  │
-│  ✅ Deep packet inspection                                 │
-│  ✅ Protocol analysis                                      │
-│  ✅ Security investigation                                 │
-│  ✅ Performance analysis                                    │
+│  [+] Deep packet inspection                                 │
+│  [+] Protocol analysis                                      │
+│  [+] Security investigation                                 │
+│  [+] Performance analysis                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -230,8 +230,8 @@
 │  ┌────────────────────────────────────────────────────┐    │
 │  │  $ ping 8.8.8.8                                    │    │
 │  │                                                    │    │
-│  │  ✅ Success → Network layer OK                    │    │
-│  │  ❌ Failure → Check routing, firewall             │    │
+│  │  [+] Success → Network layer OK                    │    │
+│  │  [X] Failure → Check routing, firewall             │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Step 2: Traceroute                                         │

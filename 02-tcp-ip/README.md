@@ -15,11 +15,11 @@
 │  Device C (Mac)      ←→  Device D (Mobile)                 │
 │  Device E (Server)   ←→  Device F (IoT Device)             │
 │                                                              │
-│  ❌ Different operating systems                             │
-│  ❌ Different hardware                                       │
-│  ❌ Different applications                                   │
+│  [X] Different operating systems                             │
+│  [X] Different hardware                                       │
+│  [X] Different applications                                   │
 │                                                              │
-│  ✅ Solution: Standardized Network Models                   │
+│  [+] Solution: Standardized Network Models                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -199,7 +199,7 @@
 │  │  (Display to user)                                │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Message received!                                        │
+│  [+] Message received!                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -292,13 +292,13 @@
 │                    TCP - RELIABLE                            │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Connection-oriented (3-way handshake)                   │
-│  ✅ Reliable delivery (acknowledgments)                     │
-│  ✅ Ordered delivery (sequence numbers)                      │
-│  ✅ Flow control (window size)                              │
-│  ✅ Error checking                                          │
-│  ⚠️  Slower (overhead)                                       │
-│  ⚠️  More bandwidth usage                                   │
+│  [+] Connection-oriented (3-way handshake)                   │
+│  [+] Reliable delivery (acknowledgments)                     │
+│  [+] Ordered delivery (sequence numbers)                      │
+│  [+] Flow control (window size)                              │
+│  [+] Error checking                                          │
+│  [!]  Slower (overhead)                                       │
+│  [!]  More bandwidth usage                                   │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Web browsing (HTTP/HTTPS)                                │
@@ -325,7 +325,7 @@
 │    │<── FIN-ACK ─────────────│                               │
 │    │─── ACK ────────────────>│                               │
 │                                                              │
-│  ✅ Guaranteed delivery                                     │
+│  [+] Guaranteed delivery                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -336,13 +336,13 @@
 │                    UDP - FAST                                │
 │                                                              │
 │  Characteristics:                                            │
-│  ✅ Connectionless (no handshake)                            │
-│  ✅ Fast (low overhead)                                     │
-│  ✅ Low latency                                             │
-│  ❌ No guaranteed delivery                                  │
-│  ❌ No ordering guarantee                                   │
-│  ❌ No flow control                                         │
-│  ❌ No error recovery                                       │
+│  [+] Connectionless (no handshake)                            │
+│  [+] Fast (low overhead)                                     │
+│  [+] Low latency                                             │
+│  [X] No guaranteed delivery                                  │
+│  [X] No ordering guarantee                                   │
+│  [X] No flow control                                         │
+│  [X] No error recovery                                       │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Video streaming                                          │
@@ -361,9 +361,9 @@
 │    │                         │                               │
 │    │─── Data ────────────────>│                               │
 │    │                         │                               │
-│  ⚠️  No acknowledgment                                       │
-│  ⚠️  No retransmission                                       │
-│  ⚠️  May lose packets                                        │
+│  [!]  No acknowledgment                                       │
+│  [!]  No retransmission                                       │
+│  [!]  May lose packets                                        │
 │                                                              │
 │  ⚡ Fast but unreliable                                      │
 └─────────────────────────────────────────────────────────────┘
@@ -516,8 +516,8 @@
 │                                                              │
 │  Host (192.168.1.100:8080) → Container (172.17.0.2:8080)   │
 │                                                              │
-│  ✅ Isolation via network namespaces                        │
-│  ✅ Port forwarding for external access                     │
+│  [+] Isolation via network namespaces                        │
+│  [+] Port forwarding for external access                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -549,8 +549,8 @@
 │  Flow:                                                       │
 │  Client → Service IP:80 → Pod IP:8080                       │
 │                                                              │
-│  ✅ Service discovery via DNS                               │
-│  ✅ Load balancing at Layer 4                               │
+│  [+] Service discovery via DNS                               │
+│  [+] Load balancing at Layer 4                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 

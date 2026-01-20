@@ -19,12 +19,12 @@
 │  ┌──────────────┐                                           │
 │  │   Server     │                                           │
 │  │              │                                           │
-│  │  ⚠️  Vulnerable to attacks                              │
-│  │  ⚠️  No traffic filtering                              │
-│  │  ⚠️  Open to everyone                                   │
+│  │  [!]  Vulnerable to attacks                              │
+│  │  [!]  No traffic filtering                              │
+│  │  [!]  Open to everyone                                   │
 │  └──────────────┘                                           │
 │                                                              │
-│  ❌ Security Risk                                            │
+│  [X] Security Risk                                            │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -39,9 +39,9 @@
 │  │  Firewall    │                                           │
 │  │              │                                           │
 │  │  Rules:                                                  │
-│  │  ✅ Allow HTTP (port 80)                                │
-│  │  ✅ Allow HTTPS (port 443)                              │
-│  │  ❌ Block everything else                               │
+│  │  [+] Allow HTTP (port 80)                                │
+│  │  [+] Allow HTTPS (port 443)                              │
+│  │  [X] Block everything else                               │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │ Filtered traffic                                  │
@@ -50,11 +50,11 @@
 │  ┌──────────────┐                                           │
 │  │   Server     │                                           │
 │  │              │                                           │
-│  │  ✅ Protected                                            │
-│  │  ✅ Only allowed traffic                                │
+│  │  [+] Protected                                            │
+│  │  [+] Only allowed traffic                                │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Security Enhanced                                       │
+│  [+] Security Enhanced                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -85,9 +85,9 @@
 │    ▼         ▼                                              │
 │  Server1  Server2                                           │
 │                                                              │
-│  ✅ Centralized protection                                  │
-│  ✅ Network-wide policies                                   │
-│  ✅ High performance                                        │
+│  [+] Centralized protection                                  │
+│  [+] Network-wide policies                                   │
+│  [+] High performance                                        │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -110,8 +110,8 @@
 │  • iptables (Linux)                                         │
 │  • UFW (Ubuntu)                                             │
 │                                                              │
-│  ✅ Per-host control                                        │
-│  ✅ Defense in depth                                        │
+│  [+] Per-host control                                        │
+│  [+] Defense in depth                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -134,10 +134,10 @@
 │  └────┬─────┘                                              │
 │       │                                                    │
 │       │ Check rules:                                       │
-│       │ • Source IP: 192.168.1.10 ✅                      │
-│       │ • Destination IP: 10.0.0.5 ✅                     │
-│       │ • Port: 80 ✅                                      │
-│       │ • Protocol: TCP ✅                                  │
+│       │ • Source IP: 192.168.1.10 [+]                      │
+│       │ • Destination IP: 10.0.0.5 [+]                     │
+│       │ • Port: 80 [+]                                      │
+│       │ • Protocol: TCP [+]                                  │
 │       │                                                    │
 │       ▼                                                    │
 │  ┌──────────┐                                              │
@@ -145,10 +145,10 @@
 │  │  Packet  │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ⚠️  Doesn't track connection state                        │
-│  ⚠️  Each packet checked separately                        │
-│  ✅ Fast and simple                                        │
-│  ✅ Low resource usage                                      │
+│  [!]  Doesn't track connection state                        │
+│  [!]  Each packet checked separately                        │
+│  [+] Fast and simple                                        │
+│  [+] Low resource usage                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -178,20 +178,20 @@
 │  └────┬─────┘                                              │
 │       │                                                    │
 │       │ Firewall checks connection table:                  │
-│       │ • Connection exists ✅                             │
-│       │ • State: ESTABLISHED ✅                            │
+│       │ • Connection exists [+]                             │
+│       │ • State: ESTABLISHED [+]                            │
 │       │                                                    │
-│       │ ✅ Allow (no need to check rules)                │
+│       │ [+] Allow (no need to check rules)                │
 │       │                                                    │
 │       ▼                                                    │
 │  ┌──────────┐                                              │
 │  │  Client  │ Receives response                           │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Understands connection context                         │
-│  ✅ More secure (tracks state)                             │
-│  ✅ Better performance (cached decisions)                  │
-│  ⚠️  More resource intensive                               │
+│  [+] Understands connection context                         │
+│  [+] More secure (tracks state)                             │
+│  [+] Better performance (cached decisions)                  │
+│  [!]  More resource intensive                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -242,10 +242,10 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Key Features:                                              │
-│  ✅ Stateful (automatic return traffic)                    │
-│  ✅ Default deny (explicit allow only)                     │
-│  ✅ Can reference other security groups                    │
-│  ✅ Applied at instance level                             │
+│  [+] Stateful (automatic return traffic)                    │
+│  [+] Default deny (explicit allow only)                     │
+│  [+] Can reference other security groups                    │
+│  [+] Applied at instance level                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -267,11 +267,11 @@
 │  │ Group        │                                           │
 │  │              │                                           │
 │  │  Check Rules:                                            │
-│  │  • Source: 1.2.3.4 ✅                                    │
-│  │  • Port: 80 ✅                                          │
-│  │  • Protocol: TCP ✅                                     │
+│  │  • Source: 1.2.3.4 [+]                                    │
+│  │  • Port: 80 [+]                                          │
+│  │  • Protocol: TCP [+]                                     │
 │  │                                                        │    │
-│  │  ✅ Match found → Allow                                │    │
+│  │  [+] Match found → Allow                                │    │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
@@ -288,14 +288,14 @@
 │  │ Security     │                                           │
 │  │ Group        │                                           │
 │  │              │                                           │
-│  │  ✅ Stateful - Return traffic allowed automatically    │
+│  │  [+] Stateful - Return traffic allowed automatically    │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
 │         ▼                                                    │
 │  Internet (1.2.3.4)                                          │
 │                                                              │
-│  ✅ Bidirectional communication                             │
+│  [+] Bidirectional communication                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -321,8 +321,8 @@
 │  │  Rule 100: Allow HTTP inbound                      │    │
 │  │  Rule 200: Allow HTTP outbound                     │    │
 │  │                                                    │    │
-│  │  ✅ Additional layer of security                   │    │
-│  │  ⚠️  More complex to manage                        │    │
+│  │  [+] Additional layer of security                   │    │
+│  │  [!]  More complex to manage                        │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -337,8 +337,8 @@
 │  │  Rule: Allow HTTP inbound                          │    │
 │  │  (Return traffic automatically allowed)            │    │
 │  │                                                    │    │
-│  │  ✅ Easier to manage                               │    │
-│  │  ✅ More secure by default                         │    │
+│  │  [+] Easier to manage                               │    │
+│  │  [+] More secure by default                         │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Best Practice: Use both!                                    │
@@ -365,8 +365,8 @@
 │  │  Firewall    │                                           │
 │  │              │                                           │
 │  │  Rules:                                                  │
-│  │  ✅ Allow HTTP/HTTPS to DMZ                             │
-│  │  ❌ Block everything else                               │
+│  │  [+] Allow HTTP/HTTPS to DMZ                             │
+│  │  [X] Block everything else                               │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
@@ -379,7 +379,7 @@
 │  │  │ Server │  │                                           │
 │  │  └────────┘  │                                           │
 │  │              │                                           │
-│  │  ⚠️  Semi-trusted zone                                  │
+│  │  [!]  Semi-trusted zone                                  │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
@@ -389,8 +389,8 @@
 │  │  Firewall    │                                           │
 │  │              │                                           │
 │  │  Rules:                                                  │
-│  │  ✅ Allow DMZ → Database (port 3306)                   │
-│  │  ❌ Block Internet → Internal                          │
+│  │  [+] Allow DMZ → Database (port 3306)                   │
+│  │  [X] Block Internet → Internal                          │
 │  └──────┬───────┘                                           │
 │         │                                                    │
 │         │                                                    │
@@ -404,13 +404,13 @@
 │  │  │ Server │  │                                           │
 │  │  └────────┘  │                                           │
 │  │              │                                           │
-│  │  ✅ Protected zone                                      │
+│  │  [+] Protected zone                                      │
 │  └──────────────┘                                           │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Isolates public-facing services                        │
-│  ✅ Protects internal network                              │
-│  ✅ Defense in depth                                        │
+│  [+] Isolates public-facing services                        │
+│  [+] Protects internal network                              │
+│  [+] Defense in depth                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -513,9 +513,9 @@
 │  │  └──────────────┘                                  │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Layered security                                        │
-│  ✅ Principle of least privilege                           │
-│  ✅ Defense in depth                                        │
+│  [+] Layered security                                        │
+│  [+] Principle of least privilege                           │
+│  [+] Defense in depth                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -533,21 +533,21 @@
 │       │             │             │                        │
 │       │─────────────┼─────────────│                        │
 │       │             │             │                        │
-│       ✅            ✅            ❌                        │
+│       [+]            [+]            [X]                        │
 │  (Allowed)      (Allowed)    (Blocked)                     │
 │                                                              │
 │  Network Policy Rules:                                      │
 │  ┌────────────────────────────────────────────────────┐    │
-│  │ Frontend → Backend: ✅                             │    │
-│  │ Backend → Database: ✅                             │    │
-│  │ Frontend → Database: ❌                             │    │
-│  │ Internet → Frontend: ✅                             │    │
-│  │ Internet → Backend: ❌                              │    │
-│  │ Internet → Database: ❌                             │    │
+│  │ Frontend → Backend: [+]                             │    │
+│  │ Backend → Database: [+]                             │    │
+│  │ Frontend → Database: [X]                             │    │
+│  │ Internet → Frontend: [+]                             │    │
+│  │ Internet → Backend: [X]                              │    │
+│  │ Internet → Database: [X]                             │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Micro-segmentation                                       │
-│  ✅ Zero-trust networking                                    │
+│  [+] Micro-segmentation                                       │
+│  [+] Zero-trust networking                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -608,25 +608,25 @@ Before starting this topic, you should understand:
 ### Mistake 1: Default Allow Policy
 ```
 ❌ Wrong: Allowing all traffic by default, blocking specific
-✅ Correct: Default deny, explicitly allow only needed traffic
+[+] Correct: Default deny, explicitly allow only needed traffic
 ```
 
 ### Mistake 2: Too Broad Rules
 ```
 ❌ Wrong: Allow 0.0.0.0/0 to port 22 (SSH from anywhere)
-✅ Correct: Restrict source IPs: Allow 10.0.0.0/8 to port 22
+[+] Correct: Restrict source IPs: Allow 10.0.0.0/8 to port 22
 ```
 
 ### Mistake 3: Confusing Security Groups and NACLs
 ```
 ❌ Wrong: Treating them as interchangeable
-✅ Correct: SG=stateful (instance level), NACL=stateless (subnet level)
+[+] Correct: SG=stateful (instance level), NACL=stateless (subnet level)
 ```
 
 ### Mistake 4: Forgetting Outbound Rules
 ```
 ❌ Wrong: Only configuring inbound rules
-✅ Correct: Configure both inbound AND outbound rules for complete security
+[+] Correct: Configure both inbound AND outbound rules for complete security
 ```
 
 ---

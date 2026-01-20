@@ -33,8 +33,8 @@
 │  │  Page    │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Simple request-response protocol                       │
-│  ✅ Stateless (each request is independent)                │
+│  [+] Simple request-response protocol                       │
+│  [+] Stateless (each request is independent)                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -112,7 +112,7 @@
 │  ┌──────────┐                                              │
 │  │  Browser │ Renders HTML, displays page               │
 │  │          │                                              │
-│  │  ✅ Page loaded!                                       │
+│  │  [+] Page loaded!                                       │
 │  └──────────┘                                              │
 │                                                              │
 │  Step 8: Connection Closed (HTTP/1.0) or Kept Alive       │
@@ -337,9 +337,9 @@
 │  │ DELETE /api/users/123      → Delete user 123      │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Resource-based URLs                                      │
-│  ✅ HTTP methods indicate action                            │
-│  ✅ Stateless operations                                    │
+│  [+] Resource-based URLs                                      │
+│  [+] HTTP methods indicate action                            │
+│  [+] Stateless operations                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -413,9 +413,9 @@
 │  │                                                    │    │
 │  │  Client ─────[Plain Text]─────→ Server           │    │
 │  │                                                    │    │
-│  │  ⚠️  Anyone can read the data                     │    │
-│  │  ⚠️  No authentication                            │    │
-│  │  ⚠️  Vulnerable to man-in-the-middle attacks     │    │
+│  │  [!]  Anyone can read the data                     │    │
+│  │  [!]  No authentication                            │    │
+│  │  [!]  Vulnerable to man-in-the-middle attacks     │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -424,9 +424,9 @@
 │  │                                                    │    │
 │  │  Client ───[Encrypted Data]───→ Server          │    │
 │  │                                                    │    │
-│  │  ✅ Data is encrypted                             │    │
-│  │  ✅ Server identity verified                       │    │
-│  │  ✅ Protection against tampering                   │    │
+│  │  [+] Data is encrypted                             │    │
+│  │  [+] Server identity verified                       │    │
+│  │  [+] Protection against tampering                   │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -474,7 +474,7 @@
 │  │  • Domain match                                        │
 │  └────┬─────┘                                              │
 │       │                                                    │
-│       │ ✅ Verified                                        │
+│       │ [+] Verified                                        │
 │       │                                                    │
 │       ▼                                                    │
 │  Step 4: Key Exchange                                      │
@@ -502,7 +502,7 @@
 │  ┌──────────┐                                              │
 │  │  Client  │ ←──[Encrypted]──→ │  Server  │            │
 │  │          │                    │          │            │
-│  │  ✅ Encrypted HTTP communication                      │    │
+│  │  [+] Encrypted HTTP communication                      │    │
 │  └──────────┘                    └──────────┘            │
 │                                                              │
 │  Total Time: ~100-200ms (first connection)                 │
@@ -538,7 +538,7 @@
 │  ┌──────────┐                                              │
 │  │  Browser │ Stores cookie: sessionid=abc123            │
 │  │          │                                              │
-│  │  ✅ Cookie saved in browser                           │
+│  │  [+] Cookie saved in browser                           │
 │  └────┬─────┘                                              │
 │       │                                                    │
 │       │                                                    │
@@ -555,7 +555,7 @@
 │  ┌──────────┐                                              │
 │  │  Server  │ Validates session, serves content         │
 │  │          │                                              │
-│  │  ✅ User authenticated                                │
+│  │  [+] User authenticated                                │
 │  └──────────┘                                              │
 │                                                              │
 │  Cookie Attributes:                                         │
@@ -583,7 +583,7 @@
 │  │  • Connection closed after response               │    │
 │  │  • No multiplexing                                │    │
 │  │                                                    │    │
-│  │  ⚠️  Slow for multiple resources                 │    │
+│  │  [!]  Slow for multiple resources                 │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -593,8 +593,8 @@
 │  │  • Pipelining (limited)                           │    │
 │  │  • Chunked transfer encoding                      │    │
 │  │                                                    │    │
-│  │  ✅ Better than HTTP/1.0                          │    │
-│  │  ⚠️  Still sequential requests                     │    │
+│  │  [+] Better than HTTP/1.0                          │    │
+│  │  [!]  Still sequential requests                     │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -605,8 +605,8 @@
 │  │  • Header compression (HPACK)                    │    │
 │  │  • Binary protocol                                │    │
 │  │                                                    │    │
-│  │  ✅ Much faster                                   │    │
-│  │  ✅ Better resource utilization                    │    │
+│  │  [+] Much faster                                   │    │
+│  │  [+] Better resource utilization                    │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -617,8 +617,8 @@
 │  │  • Connection migration                           │    │
 │  │  • Reduced latency                                │    │
 │  │                                                    │    │
-│  │  ✅ Fastest                                       │    │
-│  │  ✅ Better for mobile networks                     │    │
+│  │  [+] Fastest                                       │    │
+│  │  [+] Better for mobile networks                     │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -637,7 +637,7 @@
 │  │  Request 2 → Wait → Response 2                         │
 │  │  Request 3 → Wait → Response 3                         │
 │  │                                                    │    │
-│  │  ⚠️  Blocking, slow                                 │    │
+│  │  [!]  Blocking, slow                                 │    │
 │  └──────────┘                                              │
 │                                                              │
 │  HTTP/2 (Multiplexed):                                      │
@@ -653,13 +653,13 @@
 │  │  Response 2 ──┼──→ All received in parallel          │
 │  │  Response 3 ──┘                                         │
 │  │                                                    │    │
-│  │  ✅ Non-blocking, fast                              │    │
+│  │  [+] Non-blocking, fast                              │    │
 │  └──────────┘                                              │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Multiple requests on single connection                 │
-│  ✅ No head-of-line blocking                              │
-│  ✅ Better performance                                    │
+│  [+] Multiple requests on single connection                 │
+│  [+] No head-of-line blocking                              │
+│  [+] Better performance                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -699,9 +699,9 @@
 │  │API  │  │API  │                                           │
 │  └─────┘  └─────┘                                           │
 │                                                              │
-│  ✅ Single entry point                                      │
-│  ✅ Centralized security                                    │
-│  ✅ Request/response transformation                         │
+│  [+] Single entry point                                      │
+│  [+] Centralized security                                    │
+│  [+] Request/response transformation                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 

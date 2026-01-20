@@ -27,7 +27,7 @@
 │  │  "Which path is best?"                                  │
 │  │                                                        │    │
 │  │  Path 1: Via Router A (3 hops)                        │    │
-│  │  Path 2: Via Router B (2 hops) ✅ Best               │    │
+│  │  Path 2: Via Router B (2 hops) [+] Best               │    │
 │  │  Path 3: Via Router C (5 hops)                        │    │
 │  └──────┬───────┘                                           │
 │         │                                                    │
@@ -46,7 +46,7 @@
 │  │ 10.0.0.5  │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Router finds optimal path                               │
+│  [+] Router finds optimal path                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -104,11 +104,11 @@
 │  │  ip route 10.0.0.0/8 via 192.168.1.1                │    │
 │  │  ip route 172.16.0.0/16 via 192.168.1.2             │    │
 │  │                                                        │    │
-│  │  ✅ Simple                                            │    │
-│  │  ✅ Predictable                                       │    │
-│  │  ✅ No protocol overhead                              │    │
-│  │  ⚠️  Manual configuration                             │    │
-│  │  ⚠️  Doesn't adapt to changes                         │    │
+│  │  [+] Simple                                            │    │
+│  │  [+] Predictable                                       │    │
+│  │  [+] No protocol overhead                              │    │
+│  │  [!]  Manual configuration                             │    │
+│  │  [!]  Doesn't adapt to changes                         │    │
 │  └──────────┘                                              │
 │                                                              │
 │  Use Cases:                                                  │
@@ -145,11 +145,11 @@
 │            │  • EIGRP                                      │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ Automatic updates                                       │
-│  ✅ Adapts to network changes                              │
-│  ✅ Scalable                                               │
-│  ⚠️  More complex                                          │
-│  ⚠️  Protocol overhead                                     │
+│  [+] Automatic updates                                       │
+│  [+] Adapts to network changes                              │
+│  [+] Scalable                                               │
+│  [!]  More complex                                          │
+│  [!]  Protocol overhead                                     │
 │                                                              │
 │  Use Cases:                                                 │
 │  • Large networks                                          │
@@ -194,10 +194,10 @@
 │  │  • Updates every 30 seconds                            │
 │  │  • Simple but limited                                  │
 │  │                                                        │    │
-│  │  ✅ Easy to configure                                  │    │
-│  │  ✅ Good for small networks                            │    │
-│  │  ⚠️  Slow convergence                                 │    │
-│  │  ⚠️  Limited scalability                              │    │
+│  │  [+] Easy to configure                                  │    │
+│  │  [+] Good for small networks                            │    │
+│  │  [!]  Slow convergence                                 │    │
+│  │  [!]  Limited scalability                              │    │
 │  └──────────┘                                              │
 │                                                              │
 │  Use Cases:                                                  │
@@ -222,11 +222,11 @@
 │  │  • Fast convergence                                    │
 │  │  • Hierarchical (areas)                                │
 │  │                                                        │    │
-│  │  ✅ Fast convergence                                   │    │
-│  │  ✅ Scalable                                           │    │
-│  │  ✅ Supports large networks                            │    │
-│  │  ⚠️  More complex                                      │    │
-│  │  ⚠️  CPU intensive                                    │    │
+│  │  [+] Fast convergence                                   │    │
+│  │  [+] Scalable                                           │    │
+│  │  [+] Supports large networks                            │    │
+│  │  [!]  More complex                                      │    │
+│  │  [!]  CPU intensive                                    │    │
 │  └──────────┘                                              │
 │                                                              │
 │  OSPF Areas:                                                │
@@ -238,8 +238,8 @@
 │  │  │ Area 1   │  │ Area 2   │                      │    │
 │  │  └──────────┘  └──────────┘                      │    │
 │  │                                                    │    │
-│  │  ✅ Hierarchical design                            │    │
-│  │  ✅ Reduces routing table size                     │    │
+│  │  [+] Hierarchical design                            │    │
+│  │  [+] Reduces routing table size                     │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Use Cases:                                                  │
@@ -264,11 +264,11 @@
 │  │  • Policy-based routing                                 │
 │  │  • Very scalable                                        │
 │  │                                                        │    │
-│  │  ✅ Internet-scale routing                            │    │
-│  │  ✅ Policy control                                     │    │
-│  │  ✅ Handles millions of routes                        │    │
-│  │  ⚠️  Complex                                           │    │
-│  │  ⚠️  Slow convergence                                 │    │
+│  │  [+] Internet-scale routing                            │    │
+│  │  [+] Policy control                                     │    │
+│  │  [+] Handles millions of routes                        │    │
+│  │  [!]  Complex                                           │    │
+│  │  [!]  Slow convergence                                 │    │
 │  └──────────┘                                              │
 │                                                              │
 │  BGP Peering:                                               │
@@ -342,7 +342,7 @@
 │  │              │                                           │
 │  │  If multiple matches:                                   │
 │  │  • 10.0.0.0/8 (matches)                                │
-│  │  • 10.0.0.0/16 (matches, longer) ✅                   │
+│  │  • 10.0.0.0/16 (matches, longer) [+]                   │
 │  │  • 0.0.0.0/0 (default, shorter)                        │
 │  │                                                        │    │
 │  │  Choose longest prefix match                           │    │
@@ -367,7 +367,7 @@
 │  │  Router  │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Process repeats at each router                         │
+│  [+] Process repeats at each router                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 

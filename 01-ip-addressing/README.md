@@ -79,9 +79,9 @@ Binary:   11000000.10101000.00000001.01100100
 │  │ ...         │  │ ...         │  │ ...         │        │
 │  └─────────────┘  └─────────────┘  └─────────────┘        │
 │                                                              │
-│  ✅ Not routable on internet                                │
-│  ✅ Can be reused in different networks                     │
-│  ✅ Free to use                                             │
+│  [+] Not routable on internet                                │
+│  [+] Can be reused in different networks                     │
+│  [+] Free to use                                             │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -93,9 +93,9 @@ Binary:   11000000.10101000.00000001.01100100
 │  │                                              │           │
 │  │  Example: 203.0.113.45                      │           │
 │  │                                              │           │
-│  │  ✅ Unique across entire internet           │           │
-│  │  ✅ Routable globally                       │           │
-│  │  ⚠️  Must be purchased/assigned             │           │
+│  │  [+] Unique across entire internet           │           │
+│  │  [+] Routable globally                       │           │
+│  │  [!]  Must be purchased/assigned             │           │
 │  └──────────────────────────────────────────────┘           │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -196,9 +196,9 @@ Binary:   11000000.10101000.00000001.01100100
 │  │  • Finance                                   │           │
 │  │  • HR                                        │           │
 │  │                                              │           │
-│  │  ⚠️  Security Risk                           │           │
-│  │  ⚠️  Performance Issues                      │           │
-│  │  ⚠️  No Isolation                            │           │
+│  │  [!]  Security Risk                           │           │
+│  │  [!]  Performance Issues                      │           │
+│  │  [!]  No Isolation                            │           │
 │  └──────────────────────────────────────────────┘           │
 └─────────────────────────────────────────────────────────────┘
 
@@ -211,10 +211,10 @@ Binary:   11000000.10101000.00000001.01100100
 │  │   /24    │  │   /24    │  │   /24    │  │   /24    │  │
 │  └──────────┘  └──────────┘  └──────────┘  └──────────┘  │
 │                                                              │
-│  ✅ Isolated Networks                                       │
-│  ✅ Better Security                                        │
-│  ✅ Improved Performance                                    │
-│  ✅ Easier Management                                      │
+│  [+] Isolated Networks                                       │
+│  [+] Better Security                                        │
+│  [+] Improved Performance                                    │
+│  [+] Easier Management                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 

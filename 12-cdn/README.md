@@ -29,9 +29,9 @@
 │            │  (US Only)   │                                  │
 │            └──────────────┘                                  │
 │                                                              │
-│  ⚠️  High latency for distant users                         │
-│  ⚠️  Single point of failure                                │
-│  ⚠️  Bandwidth costs                                        │
+│  [!]  High latency for distant users                         │
+│  [!]  Single point of failure                                │
+│  [!]  Bandwidth costs                                        │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -63,9 +63,9 @@
 │            │   Server     │                                  │
 │            └──────────────┘                                  │
 │                                                              │
-│  ✅ Low latency for all users                               │
-│  ✅ Distributed load                                        │
-│  ✅ Better performance                                      │
+│  [+] Low latency for all users                               │
+│  [+] Distributed load                                        │
+│  [+] Better performance                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -107,9 +107,9 @@
 │  • Cache popular content                                     │
 │  • Serve content directly                                    │
 │                                                              │
-│  ✅ Reduced latency                                         │
-│  ✅ Reduced bandwidth costs                                 │
-│  ✅ Improved reliability                                    │
+│  [+] Reduced latency                                         │
+│  [+] Reduced bandwidth costs                                 │
+│  [+] Improved reliability                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -147,8 +147,8 @@
 │  │  Server  │                                              │
 │  │          │                                              │
 │  │  Check cache:                                           │
-│  │  • Cache hit? ✅ → Return cached content              │
-│  │  • Cache miss? ❌ → Continue to Step 4                │
+│  │  • Cache hit? [+] → Return cached content              │
+│  │  • Cache miss? [X] → Continue to Step 4                │
 │  └────┬─────┘                                              │
 │       │                                                    │
 │       │ Cache miss                                         │
@@ -185,9 +185,9 @@
 │  └──────────┘                                              │
 │                                                              │
 │  Next Request:                                              │
-│  User → Edge Server → ✅ Cache Hit → User                  │
+│  User → Edge Server → [+] Cache Hit → User                  │
 │                                                              │
-│  ✅ Much faster!                                            │
+│  [+] Much faster!                                            │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -235,9 +235,9 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Content served from nearest location                   │
-│  ✅ Reduced latency                                        │
-│  ✅ Better user experience                                 │
+│  [+] Content served from nearest location                   │
+│  [+] Reduced latency                                        │
+│  [+] Better user experience                                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -262,8 +262,8 @@
 │  │   Edge  │                                              │
 │  │  Server │                                              │
 │  │         │                                              │
-│  │  ✅ Serves cached image                              │
-│  │  ✅ Fast response                                     │
+│  │  [+] Serves cached image                              │
+│  │  [+] Fast response                                     │
 │  └──────────┘                                              │
 │                                                              │
 │  Content Types:                                             │
@@ -274,9 +274,9 @@
 │  • Fonts                                                   │
 │  • Documents (PDF)                                         │
 │                                                              │
-│  ✅ Perfect for static assets                              │
-│  ✅ Long cache times                                       │
-│  ✅ High cache hit rates                                   │
+│  [+] Perfect for static assets                              │
+│  [+] Long cache times                                       │
+│  [+] High cache hit rates                                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -324,9 +324,9 @@
 │  │  User   │ Receives faster response                    │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Faster than direct connection                           │
-│  ✅ Optimized routing                                       │
-│  ✅ Connection optimization                                 │
+│  [+] Faster than direct connection                           │
+│  [+] Optimized routing                                       │
+│  [+] Connection optimization                                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -369,11 +369,11 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Features:                                                   │
-│  ✅ SSL/TLS support                                        │
-│  ✅ Custom error pages                                      │
-│  ✅ Geo-restriction                                         │
-│  ✅ Signed URLs                                             │
-│  ✅ Lambda@Edge (serverless functions)                     │
+│  [+] SSL/TLS support                                        │
+│  [+] Custom error pages                                      │
+│  [+] Geo-restriction                                         │
+│  [+] Signed URLs                                             │
+│  [+] Lambda@Edge (serverless functions)                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -408,11 +408,11 @@
 │  └──────────────┘                                           │
 │                                                              │
 │  Features:                                                   │
-│  ✅ Free SSL certificates                                   │
-│  ✅ DDoS mitigation                                        │
-│  ✅ Web application firewall                                │
-│  ✅ Image optimization                                      │
-│  ✅ Analytics                                               │
+│  [+] Free SSL certificates                                   │
+│  [+] DDoS mitigation                                        │
+│  [+] Web application firewall                                │
+│  [+] Image optimization                                      │
+│  [+] Analytics                                               │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -433,7 +433,7 @@
 │  │  Without CDN: 500ms                               │    │
 │  │  With CDN: 50ms                                    │    │
 │  │                                                    │    │
-│  │  ✅ 90% reduction                                 │    │
+│  │  [+] 90% reduction                                 │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -444,7 +444,7 @@
 │  │  Without CDN: 100%                                 │    │
 │  │  With CDN: 10% (cache hits)                       │    │
 │  │                                                    │    │
-│  │  ✅ 90% bandwidth savings                          │    │
+│  │  [+] 90% bandwidth savings                          │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -454,7 +454,7 @@
 │  │  Single origin: 99.9%                             │    │
 │  │  CDN (distributed): 99.99%                        │    │
 │  │                                                    │    │
-│  │  ✅ Higher availability                           │    │
+│  │  [+] Higher availability                           │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -464,7 +464,7 @@
 │  │  Origin server: Limited capacity                  │    │
 │  │  CDN: Virtually unlimited                          │    │
 │  │                                                    │    │
-│  │  ✅ Handle traffic spikes                          │    │
+│  │  [+] Handle traffic spikes                          │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```

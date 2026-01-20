@@ -19,8 +19,8 @@
 │  │communicate?│ │communicate?│ │communicate?│              │
 │  └──────────┘  └──────────┘  └──────────┘                │
 │                                                              │
-│  ✅ Docker provides multiple network types                  │
-│  ✅ Each with different use cases                          │
+│  [+] Docker provides multiple network types                  │
+│  [+] Each with different use cases                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -115,8 +115,8 @@
 │  │  │.0.2  │  │.0.3  │                                   │    │
 │  │  └─────┘  └─────┘                                   │    │
 │  │                                                    │    │
-│  │  ✅ Containers can communicate via bridge          │    │
-│  │  ✅ Isolated from host network                     │    │
+│  │  [+] Containers can communicate via bridge          │    │
+│  │  [+] Isolated from host network                     │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  External Access:                                            │
@@ -155,9 +155,9 @@
 │  │172.17.0.3│                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Direct communication via bridge                         │
-│  ✅ No NAT needed                                          │
-│  ✅ Fast and efficient                                     │
+│  [+] Direct communication via bridge                         │
+│  [+] No NAT needed                                          │
+│  [+] Fast and efficient                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -235,9 +235,9 @@
 │  │  │  Ports: Direct access to host ports            │    │
 │  │  └──────────────┘                                  │    │
 │  │                                                    │    │
-│  │  ✅ No network isolation                          │    │
-│  │  ✅ Best performance                              │    │
-│  │  ⚠️  Port conflicts possible                       │    │
+│  │  [+] No network isolation                          │    │
+│  │  [+] Best performance                              │    │
+│  │  [!]  Port conflicts possible                       │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Command:                                                    │
@@ -287,9 +287,9 @@
 │            │   Network     │                                   │
 │            └──────────────┘                                   │
 │                                                              │
-│  ✅ Containers on different hosts can communicate           │
-│  ✅ Virtual network overlay on physical network             │
-│  ✅ Used in Docker Swarm, Kubernetes                        │
+│  [+] Containers on different hosts can communicate           │
+│  [+] Virtual network overlay on physical network             │
+│  [+] Used in Docker Swarm, Kubernetes                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -336,9 +336,9 @@
 │  │  └──────────┘  └──────────┘  └──────────┘        │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Automatic DNS resolution                               │
-│  ✅ Service discovery via service names                     │
-│  ✅ Isolated network per project                            │
+│  [+] Automatic DNS resolution                               │
+│  [+] Service discovery via service names                     │
+│  [+] Isolated network per project                            │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -396,9 +396,9 @@
 │  │  └────────┘  │                                           │
 │  └──────────────┘                                           │
 │                                                              │
-│  ✅ Network segmentation                                    │
-│  ✅ Security isolation                                      │
-│  ✅ Backend isolated from frontend                         │
+│  [+] Network segmentation                                    │
+│  [+] Security isolation                                      │
+│  [+] Backend isolated from frontend                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -441,8 +441,8 @@
 │  2. Container name                                         │
 │  3. External DNS (8.8.8.8)                                │
 │                                                              │
-│  ✅ Automatic service discovery                             │
-│  ✅ No hardcoded IPs                                        │
+│  [+] Automatic service discovery                             │
+│  [+] No hardcoded IPs                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -535,7 +535,7 @@
 │  │                                                    │    │
 │  │  ┌──────────────┐                                  │    │
 │  │  │   Node.js    │                                  │    │
-|  │  │   API        │                                  │    │
+│  │  │   API        │                                  │    │
 │  │  │              │                                  │    │
 │  │  │  Port: 5000                                    │    │
 │  │  │  Connects to: frontend-net, backend-net        │    │
@@ -552,11 +552,11 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Network Isolation:                                         │
-│  • Frontend can reach backend                               │
-│  • Backend can reach database                               │
-│  • Frontend cannot directly reach database                  │
+│  - Frontend can reach backend                               │
+│  - Backend can reach database                               │
+│  - Frontend cannot directly reach database                  │
 │                                                              │
-│  ✅ Security through network segmentation                   │
+│  [+] Security through network segmentation                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 

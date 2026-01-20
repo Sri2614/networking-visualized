@@ -8,55 +8,56 @@
 **Service Mesh = Infrastructure Layer for Service-to-Service Communication**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    WITHOUT SERVICE MESH                      │
-│                                                              │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐                │
-│  │ Service  │  │ Service  │  │ Service  │                │
-│  │   A      │  │   B      │  │   C      │                │
-│  │          │  │          │  │          │                │
-│  │  Each service handles:                                 │
-│  │  • Retry logic                                         │
-│  │  • Circuit breaking                                    │
-│  │  • Load balancing                                      │
-│  │  • Security (mTLS)                                     │
-│  │  • Observability                                       │
-│  │                                                        │    │
-│  │  ⚠️  Code duplication                                 │    │
-│  │  ⚠️  Hard to maintain                                 │    │
-│  │  ⚠️  Inconsistent implementation                      │    │
-│  └──────────┘  └──────────┘  └──────────┘                │
-│                                                              │
-│  ❌ Business logic mixed with infrastructure code          │
-└─────────────────────────────────────────────────────────────┘
+WITHOUT SERVICE MESH
+====================
 
-┌─────────────────────────────────────────────────────────────┐
-│                    WITH SERVICE MESH                         │
-│                                                              │
-│  ┌──────────────┐                                           │
-│  │ Service Mesh │                                           │
-│  │  (Sidecar)   │                                           │
-│  │              │                                           │
-│  │  Handles:                                                │
-│  │  • Retry logic                                          │
-│  │  • Circuit breaking                                    │
-│  │  • Load balancing                                      │
-│  │  • Security (mTLS)                                     │
-│  │  • Observability                                       │
-│  │  • Traffic management                                  │
-│  └──────┬───────┘                                           │
-│         │                                                    │
-│    ┌────┴────┐                                              │
-│    │         │                                              │
-│    ▼         ▼                                              │
-│  ┌─────┐  ┌─────┐                                           │
-│  │App A│  │App B│                                           │
-│  └─────┘  └─────┘                                           │
-│                                                              │
-│  ✅ Infrastructure separated from business logic            │
-│  ✅ Consistent behavior across services                    │
-│  ✅ Centralized control                                    │
-└─────────────────────────────────────────────────────────────┘
+  +----------+  +----------+  +----------+
+  | Service  |  | Service  |  | Service  |
+  |    A     |  |    B     |  |    C     |
+  +----------+  +----------+  +----------+
+        |             |             |
+        v             v             v
+  Each service handles:
+    - Retry logic
+    - Circuit breaking
+    - Load balancing
+    - Security (mTLS)
+    - Observability
+
+  Problems:
+    [!] Code duplication
+    [!] Hard to maintain
+    [!] Inconsistent implementation
+    [X] Business logic mixed with infrastructure code
+
+
+WITH SERVICE MESH
+=================
+
+            +------------------+
+            |   Service Mesh   |
+            |    (Sidecar)     |
+            +--------+---------+
+                     |
+      +--------------+--------------+
+      |              |              |
+      v              v              v
+  +-------+     +-------+     +-------+
+  | App A |     | App B |     | App C |
+  +-------+     +-------+     +-------+
+
+  Mesh Handles:
+    - Retry logic
+    - Circuit breaking
+    - Load balancing
+    - Security (mTLS)
+    - Observability
+    - Traffic management
+
+  Benefits:
+    [+] Infrastructure separated from business logic
+    [+] Consistent behavior across services
+    [+] Centralized control
 ```
 
 ---
@@ -97,8 +98,8 @@
 │  3. Sidecar forwards to destination sidecar               │
 │  4. Destination sidecar → App                              │
 │                                                              │
-│  ✅ Transparent to application                             │
-│  ✅ No code changes needed                                 │
+│  [+] Transparent to application                             │
+│  [+] No code changes needed                                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -147,9 +148,9 @@
 │  │  (App)   │                                              │
 │  └──────────┘                                              │
 │                                                              │
-│  ✅ Both sides authenticate                                 │
-│  ✅ End-to-end encryption                                   │
-│  ✅ Automatic certificate management                        │
+│  [+] Both sides authenticate                                 │
+│  [+] End-to-end encryption                                   │
+│  [+] Automatic certificate management                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -185,9 +186,9 @@
 │  │(90%)│  │(10%)│                                           │
 │  └─────┘  └─────┘                                           │
 │                                                              │
-│  ✅ Canary deployments                                      │
-│  ✅ A/B testing                                             │
-│  ✅ Gradual rollouts                                        │
+│  [+] Canary deployments                                      │
+│  [+] A/B testing                                             │
+│  [+] Gradual rollouts                                        │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -227,10 +228,10 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Features:                                                   │
-│  ✅ Traffic management                                      │
-│  ✅ Security (mTLS)                                         │
-│  ✅ Observability (metrics, tracing, logs)                  │
-│  ✅ Policy enforcement                                      │
+│  [+] Traffic management                                      │
+│  [+] Security (mTLS)                                         │
+│  [+] Observability (metrics, tracing, logs)                  │
+│  [+] Policy enforcement                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -267,10 +268,10 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Features:                                                   │
-│  ✅ Simple and fast                                         │
-│  ✅ Low resource usage                                      │
-│  ✅ Automatic mTLS                                          │
-│  ✅ Built-in observability                                  │
+│  [+] Simple and fast                                         │
+│  [+] Low resource usage                                      │
+│  [+] Automatic mTLS                                          │
+│  [+] Built-in observability                                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 

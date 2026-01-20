@@ -22,9 +22,9 @@
 │         │   (Overloaded!)│                                  │
 │         └──────────────┘                                    │
 │                                                              │
-│  ❌ Single point of failure                                 │
-│  ❌ Performance degradation                                 │
-│  ❌ No scalability                                          │
+│  [X] Single point of failure                                 │
+│  [X] Performance degradation                                 │
+│  [X] No scalability                                          │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -46,9 +46,9 @@
 │  Server1    Server2    Server3                              │
 │  (3,333)    (3,333)    (3,334)                             │
 │                                                              │
-│  ✅ Distributed load                                         │
-│  ✅ High availability                                       │
-│  ✅ Scalability                                             │
+│  [+] Distributed load                                         │
+│  [+] High availability                                       │
+│  [+] Scalability                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -72,8 +72,8 @@
 │  │ 33.3%    │  │ 33.3%    │  │ 33.3%    │                  │
 │  └──────────┘  └──────────┘  └──────────┘                  │
 │                                                              │
-│  ✅ Simple and fair                                         │
-│  ⚠️  Doesn't consider server load                           │
+│  [+] Simple and fair                                         │
+│  [!]  Doesn't consider server load                           │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -88,8 +88,8 @@
 │                                                              │
 │  New request → Server 3 (least connections)                 │
 │                                                              │
-│  ✅ Better load distribution                                │
-│  ✅ Handles long-lived connections                          │
+│  [+] Better load distribution                                │
+│  [+] Handles long-lived connections                          │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -105,8 +105,8 @@
 │                                                              │
 │  Distribution: 1:2:3 ratio                                   │
 │                                                              │
-│  ✅ Utilizes server capacity efficiently                    │
-│  ✅ Handles heterogeneous server pools                      │
+│  [+] Utilizes server capacity efficiently                    │
+│  [+] Handles heterogeneous server pools                      │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
@@ -123,9 +123,9 @@
 │  │ Client A│  │ Client B│  │ Client C│                  │
 │  └──────────┘  └──────────┘  └──────────┘                  │
 │                                                              │
-│  ✅ Session persistence                                      │
-│  ✅ Useful for stateful applications                        │
-│  ⚠️  May cause uneven distribution                          │
+│  [+] Session persistence                                      │
+│  [+] Useful for stateful applications                        │
+│  [!]  May cause uneven distribution                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -163,9 +163,9 @@
 │  Server1  Server2                                           │
 │  :443     :443                                              │
 │                                                              │
-│  ✅ Fast (no content inspection)                            │
-│  ✅ Low overhead                                            │
-│  ⚠️  No application awareness                               │
+│  [+] Fast (no content inspection)                            │
+│  [+] Low overhead                                            │
+│  [!]  No application awareness                               │
 │                                                              │
 │  Use Cases:                                                 │
 │  • Simple TCP/UDP load balancing                            │
@@ -204,10 +204,10 @@
 │  API Server Web Server                                      │
 │  /api/*     /*                                              │
 │                                                              │
-│  ✅ Application-aware                                        │
-│  ✅ Content-based routing                                    │
-│  ✅ SSL termination                                         │
-│  ⚠️  Higher overhead                                        │
+│  [+] Application-aware                                        │
+│  [+] Content-based routing                                    │
+│  [+] SSL termination                                         │
+│  [!]  Higher overhead                                        │
 │                                                              │
 │  Use Cases:                                                 │
 │  • HTTP/HTTPS routing                                       │
@@ -258,9 +258,9 @@
 │    ▼           ▼           ▼                                │
 │  Server1    Server2    Server3                              │
 │                                                              │
-│  ⚠️  Single point of failure                               │
-│  ✅ Simple setup                                            │
-│  ✅ Cost-effective                                          │
+│  [!]  Single point of failure                               │
+│  [+] Simple setup                                            │
+│  [+] Cost-effective                                          │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -287,10 +287,10 @@
 │  Server1      Server2                                      │
 │  Server3      Server4                                      │
 │                                                              │
-│  ✅ No single point of failure                             │
-│  ✅ Automatic failover                                       │
-│  ⚠️  More complex setup                                     │
-│  ⚠️  Higher cost                                           │
+│  [+] No single point of failure                             │
+│  [+] Automatic failover                                       │
+│  [!]  More complex setup                                     │
+│  [!]  Higher cost                                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -323,9 +323,9 @@
 │    ▼         ▼ ▼      ▼ ▼      ▼                            │
 │  Servers  Servers  Servers                                  │
 │                                                              │
-│  ✅ Geographic distribution                                 │
-│  ✅ Lower latency                                           │
-│  ✅ Global scalability                                      │
+│  [+] Geographic distribution                                 │
+│  [+] Lower latency                                           │
+│  [+] Global scalability                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -342,12 +342,12 @@
 │  ┌────────────────────────────────────────────────────┐    │
 │  │ ALB Features:                                     │    │
 │  │                                                    │    │
-│  │  ✅ Layer 7 (HTTP/HTTPS)                          │    │
-│  │  ✅ Path-based routing                            │    │
-│  │  ✅ Host-based routing                            │    │
-│  │  ✅ SSL termination                               │    │
-│  │  ✅ Health checks                                 │    │
-│  │  ✅ Auto scaling integration                      │    │
+│  │  [+] Layer 7 (HTTP/HTTPS)                          │    │
+│  │  [+] Path-based routing                            │    │
+│  │  [+] Host-based routing                            │    │
+│  │  [+] SSL termination                               │    │
+│  │  [+] Health checks                                 │    │
+│  │  [+] Auto scaling integration                      │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Architecture:                                              │
@@ -404,9 +404,9 @@
 │      }                                                       │
 │  }                                                           │
 │                                                              │
-│  ✅ Flexible configuration                                  │
-│  ✅ Multiple algorithms                                     │
-│  ✅ Health checks                                           │
+│  [+] Flexible configuration                                  │
+│  [+] Multiple algorithms                                     │
+│  [+] Health checks                                           │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -431,7 +431,7 @@
 │    │         │                                              │
 │    ▼         ▼                                              │
 │  Server1  Server2                                           │
-│  ✅ 200   ❌ 503                                            │
+│  [+] 200   [X] 503                                            │
 │                                                              │
 │  Result:                                                     │
 │  • Server1: Healthy → Continue routing                      │
@@ -444,8 +444,8 @@
 │  │  HTTPS: SSL handshake → Expect success            │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Automatic failover                                      │
-│  ✅ Service availability                                    │
+│  [+] Automatic failover                                      │
+│  [+] Service availability                                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -473,9 +473,9 @@
 │  Server 1  Server 2                                         │
 │                                                              │
 │  Benefits:                                                   │
-│  ✅ Handle traffic spikes                                   │
-│  ✅ Zero-downtime deployments                               │
-│  ✅ Geographic distribution                                 │
+│  [+] Handle traffic spikes                                   │
+│  [+] Zero-downtime deployments                               │
+│  [+] Geographic distribution                                 │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -502,9 +502,9 @@
 │    ▼         ▼                                              │
 │  Instances Instances                                        │
 │                                                              │
-│  ✅ Service discovery                                       │
-│  ✅ Independent scaling                                     │
-│  ✅ Fault isolation                                         │
+│  [+] Service discovery                                       │
+│  [+] Independent scaling                                     │
+│  [+] Fault isolation                                         │
 └─────────────────────────────────────────────────────────────┘
 ```
 

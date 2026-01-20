@@ -16,13 +16,13 @@
 │  │ Node A    │  │ Node B    │  │ Node C    │                │
 │  └──────────┘  └──────────┘  └──────────┘                │
 │                                                              │
-│  ❌ Pods need to communicate                                 │
-│  ❌ Pods can move between nodes                             │
-│  ❌ IPs change when pods restart                            │
-│  ❌ Need service discovery                                  │
-│  ❌ Need load balancing                                     │
+│  [X] Pods need to communicate                                 │
+│  [X] Pods can move between nodes                             │
+│  [X] IPs change when pods restart                            │
+│  [X] Need service discovery                                  │
+│  [X] Need load balancing                                     │
 │                                                              │
-│  ✅ Kubernetes Networking solves this!                      │
+│  [+] Kubernetes Networking solves this!                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -53,9 +53,9 @@
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  These requirements ensure:                                  │
-│  ✅ No NAT between pods                                    │
-│  ✅ Flat network topology                                 │
-│  ✅ Predictable networking                                │
+│  [+] No NAT between pods                                    │
+│  [+] Flat network topology                                 │
+│  [+] Predictable networking                                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -136,9 +136,9 @@
 │  │10.244.2.3│                                               │
 │  └──────────┘                                               │
 │                                                              │
-│  ✅ Direct pod-to-pod communication                         │
-│  ✅ No NAT involved                                         │
-│  ✅ CNI handles routing                                     │
+│  [+] Direct pod-to-pod communication                         │
+│  [+] No NAT involved                                         │
+│  [+] CNI handles routing                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -237,9 +237,9 @@
 │  • iptables (default) - Random selection                    │
 │  • ipvs - More algorithms (RR, LC, etc.)                  │
 │                                                              │
-│  ✅ Automatic load balancing                                │
-│  ✅ Health check aware                                      │
-│  ✅ Session affinity support                                │
+│  [+] Automatic load balancing                                │
+│  [+] Health check aware                                      │
+│  [+] Session affinity support                                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -300,7 +300,7 @@
 │  │  Query: myapp-service                             │    │
 │  │  Resolves to: 10.96.0.10                          │    │
 │  │                                                    │    │
-│  │  ✅ Shortest form                                  │    │
+│  │  [+] Shortest form                                  │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -309,7 +309,7 @@
 │  │  Query: myapp-service.production                  │    │
 │  │  Resolves to: 10.96.0.20                          │    │
 │  │                                                    │    │
-│  │  ✅ Namespace-specific                             │    │
+│  │  [+] Namespace-specific                             │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  ┌────────────────────────────────────────────────────┐    │
@@ -318,7 +318,7 @@
 │  │  Query: myapp-service.default.svc.cluster.local   │    │
 │  │  Resolves to: 10.96.0.10                          │    │
 │  │                                                    │    │
-│  │  ✅ Fully qualified                                │    │
+│  │  [+] Fully qualified                                │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -370,9 +370,9 @@
 │  │               number: 80                          │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
-│  ✅ Path-based routing                                       │
-│  ✅ Host-based routing                                       │
-│  ✅ SSL/TLS termination                                      │
+│  [+] Path-based routing                                       │
+│  [+] Host-based routing                                       │
+│  [+] SSL/TLS termination                                      │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -389,7 +389,7 @@
 │  │  example.com/web → web-service                    │    │
 │  │  example.com/admin → admin-service                │    │
 │  │                                                    │    │
-│  │  ✅ Single domain, multiple paths                  │    │
+│  │  [+] Single domain, multiple paths                  │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Scenario 2: Host-Based Routing                            │
@@ -399,7 +399,7 @@
 │  │  www.example.com → web-service                    │    │
 │  │  admin.example.com → admin-service                │    │
 │  │                                                    │    │
-│  │  ✅ Multiple domains, different services           │    │
+│  │  [+] Multiple domains, different services           │    │
 │  └────────────────────────────────────────────────────┘    │
 │                                                              │
 │  Scenario 3: SSL/TLS Termination                            │
@@ -408,7 +408,7 @@
 │  │  HTTPS → Ingress (SSL termination)                │    │
 │  │         → HTTP → Service → Pods                    │    │
 │  │                                                    │    │
-│  │  ✅ Centralized certificate management             │    │
+│  │  [+] Centralized certificate management             │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -429,8 +429,8 @@
 │  │  Pod A   │  │  Pod B   │  │  Pod C   │                    │
 │  └──────────┘  └──────────┘  └──────────┘                    │
 │                                                              │
-│  ✅ All pods can communicate                                │
-│  ⚠️  No isolation                                            │
+│  [+] All pods can communicate                                │
+│  [!]  No isolation                                            │
 │                                                              │
 │  With Network Policy:                                        │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐                    │
@@ -440,16 +440,16 @@
 │       │             │             │                          │
 │       │─────────────┼─────────────│                          │
 │       │             │             │                          │
-│       ✅            ✅            ❌                          │
+│       [+]            [+]            [X]                          │
 │  (Allowed)      (Allowed)    (Blocked)                       │
 │                                                              │
 │  Policy:                                                     │
-│  • Frontend → Backend: ✅                                   │
-│  • Backend → Database: ✅                                   │
-│  • Frontend → Database: ❌                                   │
+│  • Frontend → Backend: [+]                                   │
+│  • Backend → Database: [+]                                   │
+│  • Frontend → Database: [X]                                   │
 │                                                              │
-│  ✅ Micro-segmentation                                       │
-│  ✅ Security isolation                                       │
+│  [+] Micro-segmentation                                       │
+│  [+] Security isolation                                       │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -481,10 +481,10 @@
 │  Effect:                                                     │
 │  ┌────────────────────────────────────────────────────┐    │
 │  │                                                    │    │
-│  │  Frontend Pod → Backend Pod:8080 ✅               │    │
-│  │  Other Pods → Backend Pod:8080 ❌                 │    │
+│  │  Frontend Pod → Backend Pod:8080 [+]               │    │
+│  │  Other Pods → Backend Pod:8080 [X]                 │    │
 │  │                                                    │    │
-│  │  ✅ Only frontend can access backend               │    │
+│  │  [+] Only frontend can access backend               │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -574,9 +574,9 @@
 │    └───┘     └───┘                                          │
 │                                                              │
 │  Network Policies:                                          │
-│  • Frontend → Backend: ✅                                   │
-│  • Backend → Database: ✅                                   │
-│  • Frontend → Database: ❌                                  │
+│  • Frontend → Backend: [+]                                   │
+│  • Backend → Database: [+]                                   │
+│  • Frontend → Database: [X]                                  │
 │                                                              │
 │  DNS:                                                        │
 │  • frontend-service.default → 10.96.0.10                   │
@@ -677,25 +677,25 @@ Before starting this topic, you should understand:
 ### Mistake 1: Not Using Network Policies
 ```
 ❌ Wrong: All pods can communicate with all pods (default)
-✅ Correct: Implement network policies for pod-to-pod security
+[+] Correct: Implement network policies for pod-to-pod security
 ```
 
 ### Mistake 2: Exposing Services Incorrectly
 ```
 ❌ Wrong: Using NodePort/LoadBalancer for internal services
-✅ Correct: ClusterIP for internal, LoadBalancer for external only
+[+] Correct: ClusterIP for internal, LoadBalancer for external only
 ```
 
 ### Mistake 3: Hardcoding Pod IPs
 ```
 ❌ Wrong: Connecting to pods by IP address
-✅ Correct: Use service names (DNS) for service discovery
+[+] Correct: Use service names (DNS) for service discovery
 ```
 
 ### Mistake 4: Ignoring DNS Caching
 ```
 ❌ Wrong: High DNS query load to CoreDNS
-✅ Correct: Configure proper DNS caching (ndots, search domains)
+[+] Correct: Configure proper DNS caching (ndots, search domains)
 ```
 
 ---
