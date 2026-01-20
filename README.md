@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.webp" alt="Networking Visualized Banner" width="100%">
+</p>
+
 # 🌐 Networking Visualized
 
 ### Master networking from zero to hero with visual diagrams, practical examples and hands-on commands
