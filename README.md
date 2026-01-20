@@ -218,6 +218,102 @@ This is an **enhanced, visual version** of the [a-to-z-of-networking](https://gi
 
 ---
 
+### 12. [NAT (Network Address Translation)](./12-nat/)
+**IP Address Translation**
+
+- Static NAT vs Dynamic NAT
+- PAT (Port Address Translation)
+- SNAT vs DNAT
+- NAT traversal
+- Cloud NAT (AWS, Azure, GCP)
+
+**Key Visuals:**
+- NAT flow diagrams
+- Before/after IP mapping
+- Cloud NAT architectures
+
+---
+
+### 13. [Routing & Routing Protocols](./13-routing/)
+**Finding the Best Path**
+
+- Static vs Dynamic routing
+- Routing tables
+- BGP (Border Gateway Protocol)
+- OSPF (Open Shortest Path First)
+- RIP (Routing Information Protocol)
+
+**Key Visuals:**
+- Routing path diagrams
+- Protocol comparison
+- Routing decision flows
+
+---
+
+### 14. [VLANs (Virtual LANs)](./14-vlans/)
+**Logical Network Segmentation**
+
+- VLAN concepts and benefits
+- VLAN tagging (802.1Q)
+- Trunk ports vs Access ports
+- Inter-VLAN routing
+- Network segmentation
+
+**Key Visuals:**
+- VLAN topology diagrams
+- Tagging process flows
+- Port type comparisons
+
+---
+
+### 15. [IPv6 Deep Dive](./15-ipv6/)
+**Next Generation IP Addressing**
+
+- IPv6 addressing format
+- IPv6 vs IPv4 comparison
+- IPv6 transition mechanisms
+- IPv6 routing
+- Address compression
+
+**Key Visuals:**
+- IPv6 address breakdown
+- Transition scenarios
+- Address format examples
+
+---
+
+### 16. [Network Monitoring & Troubleshooting](./16-network-monitoring/)
+**Network Visibility and Problem Solving**
+
+- Network monitoring tools (Wireshark, tcpdump)
+- Packet analysis
+- Network troubleshooting methodology
+- Common network issues and solutions
+- Performance metrics
+
+**Key Visuals:**
+- Troubleshooting flowcharts
+- Packet capture examples
+- Monitoring dashboards
+
+---
+
+### 17. [Service Mesh](./17-service-mesh/)
+**Advanced Microservices Networking**
+
+- Service mesh architecture
+- Istio vs Linkerd comparison
+- mTLS (mutual TLS)
+- Traffic management
+- Observability
+
+**Key Visuals:**
+- Service mesh architecture
+- Sidecar pattern diagrams
+- Traffic flow examples
+
+---
+
 ## 🎓 Learning Path
 
 ### For Beginners
@@ -380,6 +476,12 @@ This enhanced version adds:
 | [CDN](./09-cdn/) | Distribution maps | CloudFront |
 | [Docker](./10-docker-networking/) | Network types | Docker Compose |
 | [Kubernetes](./11-kubernetes-networking/) | Pod networking | CNI, Ingress |
+| [NAT](./12-nat/) | Translation flows | Cloud NAT |
+| [Routing](./13-routing/) | Path selection | BGP, OSPF |
+| [VLANs](./14-vlans/) | Segmentation | 802.1Q tagging |
+| [IPv6](./15-ipv6/) | Address format | Transition |
+| [Monitoring](./16-network-monitoring/) | Troubleshooting | Wireshark |
+| [Service Mesh](./17-service-mesh/) | Sidecar pattern | Istio, Linkerd |
 
 ---
 

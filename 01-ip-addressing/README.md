@@ -425,6 +425,132 @@ Binary:   11000000.10101000.00000001.01100100
 
 ---
 
+## 📋 Prerequisites
+
+Before starting this topic, you should understand:
+- Basic computer networking concepts
+- What a network is
+- Basic binary numbers (helpful but not required)
+
+**Estimated Time:** 2-3 hours
+
+---
+
+## ⚠️ Common Mistakes
+
+### Mistake 1: Confusing Network Address with Host Address
+```
+❌ Wrong: "My computer's IP is 192.168.1.0"
+✅ Correct: "My computer's IP is 192.168.1.5"
+         "192.168.1.0 is the network address"
+```
+
+### Mistake 2: Using Wrong Subnet Mask
+```
+❌ Wrong: Using /24 when you need /26
+✅ Correct: Calculate required hosts first, then choose subnet mask
+```
+
+### Mistake 3: Forgetting Broadcast Address
+```
+❌ Wrong: "192.168.1.0/24 gives me 256 usable IPs"
+✅ Correct: "192.168.1.0/24 gives me 254 usable IPs"
+         "(256 - 2 for network and broadcast)"
+```
+
+### Mistake 4: Mixing Private and Public IPs
+```
+❌ Wrong: Using 192.168.1.1 on the internet
+✅ Correct: Private IPs only work internally
+         "Use NAT to access internet"
+```
+
+---
+
+## 🛠️ Command Reference
+
+### Linux/macOS Commands
+```bash
+# View IP configuration
+ip addr show
+ifconfig
+
+# View routing table
+ip route show
+route -n
+
+# Test connectivity
+ping 8.8.8.8
+ping -c 4 192.168.1.1
+
+# Calculate subnet
+ipcalc 192.168.1.0/24
+```
+
+### Windows Commands
+```cmd
+# View IP configuration
+ipconfig
+ipconfig /all
+
+# View routing table
+route print
+
+# Test connectivity
+ping 8.8.8.8
+ping -n 4 192.168.1.1
+```
+
+### AWS CLI Commands
+```bash
+# List VPCs
+aws ec2 describe-vpcs
+
+# List subnets
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-xxx"
+
+# Create subnet
+aws ec2 create-subnet --vpc-id vpc-xxx --cidr-block 10.0.1.0/24
+```
+
+---
+
+## 📊 Quick Reference Card
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              IP ADDRESSING QUICK REFERENCE                  │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  IPv4 Format:        XXX.XXX.XXX.XXX (0-255 each)          │
+│  Total Addresses:    4.3 billion                            │
+│  Address Length:     32 bits                                 │
+│                                                              │
+│  Private Ranges:                                            │
+│    • 10.0.0.0/8        (16M addresses)                      │
+│    • 172.16.0.0/12     (1M addresses)                       │
+│    • 192.168.0.0/16    (65K addresses)                      │
+│                                                              │
+│  Common Subnets:                                            │
+│    • /24 = 254 hosts  (home/office)                         │
+│    • /26 = 62 hosts   (department)                          │
+│    • /28 = 14 hosts   (small team)                          │
+│    • /30 = 2 hosts    (point-to-point)                     │
+│                                                              │
+│  Calculation:                                               │
+│    Hosts = 2^(32-CIDR) - 2                                 │
+│    (Minus 2 for network & broadcast)                        │
+│                                                              │
+│  Key Concepts:                                              │
+│    • Network Address: All host bits = 0                     │
+│    • Broadcast Address: All host bits = 1                   │
+│    • Usable Hosts: Network + 1 to Broadcast - 1            │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🎯 Key Takeaways for Presentations
 
 1. **IP Address = Unique Identifier** - Like a postal address for devices
@@ -438,11 +564,11 @@ Binary:   11000000.10101000.00000001.01100100
 
 ## 📚 Further Reading
 
-- IPv6 addressing (next generation)
+- IPv6 addressing (next generation) → [See IPv6 Guide](../15-ipv6/)
 - Variable Length Subnet Masking (VLSM)
 - Supernetting (CIDR aggregation)
-- Network Address Translation (NAT)
+- Network Address Translation (NAT) → [See NAT Guide](../12-nat/)
 
 ---
 
-**Ready for the next topic?** → [TCP/IP & OSI Model](../02-tcp-ip/)
+**Previous:** [Main README](../README.md) | **Next:** [TCP/IP & OSI Model](../02-tcp-ip/)

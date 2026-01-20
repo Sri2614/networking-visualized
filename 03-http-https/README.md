@@ -850,4 +850,4 @@
 
 ---
 
-**Previous:** [TCP/IP & OSI Model](../02-tcp-ip/) | **Next:** [Load Balancing](../05-load-balancing/)
+**Previous: [TCP/IP & OSI Model](../02-tcp-ip/)/) | **Next: [DNS](../04-dns/)/)

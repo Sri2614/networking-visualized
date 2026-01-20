@@ -615,4 +615,4 @@
 
 ---
 
-**Previous:** [Load Balancing](../05-load-balancing/) | **Next:** [VPN & Tunneling](../07-vpn-tunneling/)
+**Previous: [DNS](../04-dns/)/) | **Next: [Load Balancing](../06-load-balancing/)/)
