@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **CDN = Distributed caching:** Content is cached at edge servers close to users worldwide.
+- **Cache hit vs miss:** Hit = served from edge (fast); Miss = fetched from origin (slower).
+- **TTL controls caching:** Longer TTL = fewer origin requests; shorter TTL = fresher content.
+- **Best for static content:** Images, CSS, JS, videos benefit most from CDN caching.
+- **Command Tip:** Check `X-Cache` header in response to see if content was served from CDN cache.
+
+---
+
 ## 🎯 What is a CDN?
 
 **CDN = Distributed Network of Servers**
@@ -628,6 +638,40 @@ TTL Guidelines:
 6. **Cloud CDNs** - AWS CloudFront, Cloudflare, Azure CDN
 7. **Performance** - Reduces latency, bandwidth, improves availability
 8. **Security** - DDoS protection, WAF, SSL/TLS
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What does CDN stand for?</summary>
+
+**Answer:** Content Delivery Network
+
+A distributed network of servers that caches content closer to users.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is a cache hit vs cache miss?</summary>
+
+**Answer:** Hit = content served from CDN cache (fast); Miss = fetched from origin server (slower).
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What header controls how long content is cached?</summary>
+
+**Answer:** Cache-Control (e.g., `max-age=3600` for 1 hour)
+
+Also `Expires` header and `s-maxage` for CDN-specific caching.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What type of content benefits most from CDN caching?</summary>
+
+**Answer:** Static content (images, CSS, JavaScript, videos)
+
+Dynamic content changes per request and is harder to cache.
+</details>
 
 ---
 

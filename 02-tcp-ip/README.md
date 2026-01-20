@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **OSI has 7 layers, TCP/IP has 4:** OSI is theoretical; TCP/IP is what the internet actually uses.
+- **TCP vs UDP:** TCP is reliable (handshake, acknowledgments); UDP is fast but unreliable (fire-and-forget).
+- **Ports identify applications:** HTTP=80, HTTPS=443, SSH=22, DNS=53. Ports range from 0-65535.
+- **Three-way handshake:** TCP connections start with SYN → SYN-ACK → ACK.
+- **Command Tip:** Use `ss -tulpn` (Linux) or `netstat -an` to view active connections and listening ports.
+
+---
+
 ## 🎯 Why Network Models?
 
 **Problem:** How do different devices communicate?
@@ -327,6 +337,32 @@
 │                                                              │
 │  [+] Guaranteed delivery                                     │
 └─────────────────────────────────────────────────────────────┘
+```
+
+### Mermaid Diagram: TCP Three-Way Handshake
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Note over Client,Server: Connection Establishment
+    Client->>Server: SYN (seq=100)
+    Note right of Server: Server receives SYN
+    Server->>Client: SYN-ACK (seq=300, ack=101)
+    Note left of Client: Client receives SYN-ACK
+    Client->>Server: ACK (seq=101, ack=301)
+    Note over Client,Server: Connection Established!
+
+    Note over Client,Server: Data Transfer
+    Client->>Server: Data (seq=101)
+    Server->>Client: ACK (ack=102)
+
+    Note over Client,Server: Connection Termination
+    Client->>Server: FIN
+    Server->>Client: FIN-ACK
+    Client->>Server: ACK
+    Note over Client,Server: Connection Closed
 ```
 
 ### UDP (User Datagram Protocol)
@@ -726,6 +762,42 @@ TCP Handshake: SYN -> SYN-ACK -> ACK
 5. **Ports** - Identify applications on the same IP address
 6. **Encapsulation** - Data wrapped with headers at each layer
 7. **DevOps Application** - Essential for container networking, service discovery, and troubleshooting
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> How many layers does the OSI model have?</summary>
+
+**Answer:** 7 layers
+
+Physical, Data Link, Network, Transport, Session, Presentation, Application.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What are the 3 steps of the TCP three-way handshake?</summary>
+
+**Answer:** SYN → SYN-ACK → ACK
+
+1. Client sends SYN, 2. Server responds with SYN-ACK, 3. Client sends ACK.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> Which protocol is connectionless - TCP or UDP?</summary>
+
+**Answer:** UDP
+
+UDP is connectionless and unreliable; TCP is connection-oriented and reliable.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What port does HTTPS use by default?</summary>
+
+**Answer:** 443
+
+HTTP uses 80, HTTPS uses 443, SSH uses 22.
+</details>
 
 ---
 

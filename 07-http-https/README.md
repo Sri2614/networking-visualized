@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **HTTP is stateless:** Each request is independent; cookies/sessions maintain state.
+- **Methods matter:** GET (read), POST (create), PUT (replace), PATCH (update), DELETE (remove).
+- **Status codes:** 2xx (success), 3xx (redirect), 4xx (client error), 5xx (server error).
+- **HTTPS = HTTP + TLS:** Encrypts data in transit and verifies server identity via certificates.
+- **Command Tip:** Use `curl -v https://example.com` to see the full HTTP request/response headers.
+
+---
+
 ## 🎯 What is HTTP?
 
 **HTTP = HyperText Transfer Protocol**
@@ -969,6 +979,42 @@ HTTP Versions:
 6. **HTTP/2** - Multiplexing for better performance
 7. **RESTful APIs** - Resource-based URLs with HTTP methods
 8. **Cookies & Sessions** - State management in stateless protocol
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What HTTP status code indicates "Not Found"?</summary>
+
+**Answer:** 404
+
+2xx = success, 3xx = redirect, 4xx = client error, 5xx = server error.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is the difference between PUT and PATCH?</summary>
+
+**Answer:** PUT replaces the entire resource; PATCH partially updates it.
+
+PUT is idempotent and replaces; PATCH modifies specific fields.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What does HTTPS add on top of HTTP?</summary>
+
+**Answer:** TLS encryption and server authentication
+
+HTTPS encrypts data in transit and verifies the server's identity via certificates.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What HTTP method is safe and idempotent?</summary>
+
+**Answer:** GET
+
+GET only retrieves data (safe) and multiple identical requests have the same effect (idempotent).
+</details>
 
 ---
 

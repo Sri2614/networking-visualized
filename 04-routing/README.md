@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Routing = Path selection:** Routers determine the best path for packets to reach their destination.
+- **Static vs Dynamic:** Static routes are manually configured; dynamic routes are learned automatically via protocols.
+- **Key protocols:** RIP (simple, hop-count), OSPF (link-state, fast), BGP (internet-scale, policy-based).
+- **Longest prefix match:** Router selects the most specific route (e.g., /28 over /24).
+- **Command Tip:** Use `ip route show` (Linux) or `route print` (Windows) to view the routing table.
+
+---
+
 ## 🎯 What is Routing?
 
 **Routing = Finding the Best Path for Data Packets**
@@ -520,6 +530,40 @@ Key Commands:
 6. **OSPF** - Link-state, fast convergence, enterprise-grade
 7. **BGP** - Internet-scale, policy-based, very complex
 8. **Longest Prefix Match** - Router selects most specific route
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the main difference between static and dynamic routing?</summary>
+
+**Answer:** Static routes are manually configured; dynamic routes are learned automatically via protocols.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> Which routing protocol is used for internet-scale routing between autonomous systems?</summary>
+
+**Answer:** BGP (Border Gateway Protocol)
+
+BGP is the protocol that makes the internet work, routing traffic between ISPs and organizations.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What does "longest prefix match" mean in routing?</summary>
+
+**Answer:** The router selects the most specific route (highest CIDR number)
+
+For example, /28 is more specific than /24, so the /28 route wins.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What is the administrative distance of a directly connected network?</summary>
+
+**Answer:** 0
+
+Connected = 0, Static = 1, OSPF = 110, RIP = 120, BGP = 20 (external).
+</details>
 
 ---
 

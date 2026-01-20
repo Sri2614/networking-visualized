@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **NAT translates IPs:** Converts private IPs to public IPs, allowing multiple devices to share one public IP.
+- **Three NAT types:** Static (1:1 mapping), Dynamic (pool of IPs), PAT/NAPT (many:1 using ports - most common).
+- **SNAT vs DNAT:** SNAT modifies source IP (outbound); DNAT modifies destination IP (inbound/port forwarding).
+- **Cloud NAT:** AWS NAT Gateway, Azure NAT Gateway, GCP Cloud NAT provide managed NAT services.
+- **Command Tip:** Use `iptables -t nat -L` (Linux) to view NAT rules.
+
+---
+
 ## 🎯 What is NAT?
 
 **NAT = Translating Private IPs to Public IPs**
@@ -196,6 +206,51 @@
 │  [+] Many devices share ONE public IP                        │
 │  [+] Uses port numbers to track connections                  │
 │  [+] Most common type (home routers use this)                │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Mermaid Diagram: NAT Translation Flow
+
+```mermaid
+stateDiagram-v2
+    [*] --> Outgoing
+
+    state "Outgoing Packet" as Outgoing
+    Outgoing: Source: 192.168.1.100:5000
+    Outgoing: Destination: 8.8.8.8:53
+
+    state "SNAT Translation" as SNAT
+    SNAT: NAT Table Entry Created
+    SNAT: 192.168.1.100:5000 ↔ 203.0.113.50:12345
+
+    state "On The Wire" as Wire
+    Wire: Source: 203.0.113.50:12345
+    Wire: Destination: 8.8.8.8:53
+
+    state "Response Arrives" as Response
+    Response: Source: 8.8.8.8:53
+    Response: Destination: 203.0.113.50:12345
+
+    state "DNAT Translation" as DNAT
+    DNAT: NAT Table Lookup
+    DNAT: Reverse translation applied
+
+    state "Delivered" as Delivered
+    Delivered: Source: 8.8.8.8:53
+    Delivered: Destination: 192.168.1.100:5000
+
+    Outgoing --> SNAT: NAT Router
+    SNAT --> Wire: To Internet
+    Wire --> Response: Server Reply
+    Response --> DNAT: NAT Router
+    DNAT --> Delivered: To Internal Host
+    Delivered --> [*]
+```
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              PAT CONTINUED                                   │
 │                                                              │
 │  Use Cases:                                                  │
 │  • Home networks                                             │
@@ -645,6 +700,42 @@ Common Use Cases:
 6. **DNAT** - Destination NAT (inbound traffic)
 7. **NAT Table** - Tracks active translations
 8. **Cloud NAT** - Managed NAT services (AWS, Azure, GCP)
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What does NAT stand for?</summary>
+
+**Answer:** Network Address Translation
+
+NAT translates private IP addresses to public IP addresses.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is PAT (Port Address Translation)?</summary>
+
+**Answer:** Many-to-one NAT using port numbers
+
+PAT allows multiple internal devices to share a single public IP by using unique port numbers.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is the difference between SNAT and DNAT?</summary>
+
+**Answer:** SNAT modifies source IP (outbound); DNAT modifies destination IP (inbound)
+
+SNAT is for outgoing traffic; DNAT is for port forwarding/incoming traffic.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What AWS service provides managed NAT?</summary>
+
+**Answer:** NAT Gateway
+
+NAT Gateway is a managed, highly available NAT service for private subnet internet access.
+</details>
 
 ---
 

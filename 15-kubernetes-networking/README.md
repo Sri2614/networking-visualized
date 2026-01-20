@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Every pod gets a unique IP:** Pods communicate directly without NAT across the cluster.
+- **Services provide stable endpoints:** ClusterIP (internal), NodePort (external via node), LoadBalancer (cloud LB).
+- **DNS format:** `<service>.<namespace>.svc.cluster.local` - CoreDNS handles service discovery.
+- **Network Policies:** Kubernetes firewall rules to control pod-to-pod traffic (requires CNI support).
+- **Command Tip:** Use `kubectl get pods -o wide` to see pod IPs and `kubectl exec -it pod -- nslookup svc-name` to test DNS.
+
+---
+
 ## 🎯 Kubernetes Networking Challenges
 
 **Problem:** How do containers communicate in a distributed system?
@@ -199,6 +209,44 @@
 │  │  Use: External service integration                │    │
 │  └────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
+```
+
+### Mermaid Diagram: Kubernetes Networking Architecture
+
+```mermaid
+graph TB
+    subgraph External["External Traffic"]
+        Internet["Internet"]
+        LB["Cloud Load Balancer"]
+    end
+
+    subgraph Cluster["Kubernetes Cluster"]
+        subgraph Node1["Node 1"]
+            Pod1["Pod A<br/>10.244.0.5"]
+            Pod2["Pod B<br/>10.244.0.6"]
+        end
+
+        subgraph Node2["Node 2"]
+            Pod3["Pod C<br/>10.244.1.5"]
+            Pod4["Pod D<br/>10.244.1.6"]
+        end
+
+        Service["Service<br/>ClusterIP: 10.96.0.10"]
+        Ingress["Ingress Controller"]
+        CoreDNS["CoreDNS"]
+    end
+
+    Internet --> LB
+    LB --> Ingress
+    Ingress --> Service
+    Service --> Pod1
+    Service --> Pod3
+    Pod1 -.->|DNS Query| CoreDNS
+    Pod2 -.->|DNS Query| CoreDNS
+
+    style Service fill:#4A90E2,color:#fff
+    style Ingress fill:#F5A623,color:#fff
+    style CoreDNS fill:#7ED321,color:#fff
 ```
 
 ### Service Load Balancing
@@ -833,6 +881,42 @@ Useful Commands:
 5. **Network Policies** - Firewall rules for pod-to-pod communication
 6. **CNI Plugins** - Handle actual network implementation
 7. **Cloud Integration** - Works with cloud load balancers and networking
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What Kubernetes Service type is only accessible within the cluster?</summary>
+
+**Answer:** ClusterIP (the default type)
+
+NodePort exposes on all nodes; LoadBalancer provisions a cloud load balancer.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is the DNS format for a Kubernetes service?</summary>
+
+**Answer:** `<service>.<namespace>.svc.cluster.local`
+
+Example: `my-svc.default.svc.cluster.local`
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What component provides DNS in Kubernetes?</summary>
+
+**Answer:** CoreDNS
+
+CoreDNS is the default DNS server in modern Kubernetes clusters.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What is a CNI plugin?</summary>
+
+**Answer:** Container Network Interface - handles the actual pod networking implementation
+
+Examples: Calico, Flannel, Cilium, Weave.
+</details>
 
 ---
 

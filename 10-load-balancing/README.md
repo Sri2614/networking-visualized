@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Load balancing distributes traffic:** Spreads requests across multiple servers for performance and availability.
+- **Layer 4 vs Layer 7:** L4 routes by IP/port (faster); L7 routes by URL/headers/cookies (smarter).
+- **Common algorithms:** Round Robin, Weighted, Least Connections, IP Hash, Least Response Time.
+- **Health checks are critical:** Automatically removes unhealthy servers from the pool.
+- **Command Tip:** Use `curl -I http://lb-address` multiple times to see traffic distribution across backends.
+
+---
+
 ## 🎯 What is Load Balancing?
 
 **Problem:** One server can't handle all the traffic!
@@ -127,6 +137,27 @@
 │  [+] Useful for stateful applications                        │
 │  [!]  May cause uneven distribution                          │
 └─────────────────────────────────────────────────────────────┘
+```
+
+### Mermaid Diagram: Load Balancer Traffic Flow
+
+```mermaid
+flowchart TD
+    Client["Client Requests<br/>10 req/sec"]
+    LB["Load Balancer<br/>Round Robin"]
+
+    LB -->|"Req 1,4,7,10"| Server1["Server 1<br/>✓ Healthy"]
+    LB -->|"Req 2,5,8"| Server2["Server 2<br/>✓ Healthy"]
+    LB -->|"Req 3,6,9"| Server3["Server 3<br/>✓ Healthy"]
+
+    Server1 --> Response["Responses<br/>Back to Client"]
+    Server2 --> Response
+    Server3 --> Response
+
+    style LB fill:#4A90E2,color:#fff
+    style Server1 fill:#7ED321,color:#fff
+    style Server2 fill:#7ED321,color:#fff
+    style Server3 fill:#7ED321,color:#fff
 ```
 
 ---
@@ -719,6 +750,40 @@ Key Metrics:
 5. **Health Checks** - Critical for automatic failover
 6. **Cloud Integration** - AWS ALB, NGINX, HAProxy are common solutions
 7. **Scalability** - Essential for handling growth and traffic spikes
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the difference between Layer 4 and Layer 7 load balancing?</summary>
+
+**Answer:** L4 routes by IP/port (faster); L7 routes by application data like URL/headers (smarter).
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What load balancing algorithm sends each request to a different server in sequence?</summary>
+
+**Answer:** Round Robin
+
+Each server gets an equal share of requests in rotation.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> Why are health checks important for load balancers?</summary>
+
+**Answer:** Health checks detect failed servers and automatically remove them from the pool.
+
+This ensures traffic only goes to healthy backends, improving availability.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> In AWS, which load balancer operates at Layer 7?</summary>
+
+**Answer:** ALB (Application Load Balancer)
+
+ALB for HTTP/HTTPS (L7); NLB for TCP/UDP (L4); CLB is legacy.
+</details>
 
 ---
 

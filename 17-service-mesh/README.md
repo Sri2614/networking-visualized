@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Service mesh = Infrastructure for microservices:** Handles service-to-service communication transparently.
+- **Sidecar pattern:** Proxy (Envoy/Linkerd-proxy) runs alongside each service container.
+- **Core features:** mTLS encryption, traffic management (canary, A/B), observability (tracing, metrics).
+- **Istio vs Linkerd:** Istio is feature-rich and complex; Linkerd is simple and lightweight.
+- **Command Tip:** Use `istioctl proxy-status` or `linkerd check` to verify mesh health.
+
+---
+
 ## 🎯 What is a Service Mesh?
 
 **Service Mesh = Infrastructure Layer for Service-to-Service Communication**
@@ -485,6 +495,42 @@ Key Commands:
 6. **Istio** - Feature-rich, enterprise-grade
 7. **Linkerd** - Simple, lightweight, fast
 8. **Transparent** - No application code changes needed
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is a service mesh?</summary>
+
+**Answer:** Infrastructure layer that handles service-to-service communication transparently.
+
+It provides features like mTLS, traffic management, and observability without code changes.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is the sidecar pattern in service mesh?</summary>
+
+**Answer:** A proxy container runs alongside each service container to handle network traffic.
+
+Examples: Envoy (Istio), Linkerd-proxy.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What does mTLS provide?</summary>
+
+**Answer:** Mutual TLS - both client and server authenticate each other and encrypt traffic.
+
+Service mesh can automate mTLS between all services.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> Name two popular service mesh implementations.</summary>
+
+**Answer:** Istio and Linkerd
+
+Istio is feature-rich; Linkerd is simpler and lighter.
+</details>
 
 ---
 

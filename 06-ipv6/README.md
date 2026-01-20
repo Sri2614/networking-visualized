@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **IPv6 = 128-bit addresses:** Provides 340 undecillion addresses vs IPv4's 4.3 billion.
+- **Format:** 8 groups of 4 hex digits separated by colons (e.g., `2001:0db8:85a3::8a2e:0370:7334`).
+- **Compression rules:** Leading zeros can be omitted; `::` replaces consecutive zero groups (once only).
+- **No NAT needed:** Every device can have a globally unique address.
+- **Command Tip:** Use `ip -6 addr` (Linux) or `ipconfig` (Windows) to view IPv6 addresses.
+
+---
+
 ## 🎯 Why IPv6?
 
 **Problem: We're Running Out of IPv4 Addresses!**
@@ -419,6 +429,42 @@ Transition Mechanisms:
 6. **No NAT needed** - Enough addresses for everyone
 7. **Transition mechanisms** - Dual stack, tunneling
 8. **Future of networking** - IPv4 is running out
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> How many bits are in an IPv6 address?</summary>
+
+**Answer:** 128 bits
+
+IPv4 has 32 bits; IPv6 has 128 bits, providing vastly more addresses.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What does the :: notation represent in IPv6?</summary>
+
+**Answer:** Consecutive groups of zeros (can only be used once per address)
+
+Example: 2001:db8::1 is shorthand for 2001:0db8:0000:0000:0000:0000:0000:0001.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is the IPv6 loopback address?</summary>
+
+**Answer:** ::1
+
+This is equivalent to 127.0.0.1 in IPv4.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What IPv6 prefix indicates a link-local address?</summary>
+
+**Answer:** fe80::/10
+
+Link-local addresses are auto-configured and only valid on the local network segment.
+</details>
 
 ---
 

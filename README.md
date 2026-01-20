@@ -26,12 +26,20 @@ A comprehensive visual guide covering **17 networking topics** from fundamentals
 
 | Feature | Description |
 |---------|-------------|
-| 📊 **Visual Diagrams** | ASCII art architecture and flow diagrams |
+| 📊 **Visual Diagrams** | ASCII art and Mermaid diagrams for architecture and flows |
+| 📌 **Key Takeaways** | Quick summary at the top of each topic |
 | 📋 **Prerequisites** | What you need to know before each topic |
 | ⚠️ **Common Mistakes** | Pitfalls to avoid with correct approaches |
 | 🛠️ **Command Reference** | Linux, Windows, and cloud CLI commands |
 | 📝 **Quick Reference Cards** | At-a-glance summary for each topic |
+| 🧠 **Quick Quiz** | Self-assessment questions with hidden answers |
 | 🎯 **Key Takeaways** | Essential points to remember |
+
+### 📇 Study Resources
+
+| Resource | Description |
+|----------|-------------|
+| [FLASHCARDS.md](./FLASHCARDS.md) | Spaced repetition flashcards for all topics |
 
 ### Who Is This For?
 

@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Proxy = Intermediary:** Sits between client and server to add security, caching, or control.
+- **Forward proxy:** Represents clients (hides client IP, content filtering, corporate access control).
+- **Reverse proxy:** Represents servers (hides backend, SSL termination, load balancing, caching).
+- **Key headers:** `X-Forwarded-For` preserves original client IP through proxy chains.
+- **Command Tip:** Use `curl -x http://proxy:8080 http://example.com` to route requests through a proxy.
+
+---
+
 ## 🎯 What is a Proxy?
 
 **Proxy = Intermediary Server**
@@ -628,6 +638,38 @@ Proxy Functions:
 6. **Caching** - Stores responses for faster delivery
 7. **API Gateway** - Specialized reverse proxy for APIs
 8. **Security** - Content filtering, WAF, authentication
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the difference between a forward proxy and a reverse proxy?</summary>
+
+**Answer:** Forward proxy represents clients (hides client IP); reverse proxy represents servers (hides backend).
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What HTTP header preserves the original client IP through a proxy chain?</summary>
+
+**Answer:** X-Forwarded-For
+
+This header contains a comma-separated list of IPs the request passed through.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is SSL/TLS termination?</summary>
+
+**Answer:** Decrypting HTTPS traffic at the proxy/load balancer level.
+
+This offloads encryption from backend servers and simplifies certificate management.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> Name two popular reverse proxy software solutions.</summary>
+
+**Answer:** NGINX and HAProxy (also Envoy, Traefik, Apache)
+</details>
 
 ---
 

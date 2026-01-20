@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Firewall = Traffic filter:** Controls what network traffic is allowed in and out based on rules.
+- **Stateful vs Stateless:** Stateful tracks connections (more secure); stateless evaluates each packet independently.
+- **Security Groups (Cloud):** Instance-level, stateful, allow-only rules. Evaluate all rules together.
+- **Network ACLs:** Subnet-level, stateless, allow/deny rules. Order matters (evaluated sequentially).
+- **Command Tip:** Use `iptables -L` (Linux) or `firewall-cmd --list-all` (firewalld) to view firewall rules.
+
+---
+
 ## 🎯 What is a Firewall?
 
 **Firewall = Network Security Guard**
@@ -762,6 +772,40 @@ Common Ports to Secure:
 6. **Default Deny** - Only allow what's needed (principle of least privilege)
 7. **Defense in Depth** - Multiple layers of security
 8. **Zero Trust** - Don't trust, always verify
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the difference between stateful and stateless firewalls?</summary>
+
+**Answer:** Stateful tracks connection state; stateless evaluates each packet independently.
+
+Stateful firewalls remember if a connection was initiated and allow return traffic automatically.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> In AWS, are Security Groups stateful or stateless?</summary>
+
+**Answer:** Stateful
+
+Security Groups are stateful; Network ACLs are stateless.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is the "default deny" principle?</summary>
+
+**Answer:** Block all traffic by default, only allow what is explicitly needed.
+
+This is the whitelist approach - safer than allowing everything and blocking specific threats.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What command lists iptables firewall rules on Linux?</summary>
+
+**Answer:** `iptables -L` or `iptables -L -n -v` for verbose output.
+</details>
 
 ---
 

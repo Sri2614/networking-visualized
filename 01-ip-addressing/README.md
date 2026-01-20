@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **IP Address = Device Identity:** Every device on a network needs a unique IP address, like a postal address for data packets.
+- **IPv4 uses 32 bits:** Format is `XXX.XXX.XXX.XXX` with ~4.3 billion possible addresses.
+- **Private vs Public:** Private IPs (10.x, 172.16-31.x, 192.168.x) are for internal networks; public IPs are internet-routable.
+- **Subnetting divides networks:** CIDR notation (`/24`, `/16`) defines network size. Hosts = 2^(32-CIDR) - 2.
+- **Command Tip:** Use `ip addr` (Linux) or `ipconfig` (Windows) to view your IP configuration.
+
+---
+
 ## 🎯 What is an IP Address?
 
 Think of an IP address as **your computer's home address** on the internet!
@@ -527,6 +537,47 @@ Key Concepts:
 4. **Subnetting = Network Division** - Creates isolated, manageable segments
 5. **CIDR Notation** - Modern way to express subnet masks (/24, /26, etc.)
 6. **DevOps Application** - Essential for VPC design, security, and scalability
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the range of a single octet in an IPv4 address?</summary>
+
+**Answer:** 0-255
+
+Each octet is 8 bits, giving 2^8 = 256 possible values (0-255).
+</details>
+
+<details>
+<summary><strong>Q2:</strong> How many usable host addresses are in a /24 network?</summary>
+
+**Answer:** 254 hosts
+
+Calculation: 2^(32-24) - 2 = 256 - 2 = 254 (minus network and broadcast addresses).
+</details>
+
+<details>
+<summary><strong>Q3:</strong> Which of these is a private IP range?</summary>
+
+**A)** 8.8.8.0/24  
+**B)** 192.168.0.0/16  
+**C)** 100.64.0.0/10  
+**D)** 203.0.113.0/24
+
+**Answer:** B) 192.168.0.0/16
+
+Private ranges are: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What does CIDR stand for?</summary>
+
+**Answer:** Classless Inter-Domain Routing
+
+CIDR replaced the old class-based system (Class A, B, C) with flexible prefix lengths.
+</details>
 
 ---
 

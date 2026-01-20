@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **VLANs segment networks logically:** Create separate broadcast domains on the same physical switch.
+- **802.1Q tagging:** Standard protocol that adds a 4-byte tag to Ethernet frames with VLAN ID (1-4094).
+- **Access vs Trunk ports:** Access ports carry one VLAN (untagged); trunk ports carry multiple VLANs (tagged).
+- **Inter-VLAN routing required:** VLANs can't communicate without a Layer 3 device (router or L3 switch).
+- **Command Tip:** Use `ip link add link eth0 name eth0.10 type vlan id 10` to create a VLAN interface on Linux.
+
+---
+
 ## 🎯 What is a VLAN?
 
 **VLAN = Virtual Local Area Network (Logical Network Segmentation)**
@@ -534,6 +544,40 @@ Best Practices:
 5. **Inter-VLAN Routing** - Router needed for VLAN communication
 6. **Benefits** - Security, performance, flexibility, cost savings
 7. **VLAN ID Range** - 1-4094 (0 and 4095 reserved)
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the standard protocol for VLAN tagging?</summary>
+
+**Answer:** 802.1Q
+
+IEEE 802.1Q adds a 4-byte tag to Ethernet frames containing the VLAN ID.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What is the difference between access and trunk ports?</summary>
+
+**Answer:** Access ports carry one VLAN (untagged); trunk ports carry multiple VLANs (tagged).
+</details>
+
+<details>
+<summary><strong>Q3:</strong> Why is VLAN 1 not recommended for production use?</summary>
+
+**Answer:** VLAN 1 is the default VLAN and often used for management traffic, creating security risks.
+
+All ports are in VLAN 1 by default, so it should be avoided for production traffic.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What is required for communication between different VLANs?</summary>
+
+**Answer:** A Layer 3 device (router or Layer 3 switch)
+
+VLANs create separate broadcast domains, requiring routing for inter-VLAN communication.
+</details>
 
 ---
 

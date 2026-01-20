@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **DNS = Internet's phonebook:** Translates human-readable domains (google.com) to IP addresses (142.250.185.46).
+- **Hierarchical structure:** Root (.) → TLD (.com) → Domain (google.com) → Subdomain (www.google.com).
+- **Caching speeds things up:** DNS results are cached at browser, OS, ISP, and resolver levels.
+- **TTL controls freshness:** Time-To-Live determines how long records are cached before re-querying.
+- **Command Tip:** Use `dig example.com` or `nslookup example.com` to query DNS records.
+
+---
+
 ## 🎯 What is DNS?
 
 **DNS = The Phonebook of the Internet**
@@ -120,6 +130,27 @@
 │  │  [+] Cached for future use                              │
 │  └──────────┘                                              │
 └─────────────────────────────────────────────────────────────┘
+```
+
+### Mermaid Diagram: DNS Resolution Flow
+
+```mermaid
+sequenceDiagram
+    participant Client as Client (Browser)
+    participant Resolver as Recursive Resolver<br/>(ISP DNS)
+    participant Root as Root Nameserver
+    participant TLD as TLD Nameserver (.com)
+    participant Auth as Authoritative<br/>Nameserver
+
+    Client->>Resolver: 1. Query: What's the IP for example.com?
+    Resolver->>Root: 2. Where do I find example.com?
+    Root-->>Resolver: 3. Ask the .com TLD nameserver
+    Resolver->>TLD: 4. Where is example.com?
+    TLD-->>Resolver: 5. Ask ns1.example.com (authoritative)
+    Resolver->>Auth: 6. What's the IP for example.com?
+    Auth-->>Resolver: 7. The IP is 93.184.216.34
+    Resolver-->>Client: 8. Here's your answer: 93.184.216.34
+    Note over Client: Caches result for TTL duration
 ```
 
 ### Detailed Visual Breakdown
@@ -699,6 +730,42 @@ Troubleshooting Commands:
 4. **Caching is Critical** - Multiple cache layers improve performance
 5. **Record Types Matter** - A, AAAA, CNAME, MX, NS, TXT serve different purposes
 6. **DevOps Integration** - Essential for service discovery, load balancing, and routing
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What does DNS stand for?</summary>
+
+**Answer:** Domain Name System
+
+DNS translates human-readable domain names to IP addresses.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What DNS record type maps a domain to an IPv4 address?</summary>
+
+**Answer:** A record
+
+AAAA is for IPv6, CNAME is for aliases, MX is for mail servers.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is the purpose of TTL in DNS?</summary>
+
+**Answer:** Time-To-Live determines how long a DNS record is cached before re-querying.
+
+Lower TTL = faster propagation but more queries; higher TTL = fewer queries but slower changes.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What command traces the full DNS resolution path?</summary>
+
+**Answer:** `dig +trace example.com`
+
+This shows the query path from root servers through TLD to authoritative nameservers.
+</details>
 
 ---
 

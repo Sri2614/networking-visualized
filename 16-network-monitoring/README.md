@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Layer-by-layer troubleshooting:** Start from physical (cables), work up through data link, network, transport, application.
+- **Key metrics:** Latency (response time), packet loss, bandwidth, jitter, error rate.
+- **Essential tools:** ping (connectivity), traceroute (path), dig (DNS), ss/netstat (connections), tcpdump/Wireshark (packets).
+- **Wireshark for deep analysis:** Capture and filter packets to diagnose complex network issues.
+- **Command Tip:** Use `mtr google.com` for combined ping + traceroute with continuous stats.
+
+---
+
 ## 🎯 Why Network Monitoring?
 
 **Problem: Networks Fail, We Need to Know Why!**
@@ -643,6 +653,40 @@ Quick Checks:
 6. **Essential Commands** - ping, traceroute, ip, netstat/ss
 7. **Systematic Approach** - Follow troubleshooting methodology
 8. **Document Everything** - Keep logs and notes
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What command tests basic network connectivity?</summary>
+
+**Answer:** `ping`
+
+Ping sends ICMP echo requests and measures round-trip time.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> What tool captures and analyzes network packets with a GUI?</summary>
+
+**Answer:** Wireshark
+
+tcpdump is the CLI equivalent for packet capture.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What does the command `ss -tulpn` show?</summary>
+
+**Answer:** TCP/UDP listening ports with process names
+
+-t=TCP, -u=UDP, -l=listening, -p=process, -n=numeric.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What approach should you use when troubleshooting network issues?</summary>
+
+**Answer:** Layer-by-layer (OSI model) - start from physical and work up to application.
+</details>
 
 ---
 

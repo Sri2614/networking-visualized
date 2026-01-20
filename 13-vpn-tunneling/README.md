@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **VPN = Secure tunnel:** Creates encrypted connection over public networks (internet).
+- **Two types:** Remote Access (user to network) and Site-to-Site (network to network).
+- **Key protocols:** IPsec (standard, complex), OpenVPN (flexible, SSL), WireGuard (modern, fast).
+- **Split tunneling:** Full tunnel routes all traffic through VPN; split tunnel routes only specific traffic.
+- **Command Tip:** Use `wg show` (WireGuard) or `ipsec status` (strongSwan) to check VPN status.
+
+---
+
 ## 🎯 What is a VPN?
 
 **VPN = Virtual Private Network**
@@ -716,6 +726,38 @@ Key Ports:
 6. **Cloud VPN** - AWS, Azure, GCP provide managed VPN services
 7. **Hybrid Cloud** - VPNs enable secure cloud-to-on-premises connectivity
 8. **Protocols Matter** - IPsec, OpenVPN, WireGuard each have strengths
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the difference between remote access VPN and site-to-site VPN?</summary>
+
+**Answer:** Remote access connects individual users to a network; site-to-site connects entire networks together.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> Which VPN protocol is known for being modern, fast, and simple?</summary>
+
+**Answer:** WireGuard
+
+WireGuard has simpler code, faster performance, and easier configuration than IPsec or OpenVPN.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What is split tunneling?</summary>
+
+**Answer:** Routing only specific traffic through the VPN while other traffic goes directly to the internet.
+
+Full tunnel routes all traffic through VPN; split tunnel is selective.
+</details>
+
+<details>
+<summary><strong>Q4:</strong> What ports does IPsec VPN typically use?</summary>
+
+**Answer:** UDP 500 (IKE) and UDP 4500 (NAT-T)
+</details>
 
 ---
 

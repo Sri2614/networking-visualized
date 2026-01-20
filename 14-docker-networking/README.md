@@ -3,6 +3,16 @@
 
 ---
 
+## 📌 Key Takeaways
+
+- **Five network drivers:** bridge (default), host (no isolation), overlay (multi-host), macvlan (physical net), none.
+- **User-defined bridges are better:** Automatic DNS resolution by container name, better isolation.
+- **Port mapping exposes containers:** `-p 8080:80` maps host port 8080 to container port 80.
+- **Docker Compose networking:** Services communicate by service name within the same compose network.
+- **Command Tip:** Use `docker network ls` and `docker network inspect <name>` to view network details.
+
+---
+
 ## 🎯 Docker Networking Overview
 
 **Challenge:** How do containers communicate?
@@ -742,6 +752,42 @@ Best Practices:
 5. **DNS Resolution** - Automatic service discovery via names
 6. **Docker Compose** - Automatic networking with service names
 7. **Network Isolation** - Multiple networks for security segmentation
+
+---
+
+## 🧠 Quick Quiz
+
+<details>
+<summary><strong>Q1:</strong> What is the default Docker network driver?</summary>
+
+**Answer:** bridge
+
+The default bridge network doesn't have DNS; user-defined bridge networks do.
+</details>
+
+<details>
+<summary><strong>Q2:</strong> How do you map container port 80 to host port 8080?</summary>
+
+**Answer:** `-p 8080:80` (host:container)
+
+Use `-P` for random port mapping.
+</details>
+
+<details>
+<summary><strong>Q3:</strong> What network driver should you use for multi-host container networking?</summary>
+
+**Answer:** overlay
+
+Overlay networks span multiple Docker hosts (used in Swarm/Kubernetes).
+</details>
+
+<details>
+<summary><strong>Q4:</strong> How do containers communicate by name in Docker Compose?</summary>
+
+**Answer:** Via automatic DNS resolution using service names
+
+Docker Compose creates a network where services can reach each other by name.
+</details>
 
 ---
 
