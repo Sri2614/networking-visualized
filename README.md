@@ -1,6 +1,6 @@
 # 🌐 Networking Visualized
 
-### Master networking from zero to hero — with visuals that stick
+### Master networking from zero to hero with visual diagrams, practical examples and hands-on commands
 
 🔰 **17 Topics** · 📊 **Visual Diagrams** · 🛠️ **Hands-on Commands** · ⚠️ **Common Mistakes** · 📋 **Quick Reference Cards**
 
